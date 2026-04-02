@@ -145,11 +145,11 @@ export default function Home() {
     <div className="bg-comic-dark min-h-screen text-white font-sans selection:bg-comic-yellow selection:text-black overflow-hidden">
       
       {/* --- HERO SECTION --- */}
-      <section className="relative min-h-[100svh] flex items-center justify-center pt-32 pb-16 bg-halftone-white">
+      <section className="relative min-h-[100svh] flex items-center justify-center pt-20 md:pt-32 pb-16 bg-halftone-white">
         <FloatingWords />
         
         <motion.div 
-          className="relative z-10 container mx-auto px-6 flex flex-col items-center text-center max-w-5xl mt-8 md:mt-0"
+          className="relative z-10 container mx-auto px-6 flex flex-col items-center text-center max-w-5xl -mt-24 md:mt-0"
           style={{ y: yParallax }}
         >
           <motion.h1 
