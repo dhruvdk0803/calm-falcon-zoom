@@ -84,19 +84,18 @@ const BrokenGlassEffect = () => {
 
 // --- Floating Action Words Component ---
 const FloatingWords = () => {
+  // Adjusted positions to keep all words strictly on the far left and right edges
   const words = [
-    { text: "SMASH!", color: "text-comic-yellow", top: "15%", left: "10%", rotate: -15, delay: 0, size: "text-5xl lg:text-7xl" },
-    { text: "BAM!", color: "text-comic-red", top: "20%", right: "12%", rotate: 20, delay: 0.3, size: "text-6xl lg:text-8xl" },
-    { text: "CRASH!", color: "text-comic-green", bottom: "25%", left: "12%", rotate: 10, delay: 0.6, size: "text-5xl lg:text-6xl" },
+    { text: "SMASH!", color: "text-comic-yellow", top: "15%", left: "8%", rotate: -15, delay: 0, size: "text-5xl lg:text-7xl" },
+    { text: "BAM!", color: "text-comic-red", top: "20%", right: "8%", rotate: 20, delay: 0.3, size: "text-6xl lg:text-8xl" },
+    { text: "CRASH!", color: "text-comic-green", bottom: "25%", left: "10%", rotate: 10, delay: 0.6, size: "text-5xl lg:text-6xl" },
     { text: "BOOM!", color: "text-comic-blue", bottom: "20%", right: "10%", rotate: -25, delay: 0.9, size: "text-6xl lg:text-7xl" },
     { text: "POW!", color: "text-white", top: "45%", left: "5%", rotate: -30, delay: 1.2, size: "text-4xl lg:text-5xl" },
     { text: "WHACK!", color: "text-comic-yellow", top: "50%", right: "6%", rotate: 15, delay: 1.5, size: "text-5xl lg:text-6xl" },
-    { text: "KAPOW!", color: "text-comic-red", bottom: "40%", left: "18%", rotate: -10, delay: 1.8, size: "text-6xl lg:text-7xl" },
-    { text: "ZAP!", color: "text-comic-green", top: "10%", left: "40%", rotate: 5, delay: 2.1, size: "text-4xl lg:text-5xl" },
-    { text: "BASH!", color: "text-comic-blue", bottom: "10%", right: "30%", rotate: -20, delay: 2.4, size: "text-5xl lg:text-6xl" },
-    { text: "THWACK!", color: "text-white", top: "75%", left: "8%", rotate: 25, delay: 2.7, size: "text-4xl lg:text-5xl" },
-    { text: "CLANG!", color: "text-comic-yellow", top: "30%", right: "25%", rotate: -15, delay: 3.0, size: "text-5xl lg:text-6xl" },
-    { text: "BONK!", color: "text-comic-red", bottom: "35%", right: "20%", rotate: 10, delay: 3.3, size: "text-4xl lg:text-5xl" },
+    { text: "KAPOW!", color: "text-comic-red", bottom: "45%", left: "8%", rotate: -10, delay: 1.8, size: "text-6xl lg:text-7xl" },
+    { text: "BASH!", color: "text-comic-blue", bottom: "10%", right: "12%", rotate: -20, delay: 2.4, size: "text-5xl lg:text-6xl" },
+    { text: "THWACK!", color: "text-white", top: "75%", left: "12%", rotate: 25, delay: 2.7, size: "text-4xl lg:text-5xl" },
+    { text: "BONK!", color: "text-comic-red", top: "35%", right: "12%", rotate: 10, delay: 3.3, size: "text-4xl lg:text-5xl" },
   ];
 
   return (
