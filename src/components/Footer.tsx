@@ -1,4 +1,5 @@
 import { Flame, Instagram, Facebook, Twitter } from "lucide-react";
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -49,7 +50,7 @@ export default function Footer() {
         <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-lg font-bold text-black uppercase">
           <p className="bg-white px-4 py-2 border-2 border-black rounded-md shadow-comic-sm">&copy; {new Date().getFullYear()} Super Smash KC. All rights reserved.</p>
           <div className="flex gap-4 flex-wrap justify-center">
-            <a href="#" className="bg-white px-4 py-2 border-2 border-black rounded-md shadow-comic-sm hover:-translate-y-1 transition-transform">Privacy Policy</a>
+            <Link href="/privacy" className="bg-white px-4 py-2 border-2 border-black rounded-md shadow-comic-sm hover:-translate-y-1 transition-transform">Privacy Policy</Link>
             <a href="#" className="bg-white px-4 py-2 border-2 border-black rounded-md shadow-comic-sm hover:-translate-y-1 transition-transform">Terms of Service</a>
             <a href="#" className="bg-white px-4 py-2 border-2 border-black rounded-md shadow-comic-sm hover:-translate-y-1 transition-transform">Waiver</a>
           </div>
