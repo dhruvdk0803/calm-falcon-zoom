@@ -16,6 +16,72 @@ const comicPop: Variants = {
   visible: { opacity: 1, scale: 1, rotate: 0, transition: comicSpring }
 };
 
+// --- Broken Glass Effect Component ---
+const BrokenGlassEffect = () => {
+  // Hardcoded values to prevent hydration mismatch, simulating random explosion trajectories
+  const shards = [
+    { id: 1, d: "M0,0 L30,-10 L20,20 Z", x: -150, y: -200, rot: -120, dur: 1.2 },
+    { id: 2, d: "M0,0 L40,-20 L10,30 Z", x: -80, y: -250, rot: -45, dur: 1.4 },
+    { id: 3, d: "M0,0 L50,10 L20,40 Z", x: 150, y: -200, rot: 90, dur: 1.1 },
+    { id: 4, d: "M0,0 L30,-30 L40,10 Z", x: 200, y: -150, rot: 135, dur: 1.3 },
+    { id: 5, d: "M0,0 L-40,20 L-10,50 Z", x: -250, y: -50, rot: -180, dur: 1.5 },
+    { id: 6, d: "M0,0 L-30,-20 L-20,30 Z", x: -200, y: 100, rot: -220, dur: 1.2 },
+    { id: 7, d: "M0,0 L40,30 L10,60 Z", x: 250, y: 50, rot: 180, dur: 1.4 },
+    { id: 8, d: "M0,0 L50,-10 L30,40 Z", x: 220, y: 150, rot: 220, dur: 1.1 },
+    { id: 9, d: "M0,0 L-20,40 L20,50 Z", x: -100, y: 250, rot: -45, dur: 1.3 },
+    { id: 10, d: "M0,0 L30,50 L-10,60 Z", x: 100, y: 250, rot: 45, dur: 1.5 },
+  ];
+
+  return (
+    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full pointer-events-none z-50 flex items-center justify-center">
+      {/* Impact Flash */}
+      <motion.svg
+        className="absolute w-64 h-64 md:w-96 md:h-96 drop-shadow-lg"
+        viewBox="0 0 100 100"
+        initial={{ scale: 0, opacity: 0 }}
+        animate={{ scale: [0, 1.2, 0], opacity: [0, 1, 0] }}
+        transition={{ duration: 0.3, delay: 0.8 }}
+      >
+        <path d="M50,5 L60,35 L95,30 L70,55 L90,90 L50,75 L10,90 L30,55 L5,30 L40,35 Z" fill="#FFFFFF" stroke="#000" strokeWidth="2" />
+      </motion.svg>
+
+      {/* Glass Shards */}
+      {shards.map((shard) => (
+        <motion.svg
+          key={shard.id}
+          className="absolute w-16 h-16 overflow-visible"
+          initial={{ x: 0, y: 0, scale: 0, opacity: 0, rotate: 0 }}
+          animate={{ 
+            x: shard.x, 
+            y: [0, shard.y - 50, shard.y + 150], // Arc trajectory simulating gravity
+            scale: [0, 1.5, 1], 
+            opacity: [0, 1, 1, 0], 
+            rotate: shard.rot 
+          }}
+          transition={{ duration: shard.dur, delay: 0.8, ease: "easeOut" }}
+        >
+          {/* Main Shard Body */}
+          <path
+            d={shard.d}
+            fill="#E0F2FE"
+            stroke="#000"
+            strokeWidth="3"
+            strokeLinejoin="round"
+          />
+          {/* Shard Highlight */}
+          <path
+            d={shard.d}
+            fill="none"
+            stroke="#FFFFFF"
+            strokeWidth="2"
+            transform="translate(-2, -2)"
+          />
+        </motion.svg>
+      ))}
+    </div>
+  );
+};
+
 // --- Floating Action Words Component ---
 const FloatingWords = () => {
   const words = [
@@ -154,13 +220,25 @@ export default function Home() {
           style={{ y: yParallax }}
         >
           <motion.h1 
-            className="text-6xl sm:text-7xl md:text-8xl lg:text-[7rem] font-bebas uppercase leading-[0.9] mb-6 text-white text-outline-black"
+            className="text-6xl sm:text-7xl md:text-8xl lg:text-[7rem] font-bebas uppercase leading-[0.9] mb-6 text-white text-outline-black z-20 relative"
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ type: "spring", stiffness: 300, damping: 20, delay: 0.1 }}
           >
             Smash Stress.<br/>
-            <span className="text-comic-red">Break Everything.</span><br/>
+            
+            {/* Shattering Text Container */}
+            <motion.span 
+              className="text-comic-red relative inline-block"
+              initial={{ scale: 1 }}
+              animate={{ scale: [1, 1.1, 0.95, 1], rotate: [0, -3, 3, 0] }}
+              transition={{ duration: 0.4, delay: 0.8 }}
+            >
+              Break Everything.
+              <BrokenGlassEffect />
+            </motion.span>
+            
+            <br/>
             <span className="text-comic-yellow">Feel Better.</span>
           </motion.h1>
 
