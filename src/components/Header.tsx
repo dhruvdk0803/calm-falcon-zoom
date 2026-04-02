@@ -45,9 +45,9 @@ export default function Header() {
             className="flex items-center cursor-pointer"
           >
             <img 
-              src="/logo.jpg" 
+              src="/logo.png" 
               alt="Super Smash KC Logo" 
-              className="h-14 md:h-20 w-auto object-contain rounded-xl border-2 border-black shadow-comic-sm bg-white"
+              className="h-16 md:h-24 w-auto object-contain drop-shadow-md"
             />
           </motion.div>
         </Link>
