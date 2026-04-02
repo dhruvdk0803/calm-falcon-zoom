@@ -45,13 +45,16 @@ export default function Header() {
         </Link>
         
         <nav className="hidden md:flex items-center gap-8 text-xl font-bebas tracking-widest uppercase text-white">
+          <Link href="/">
+            <motion.span whileHover={{ y: -2, color: "#FF2D2D" }} className="transition-colors text-outline-black cursor-pointer block">Home</motion.span>
+          </Link>
           <Link href="/about">
             <motion.span whileHover={{ y: -2, color: "#FFD400" }} className="transition-colors text-outline-black cursor-pointer block">Experience</motion.span>
           </Link>
           <Link href="/packages">
             <motion.span whileHover={{ y: -2, color: "#00C853" }} className="transition-colors text-outline-black cursor-pointer block">Packages</motion.span>
           </Link>
-          <Link href="/about">
+          <Link href="/faq">
             <motion.span whileHover={{ y: -2, color: "#007BFF" }} className="transition-colors text-outline-black cursor-pointer block">FAQ</motion.span>
           </Link>
         </nav>
