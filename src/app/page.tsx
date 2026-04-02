@@ -22,6 +22,15 @@ const staggerContainer: Variants = {
 // --- Components ---
 
 const ParticleBackground = () => {
+  const [mounted, setMounted] = useState(false);
+  
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Only delay the particles, not the whole page!
+  if (!mounted) return null;
+
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
       {[...Array(30)].map((_, i) => (
@@ -29,8 +38,8 @@ const ParticleBackground = () => {
           key={i}
           className="absolute w-1 h-1 bg-red-500 rounded-full"
           initial={{
-            x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1000),
-            y: Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 1000),
+            x: Math.random() * window.innerWidth,
+            y: Math.random() * window.innerHeight,
             opacity: Math.random() * 0.5 + 0.2,
             scale: Math.random() * 2,
           }}
@@ -54,11 +63,6 @@ export default function Home() {
   const yParallax = useTransform(scrollYProgress, [0, 1], [0, -200]);
   const opacityFade = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
 
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
-
-  if (!mounted) return null;
-
   return (
     <div className="bg-[#050505] min-h-screen text-gray-300 font-sans selection:bg-red-600 selection:text-white">
       
@@ -73,7 +77,7 @@ export default function Home() {
           style={{ y: yParallax, opacity: opacityFade }}
         >
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-red-500 text-sm font-medium tracking-widest uppercase mb-8"
@@ -83,9 +87,9 @@ export default function Home() {
 
           <motion.h1 
             className="text-6xl sm:text-7xl md:text-8xl lg:text-[8rem] font-bebas uppercase leading-[0.85] mb-8 text-white text-glow"
-            initial={{ opacity: 0, scale: 0.95, filter: "blur(10px)" }}
-            animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-            transition={{ duration: 1.2, ease: "easeOut", delay: 0.2 }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: "easeOut", delay: 0.1 }}
           >
             Smash Stress.<br/>
             <span className="text-red-600">Break Everything.</span><br/>
@@ -110,7 +114,7 @@ export default function Home() {
             className="mt-12 flex flex-col sm:flex-row gap-6 w-full sm:w-auto"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1, duration: 0.8 }}
+            transition={{ delay: 0.6, duration: 0.8 }}
           >
             <button className="group relative px-8 py-4 bg-red-600 text-white font-bebas text-2xl tracking-wider uppercase overflow-hidden rounded-sm box-glow hover:bg-red-500 transition-colors w-full sm:w-auto">
               <span className="relative z-10">Book Your Session</span>
@@ -125,8 +129,9 @@ export default function Home() {
         {/* Scroll Indicator */}
         <motion.div 
           className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50"
-          animate={{ y: [0, 10, 0] }}
-          transition={{ repeat: Infinity, duration: 2 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.5, y: [0, 10, 0] }}
+          transition={{ opacity: { delay: 1, duration: 1 }, y: { repeat: Infinity, duration: 2 } }}
         >
           <span className="text-xs uppercase tracking-[0.3em]">Scroll</span>
           <div className="w-[1px] h-12 bg-gradient-to-b from-white to-transparent" />
