@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import { Flame } from "lucide-react";
+import Link from "next/link";
 
 export default function Header() {
   const { scrollY } = useScroll();
@@ -32,19 +33,27 @@ export default function Header() {
       }`}
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
-        <motion.div 
-          whileHover={{ scale: 1.05, rotate: -2 }}
-          whileTap={{ scale: 0.95 }}
-          className="flex items-center gap-2 text-white font-bebas text-3xl tracking-wider cursor-pointer text-outline-black"
-        >
-          <Flame className="text-comic-yellow w-8 h-8 fill-comic-yellow" strokeWidth={2} stroke="black" />
-          <span>SUPER SMASH KC</span>
-        </motion.div>
+        <Link href="/">
+          <motion.div 
+            whileHover={{ scale: 1.05, rotate: -2 }}
+            whileTap={{ scale: 0.95 }}
+            className="flex items-center gap-2 text-white font-bebas text-3xl tracking-wider cursor-pointer text-outline-black"
+          >
+            <Flame className="text-comic-yellow w-8 h-8 fill-comic-yellow" strokeWidth={2} stroke="black" />
+            <span>SUPER SMASH KC</span>
+          </motion.div>
+        </Link>
         
         <nav className="hidden md:flex items-center gap-8 text-xl font-bebas tracking-widest uppercase text-white">
-          <motion.a whileHover={{ y: -2, color: "#FFD400" }} href="#" className="transition-colors text-outline-black">Experience</motion.a>
-          <motion.a whileHover={{ y: -2, color: "#00C853" }} href="#" className="transition-colors text-outline-black">Packages</motion.a>
-          <motion.a whileHover={{ y: -2, color: "#007BFF" }} href="#" className="transition-colors text-outline-black">FAQ</motion.a>
+          <Link href="/about">
+            <motion.span whileHover={{ y: -2, color: "#FFD400" }} className="transition-colors text-outline-black cursor-pointer block">Experience</motion.span>
+          </Link>
+          <Link href="/packages">
+            <motion.span whileHover={{ y: -2, color: "#00C853" }} className="transition-colors text-outline-black cursor-pointer block">Packages</motion.span>
+          </Link>
+          <Link href="/about">
+            <motion.span whileHover={{ y: -2, color: "#007BFF" }} className="transition-colors text-outline-black cursor-pointer block">FAQ</motion.span>
+          </Link>
         </nav>
 
         <motion.button 
