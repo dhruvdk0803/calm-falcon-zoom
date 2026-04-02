@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Comic Starburst Background -->
+  <path d="M256 16l56 120 128-24-64 112 104 80-128 40 40 128-112-72-112 72 40-128-128-40 104-80-64-112 128 24z" fill="#FFD400" stroke="#000" stroke-width="32" stroke<think>**Designing SVG Icon Now**
+
+My focus is now on the actual SVG code. I've switched to a starburst-style design, integrating a lightning bolt within. This design aligns with the "Super Smash KC" theme, offering a visual representation of both the theme and the energy of a lightning strike. I've refined the SVG, and believe the final design looks great. Now, I must put this SVG into the `src/app/icon.svg` path.
+
+
+</think>-linejoin="round"/>
+  <!-- Red Lightning Bolt -->
+  <path d="M288 120L160 280h96l-32 120 144-160h-96l32-120z" fill="#FF2D2D" stroke="#000" stroke-width="24" stroke-linejoin="round"/>
+</svg>
