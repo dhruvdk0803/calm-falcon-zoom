@@ -27,6 +27,11 @@ export default function Footer() {
             </p>
           </div>
           <div>
+            <h4 className="text-comic-red font-bebas text-3xl tracking-widest uppercase mb-4 text-outline-black">Contact</h4>
+            <p className="text-black font-bold text-lg mb-6">
+              <a href="tel:9134999330" className="hover:text-comic-red transition-colors block uppercase">913-499-9330</a>
+              <a href="mailto:contact@supersmashkc.com" className="hover:text-comic-red transition-colors block">contact@supersmashkc.com</a>
+            </p>
             <h4 className="text-comic-yellow font-bebas text-3xl tracking-widest uppercase mb-6 text-outline-black">Follow Us</h4>
             <div className="flex gap-4">
               <a href="#" className="w-12 h-12 rounded-full bg-comic-red border-4 border-black shadow-comic-sm flex items-center justify-center text-white hover:-translate-y-1 hover:shadow-comic transition-all">
