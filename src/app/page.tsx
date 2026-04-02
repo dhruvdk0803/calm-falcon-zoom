@@ -1,9 +1,8 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { motion, useScroll, useTransform, Variants } from "framer-motion";
 import { Shield, Zap, Target, Flame, Users, User, HeartHandshake, Briefcase, Phone, Calendar, Clock, CheckCircle2, Star } from "lucide-react";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 // --- Snappy Comic Animations ---
 const comicSpring = { type: "spring" as const, stiffness: 400, damping: 15 };
@@ -52,11 +51,9 @@ const FloatingWords = () => {
 };
 
 export default function Home() {
-  const { scrollYProgress } = useScroll();
-  const yParallax = useTransform(scrollYProgress, [0, 1], [0, -150]);
-
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
+  // Use absolute scrollY instead of scrollYProgress for more stable initial calculations
+  const { scrollY } = useScroll();
+  const yParallax = useTransform(scrollY, [0, 800], [0, -150]);
 
   const packages = [
     {
@@ -144,13 +141,11 @@ export default function Home() {
     }
   ];
 
-  if (!mounted) return null;
-
   return (
     <div className="bg-comic-dark min-h-screen text-white font-sans selection:bg-comic-yellow selection:text-black overflow-hidden">
       
       {/* --- HERO SECTION --- */}
-      <section className="relative min-h-[100svh] flex items-center justify-center pt-28 pb-12 bg-halftone-white">
+      <section className="relative min-h-[100svh] flex items-center justify-center pt-32 pb-16 bg-halftone-white">
         <FloatingWords />
         
         <motion.div 
