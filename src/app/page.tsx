@@ -66,16 +66,6 @@ export default function Home() {
           className="relative z-10 container mx-auto px-6 flex flex-col items-center text-center max-w-5xl mt-8 md:mt-0"
           style={{ y: yParallax }}
         >
-          <motion.div
-            initial={{ opacity: 0, y: -50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={comicSpring}
-            className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-comic-yellow border-4 border-black shadow-comic-sm text-black text-base md:text-lg font-bebas tracking-widest uppercase mb-6 rotate-[-2deg]"
-          >
-            <Flame className="w-5 h-5 fill-comic-red" stroke="black" strokeWidth={2} /> 
-            Kansas City's Premier Rage Room
-          </motion.div>
-
           <motion.h1 
             className="text-6xl sm:text-7xl md:text-8xl lg:text-[7rem] font-bebas uppercase leading-[0.9] mb-6 text-white text-outline-black"
             initial={{ opacity: 0, scale: 0.5 }}
