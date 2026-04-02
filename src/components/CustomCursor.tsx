@@ -8,13 +8,11 @@ type Particle = {
   x: number;
   y: number;
   text: string;
-  color: string;
   rotate: number;
 };
 
-// The words and emojis that will spawn in the trail
-const COMIC_WORDS = ["BAM!", "POW!", "SMASH!", "CRASH!", "WHACK!", "ZAP!", "💥", "💨", "⚡️", "BOOM!"];
-const COMIC_COLORS = ["text-comic-red", "text-comic-yellow", "text-comic-blue", "text-comic-green", "text-white"];
+// Only emojis for the particle trail
+const COMIC_EMOJIS = ["💥", "💨", "⚡️", "🔨", "💢", "🔥", "🏏"];
 
 export default function CustomCursor() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -41,8 +39,7 @@ export default function CustomCursor() {
           id: particleId.current++,
           x: e.clientX,
           y: e.clientY,
-          text: COMIC_WORDS[Math.floor(Math.random() * COMIC_WORDS.length)],
-          color: COMIC_COLORS[Math.floor(Math.random() * COMIC_COLORS.length)],
+          text: COMIC_EMOJIS[Math.floor(Math.random() * COMIC_EMOJIS.length)],
           rotate: Math.random() * 60 - 30, // Random rotation between -30 and 30 degrees
         };
         
@@ -91,7 +88,7 @@ export default function CustomCursor() {
         {particles.map((p) => (
           <motion.div
             key={p.id}
-            className={`fixed pointer-events-none z-[90] font-bebas text-2xl md:text-4xl text-outline-black ${p.color} drop-shadow-md`}
+            className="fixed pointer-events-none z-[90] text-3xl md:text-5xl drop-shadow-md"
             style={{ left: p.x, top: p.y }}
             initial={{ opacity: 1, scale: 0, rotate: p.rotate, x: "-50%", y: "-50%" }}
             animate={{ 
