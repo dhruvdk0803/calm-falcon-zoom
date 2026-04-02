@@ -19,10 +19,18 @@ const comicPop: Variants = {
 // --- Floating Action Words Component ---
 const FloatingWords = () => {
   const words = [
-    { text: "SMASH!", color: "text-comic-yellow", top: "25%", left: "5%", rotate: -15, delay: 0 },
-    { text: "BAM!", color: "text-comic-red", top: "15%", right: "8%", rotate: 20, delay: 0.2 },
-    { text: "CRASH!", color: "text-comic-green", bottom: "20%", left: "8%", rotate: 10, delay: 0.4 },
-    { text: "BOOM!", color: "text-comic-blue", bottom: "25%", right: "5%", rotate: -25, delay: 0.6 },
+    { text: "SMASH!", color: "text-comic-yellow", top: "15%", left: "10%", rotate: -15, delay: 0, size: "text-5xl lg:text-7xl" },
+    { text: "BAM!", color: "text-comic-red", top: "20%", right: "12%", rotate: 20, delay: 0.3, size: "text-6xl lg:text-8xl" },
+    { text: "CRASH!", color: "text-comic-green", bottom: "25%", left: "12%", rotate: 10, delay: 0.6, size: "text-5xl lg:text-6xl" },
+    { text: "BOOM!", color: "text-comic-blue", bottom: "20%", right: "10%", rotate: -25, delay: 0.9, size: "text-6xl lg:text-7xl" },
+    { text: "POW!", color: "text-white", top: "45%", left: "5%", rotate: -30, delay: 1.2, size: "text-4xl lg:text-5xl" },
+    { text: "WHACK!", color: "text-comic-yellow", top: "50%", right: "6%", rotate: 15, delay: 1.5, size: "text-5xl lg:text-6xl" },
+    { text: "KAPOW!", color: "text-comic-red", bottom: "40%", left: "18%", rotate: -10, delay: 1.8, size: "text-6xl lg:text-7xl" },
+    { text: "ZAP!", color: "text-comic-green", top: "10%", left: "40%", rotate: 5, delay: 2.1, size: "text-4xl lg:text-5xl" },
+    { text: "BASH!", color: "text-comic-blue", bottom: "10%", right: "30%", rotate: -20, delay: 2.4, size: "text-5xl lg:text-6xl" },
+    { text: "THWACK!", color: "text-white", top: "75%", left: "8%", rotate: 25, delay: 2.7, size: "text-4xl lg:text-5xl" },
+    { text: "CLANG!", color: "text-comic-yellow", top: "30%", right: "25%", rotate: -15, delay: 3.0, size: "text-5xl lg:text-6xl" },
+    { text: "BONK!", color: "text-comic-red", bottom: "35%", right: "20%", rotate: 10, delay: 3.3, size: "text-4xl lg:text-5xl" },
   ];
 
   return (
@@ -30,11 +38,11 @@ const FloatingWords = () => {
       {words.map((w, i) => (
         <motion.div
           key={i}
-          className={`absolute font-bebas text-5xl lg:text-6xl ${w.color} text-outline-black opacity-90`}
+          className={`absolute font-bebas ${w.size} ${w.color} text-outline-black opacity-90`}
           style={{ top: w.top, left: w.left, right: w.right, bottom: w.bottom }}
           initial={{ opacity: 0, scale: 0 }}
-          animate={{ opacity: [0, 1, 1, 0], scale: [0, 1.1, 1, 0], rotate: w.rotate }}
-          transition={{ duration: 2.5, delay: w.delay, repeat: Infinity, repeatDelay: 2 }}
+          animate={{ opacity: [0, 1, 1, 0], scale: [0, 1.2, 1, 0], rotate: w.rotate }}
+          transition={{ duration: 3, delay: w.delay, repeat: Infinity, repeatDelay: 1 }}
         >
           {w.text}
         </motion.div>
