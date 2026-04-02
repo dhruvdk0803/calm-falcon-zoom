@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { motion, useScroll, useTransform, Variants } from "framer-motion";
-import { Shield, Zap, Target, Flame, Users, User, HeartHandshake, Briefcase, Phone, Calendar } from "lucide-react";
+import { Shield, Zap, Target, Flame, Users, User, HeartHandshake, Briefcase, Phone, Calendar, Clock, CheckCircle2, Star } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 // --- Snappy Comic Animations ---
@@ -19,11 +19,8 @@ const comicPop: Variants = {
 // --- Floating Action Words Component ---
 const FloatingWords = () => {
   const words = [
-    // Moved SMASH down slightly and further left
     { text: "SMASH!", color: "text-comic-yellow", top: "25%", left: "5%", rotate: -15, delay: 0 },
-    // Moved BAM up to align with "STRESS" instead of "EVERYTHING", and further right
     { text: "BAM!", color: "text-comic-red", top: "15%", right: "8%", rotate: 20, delay: 0.2 },
-    // Adjusted bottom words to stay clear of the buttons
     { text: "CRASH!", color: "text-comic-green", bottom: "20%", left: "8%", rotate: 10, delay: 0.4 },
     { text: "BOOM!", color: "text-comic-blue", bottom: "25%", right: "5%", rotate: -25, delay: 0.6 },
   ];
@@ -52,6 +49,92 @@ export default function Home() {
 
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
+
+  const packages = [
+    {
+      title: "STARTER SMASH",
+      price: "$30",
+      unit: "per person",
+      duration: "10 Minutes",
+      capacity: "Up to 6 People",
+      desc: "Built for quick, high-impact sessions. Ideal for first-time visitors or anyone looking for a fast way to release tension.",
+      included: [
+        "15 breakable items",
+        "Full protective safety gear",
+        "Access to smash tools"
+      ],
+      cta: "Book Starter Smash",
+      color: "bg-comic-blue",
+      rotate: "-rotate-1"
+    },
+    {
+      title: "SUPER SMASH",
+      badge: "MOST POPULAR",
+      price: "$50",
+      unit: "per person",
+      duration: "20 Minutes",
+      capacity: "Up to 6 People",
+      desc: "Offers a more complete experience. With additional time and larger items, the session becomes more immersive.",
+      included: [
+        "25 breakable items",
+        "1 medium item (electronics)",
+        "Extended session time"
+      ],
+      cta: "Book Super Smash",
+      color: "bg-comic-red",
+      rotate: "rotate-1",
+      featured: true
+    },
+    {
+      title: "MULTIPLAYER SMASH",
+      price: "$150",
+      unit: "per group",
+      duration: "15–20 Minutes",
+      capacity: "Up to 6 People",
+      desc: "Designed for shared experiences. Brings energy into the room and turns the session into something social.",
+      included: [
+        "Group crate of breakable items",
+        "Shared smash environment",
+        "Safety gear for all"
+      ],
+      cta: "Book Multiplayer",
+      color: "bg-comic-yellow",
+      rotate: "-rotate-2"
+    },
+    {
+      title: "PARTY PACK",
+      price: "$250",
+      unit: "per group",
+      duration: "2 Hours",
+      capacity: "6 People (expandable)",
+      desc: "Designed for larger experiences and special occasions. A full event with extended access and flexibility.",
+      included: [
+        "Two-hour private room access",
+        "Dedicated party area",
+        "Option to bring food/drinks"
+      ],
+      cta: "Book Party Pack",
+      color: "bg-comic-green",
+      rotate: "rotate-2"
+    },
+    {
+      title: "THERAPY THURSDAYS",
+      price: "$25",
+      unit: "per person",
+      duration: "10 Minutes",
+      capacity: "Up to 6 People",
+      desc: "A lower-cost option for those looking for a quick midweek reset. Shorter and more accessible.",
+      included: [
+        "15 breakable items",
+        "Full protective gear",
+        "Controlled smash environment"
+      ],
+      cta: "Book Therapy Session",
+      color: "bg-black",
+      textColor: "text-white",
+      rotate: "-rotate-1"
+    }
+  ];
 
   if (!mounted) return null;
 
@@ -160,6 +243,83 @@ export default function Home() {
                 ))}
               </ul>
             </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* --- SECTION 1.5: PACKAGES (WHITE) --- */}
+      <section className="py-32 relative bg-white border-b-8 border-black bg-halftone-black">
+        <div className="container mx-auto px-6 max-w-7xl">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={comicStagger} className="text-center mb-16">
+            <motion.h2 variants={comicPop} className="text-6xl md:text-8xl font-bebas uppercase leading-none text-black mb-6">
+              Choose Your <span className="text-comic-red">Smash Experience</span>
+            </motion.h2>
+            <motion.p variants={comicPop} className="text-xl font-bold text-black bg-comic-yellow p-4 border-4 border-black shadow-comic inline-block rotate-[-1deg] uppercase max-w-3xl">
+              Every package offers the same core experience — a safe environment, real physical release, and a noticeable shift in how you feel.
+            </motion.p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 items-start">
+            {packages.map((pkg, i) => (
+              <motion.div 
+                key={i}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1, ...comicSpring }}
+                whileHover={{ scale: 1.02, y: -5 }}
+                className={`relative bg-white border-8 border-black shadow-comic-lg rounded-2xl flex flex-col h-full ${pkg.rotate} ${pkg.featured ? 'lg:scale-105 z-10' : 'z-0'} ${i === 3 ? 'lg:col-start-1 lg:col-span-1 lg:ml-auto' : ''} ${i === 4 ? 'lg:col-start-2 lg:col-span-2 lg:mr-auto max-w-md' : ''}`}
+              >
+                {pkg.badge && (
+                  <div className="absolute -top-6 -right-6 bg-comic-yellow text-black font-bebas text-2xl px-4 py-2 border-4 border-black shadow-comic rotate-12 z-20 flex items-center gap-2">
+                    <Star className="w-5 h-5 fill-black" /> {pkg.badge}
+                  </div>
+                )}
+                
+                {/* Card Header */}
+                <div className={`${pkg.color} ${pkg.textColor || 'text-black'} p-6 border-b-8 border-black rounded-t-lg`}>
+                  <h3 className={`text-4xl font-bebas uppercase tracking-wide mb-2 ${pkg.textColor ? '' : 'text-outline-white'}`}>{pkg.title}</h3>
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-5xl font-bebas">{pkg.price}</span>
+                    <span className="text-lg font-bold uppercase">{pkg.unit}</span>
+                  </div>
+                </div>
+
+                {/* Card Body */}
+                <div className="p-6 flex-grow flex flex-col">
+                  <div className="flex flex-wrap gap-4 mb-6">
+                    <div className="flex items-center gap-2 bg-gray-100 px-3 py-1 border-2 border-black rounded-md shadow-comic-sm">
+                      <Clock className="w-5 h-5 text-comic-blue" />
+                      <span className="font-bold text-black uppercase text-sm">{pkg.duration}</span>
+                    </div>
+                    <div className="flex items-center gap-2 bg-gray-100 px-3 py-1 border-2 border-black rounded-md shadow-comic-sm">
+                      <Users className="w-5 h-5 text-comic-red" />
+                      <span className="font-bold text-black uppercase text-sm">{pkg.capacity}</span>
+                    </div>
+                  </div>
+
+                  <p className="text-black font-bold uppercase text-sm mb-6 leading-relaxed">
+                    {pkg.desc}
+                  </p>
+
+                  <div className="mb-8 flex-grow">
+                    <h4 className="font-bebas text-2xl text-black mb-4 uppercase tracking-wide">What's Included:</h4>
+                    <ul className="space-y-3">
+                      {pkg.included.map((item, idx) => (
+                        <li key={idx} className="flex items-start gap-3">
+                          <CheckCircle2 className="w-5 h-5 text-comic-green shrink-0 mt-0.5" strokeWidth={3} />
+                          <span className="text-black font-bold uppercase text-sm">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <button className={`w-full py-4 ${pkg.color} ${pkg.textColor || 'text-black'} font-bebas text-2xl tracking-wider uppercase rounded-xl border-4 border-black shadow-comic hover:translate-y-1 hover:shadow-comic-sm transition-all active:translate-y-2 active:shadow-none`}>
+                    {pkg.cta}
+                  </button>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
