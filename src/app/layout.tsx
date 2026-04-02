@@ -24,6 +24,10 @@ const bebasNeue = Bebas_Neue({
 export const metadata: Metadata = {
   title: "Super Smash KC | Kansas City's Ultimate Rage Room",
   description: "Smash Stress. Break Everything. Feel Better Instantly.",
+  icons: {
+    icon: "/logo.png",
+    apple: "/logo.png",
+  },
 };
 
 export default function RootLayout({
