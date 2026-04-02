@@ -67,14 +67,14 @@ export default function Home() {
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={comicSpring}
-            className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-comic-yellow border-4 border-black shadow-comic-sm text-black text-xl font-bebas tracking-widest uppercase mb-8 rotate-[-2deg]"
+            className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-comic-yellow border-4 border-black shadow-comic-sm text-black text-lg md:text-xl font-bebas tracking-widest uppercase mb-6 rotate-[-2deg]"
           >
-            <Flame className="w-6 h-6 fill-comic-red" stroke="black" strokeWidth={2} /> 
+            <Flame className="w-5 h-5 fill-comic-red" stroke="black" strokeWidth={2} /> 
             Kansas City's Premier Rage Room
           </motion.div>
 
           <motion.h1 
-            className="text-7xl sm:text-8xl md:text-9xl lg:text-[10rem] font-bebas uppercase leading-[0.85] mb-8 text-white text-outline-black"
+            className="text-6xl sm:text-7xl md:text-8xl lg:text-[8rem] font-bebas uppercase leading-[0.9] mb-8 text-white text-outline-black"
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ type: "spring", stiffness: 300, damping: 20, delay: 0.1 }}
@@ -85,7 +85,7 @@ export default function Home() {
           </motion.h1>
 
           <motion.div 
-            className="space-y-4 text-2xl md:text-3xl text-white font-bold uppercase max-w-3xl mx-auto bg-black p-6 border-4 border-white shadow-comic-white rotate-[1deg]"
+            className="space-y-4 text-xl md:text-2xl text-white font-bold uppercase max-w-2xl mx-auto bg-black p-4 md:p-6 border-4 border-white shadow-comic-white rotate-[1deg]"
             variants={comicStagger}
             initial="hidden"
             animate="visible"
@@ -96,7 +96,7 @@ export default function Home() {
           </motion.div>
 
           <motion.div 
-            className="mt-12 flex flex-col sm:flex-row gap-6 w-full sm:w-auto"
+            className="mt-10 flex flex-col sm:flex-row gap-6 w-full sm:w-auto"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, ...comicSpring }}
@@ -104,14 +104,14 @@ export default function Home() {
             <motion.button 
               whileHover={{ scale: 1.05, rotate: -2 }}
               whileTap={{ scale: 0.95, y: 4, boxShadow: "0px 0px 0px 0px rgba(0,0,0,1)" }}
-              className="px-10 py-5 bg-comic-yellow text-black font-bebas text-4xl tracking-wider uppercase rounded-xl border-4 border-black shadow-comic transition-all w-full sm:w-auto"
+              className="px-8 py-4 bg-comic-yellow text-black font-bebas text-3xl tracking-wider uppercase rounded-xl border-4 border-black shadow-comic transition-all w-full sm:w-auto"
             >
               Book Your Session
             </motion.button>
             <motion.button 
               whileHover={{ scale: 1.05, rotate: 2 }}
               whileTap={{ scale: 0.95, y: 4, boxShadow: "0px 0px 0px 0px rgba(0,0,0,1)" }}
-              className="px-10 py-5 bg-white text-black font-bebas text-4xl tracking-wider uppercase rounded-xl border-4 border-black shadow-comic transition-all w-full sm:w-auto"
+              className="px-8 py-4 bg-white text-black font-bebas text-3xl tracking-wider uppercase rounded-xl border-4 border-black shadow-comic transition-all w-full sm:w-auto"
             >
               View Packages
             </motion.button>
