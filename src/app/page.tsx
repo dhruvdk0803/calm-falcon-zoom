@@ -63,46 +63,46 @@ export default function Home() {
     <div className="bg-[#050505] min-h-screen text-gray-300 font-sans selection:bg-red-600 selection:text-white">
       
       {/* --- HERO SECTION --- */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-32 pb-20">
         {/* Background Elements */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,0,0,0.1)_0%,rgba(0,0,0,1)_70%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(220,38,38,0.15)_0%,rgba(0,0,0,1)_70%)]" />
         <ParticleBackground />
         
         <motion.div 
           className="relative z-10 container mx-auto px-6 flex flex-col items-center text-center max-w-5xl"
           style={{ y: yParallax, opacity: opacityFade }}
         >
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-red-500 text-sm font-medium tracking-widest uppercase mb-8"
+          >
+            <Flame className="w-4 h-4" /> Kansas City's Premier Rage Room
+          </motion.div>
+
           <motion.h1 
-            className="text-6xl md:text-8xl lg:text-9xl font-bebas uppercase leading-[0.85] mb-8 text-white text-glow"
-            initial={{ opacity: 0, scale: 0.9, filter: "blur(10px)" }}
+            className="text-6xl sm:text-7xl md:text-8xl lg:text-[8rem] font-bebas uppercase leading-[0.85] mb-8 text-white text-glow"
+            initial={{ opacity: 0, scale: 0.95, filter: "blur(10px)" }}
             animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-            transition={{ duration: 1.2, ease: "easeOut" }}
+            transition={{ duration: 1.2, ease: "easeOut", delay: 0.2 }}
           >
             Smash Stress.<br/>
             <span className="text-red-600">Break Everything.</span><br/>
-            Feel Better Instantly.
+            Feel Better.
           </motion.h1>
 
           <motion.div 
-            className="space-y-6 text-lg md:text-xl text-gray-400 max-w-3xl mx-auto font-light"
+            className="space-y-4 text-lg md:text-2xl text-gray-400 max-w-2xl mx-auto font-light"
             variants={staggerContainer}
             initial="hidden"
             animate="visible"
           >
             <motion.p variants={fadeInUp}>
-              There’s a limit to how much stress you can carry before it starts affecting everything — your focus, your mood, your energy. Most people try to manage it. They push through, distract themselves, or wait for it to pass.
-            </motion.p>
-            <motion.p variants={fadeInUp} className="text-white font-medium text-xl md:text-2xl">
-              But sometimes, you don’t need to manage stress — you need to release it.
-            </motion.p>
-            <motion.p variants={fadeInUp}>
-              At Super Smash KC, we’ve created a space where you can let go completely. A place where you can physically release frustration in a way that feels immediate, real, and satisfying.
-            </motion.p>
-            <motion.p variants={fadeInUp}>
-              This is Kansas City’s ultimate rage room experience — built for those moments when everything inside you needs an outlet.
+              There’s a limit to how much stress you can carry. Sometimes, you don’t need to manage it — <span className="text-white font-medium">you need to release it.</span>
             </motion.p>
             <motion.p variants={fadeInUp} className="text-red-500 font-medium italic">
-              You walk in with tension. You walk out lighter, clearer, and reset.
+              Walk in with tension. Walk out reset.
             </motion.p>
           </motion.div>
 
@@ -113,7 +113,7 @@ export default function Home() {
             transition={{ delay: 1, duration: 0.8 }}
           >
             <button className="group relative px-8 py-4 bg-red-600 text-white font-bebas text-2xl tracking-wider uppercase overflow-hidden rounded-sm box-glow hover:bg-red-500 transition-colors w-full sm:w-auto">
-              <span className="relative z-10">Book Your Smash Session</span>
+              <span className="relative z-10">Book Your Session</span>
               <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out" />
             </button>
             <button className="px-8 py-4 bg-transparent border border-white/20 text-white font-bebas text-2xl tracking-wider uppercase hover:bg-white/5 transition-colors rounded-sm w-full sm:w-auto">
