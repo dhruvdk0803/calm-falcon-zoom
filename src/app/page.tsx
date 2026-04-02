@@ -19,22 +19,25 @@ const comicPop: Variants = {
 // --- Floating Action Words Component ---
 const FloatingWords = () => {
   const words = [
-    { text: "SMASH!", color: "text-comic-yellow", top: "15%", left: "10%", rotate: -15, delay: 0 },
-    { text: "BAM!", color: "text-comic-red", top: "20%", right: "15%", rotate: 20, delay: 0.2 },
-    { text: "CRASH!", color: "text-comic-green", bottom: "25%", left: "15%", rotate: 10, delay: 0.4 },
-    { text: "BOOM!", color: "text-comic-blue", bottom: "20%", right: "10%", rotate: -25, delay: 0.6 },
+    // Moved SMASH down slightly and further left
+    { text: "SMASH!", color: "text-comic-yellow", top: "25%", left: "5%", rotate: -15, delay: 0 },
+    // Moved BAM up to align with "STRESS" instead of "EVERYTHING", and further right
+    { text: "BAM!", color: "text-comic-red", top: "15%", right: "8%", rotate: 20, delay: 0.2 },
+    // Adjusted bottom words to stay clear of the buttons
+    { text: "CRASH!", color: "text-comic-green", bottom: "20%", left: "8%", rotate: 10, delay: 0.4 },
+    { text: "BOOM!", color: "text-comic-blue", bottom: "25%", right: "5%", rotate: -25, delay: 0.6 },
   ];
 
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+    <div className="absolute inset-0 overflow-hidden pointer-events-none z-0 hidden md:block">
       {words.map((w, i) => (
         <motion.div
           key={i}
-          className={`absolute font-bebas text-5xl md:text-7xl ${w.color} text-outline-black`}
+          className={`absolute font-bebas text-5xl lg:text-6xl ${w.color} text-outline-black opacity-90`}
           style={{ top: w.top, left: w.left, right: w.right, bottom: w.bottom }}
           initial={{ opacity: 0, scale: 0 }}
-          animate={{ opacity: [0, 1, 1, 0], scale: [0, 1.2, 1, 0], rotate: w.rotate }}
-          transition={{ duration: 2, delay: w.delay, repeat: Infinity, repeatDelay: 3 }}
+          animate={{ opacity: [0, 1, 1, 0], scale: [0, 1.1, 1, 0], rotate: w.rotate }}
+          transition={{ duration: 2.5, delay: w.delay, repeat: Infinity, repeatDelay: 2 }}
         >
           {w.text}
         </motion.div>
@@ -56,25 +59,25 @@ export default function Home() {
     <div className="bg-comic-dark min-h-screen text-white font-sans selection:bg-comic-yellow selection:text-black overflow-hidden">
       
       {/* --- HERO SECTION --- */}
-      <section className="relative min-h-screen flex items-center justify-center pt-32 pb-20 bg-halftone-white">
+      <section className="relative min-h-[100svh] flex items-center justify-center pt-28 pb-12 bg-halftone-white">
         <FloatingWords />
         
         <motion.div 
-          className="relative z-10 container mx-auto px-6 flex flex-col items-center text-center max-w-5xl"
+          className="relative z-10 container mx-auto px-6 flex flex-col items-center text-center max-w-5xl mt-8 md:mt-0"
           style={{ y: yParallax }}
         >
           <motion.div
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={comicSpring}
-            className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-comic-yellow border-4 border-black shadow-comic-sm text-black text-lg md:text-xl font-bebas tracking-widest uppercase mb-6 rotate-[-2deg]"
+            className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-comic-yellow border-4 border-black shadow-comic-sm text-black text-base md:text-lg font-bebas tracking-widest uppercase mb-6 rotate-[-2deg]"
           >
             <Flame className="w-5 h-5 fill-comic-red" stroke="black" strokeWidth={2} /> 
             Kansas City's Premier Rage Room
           </motion.div>
 
           <motion.h1 
-            className="text-6xl sm:text-7xl md:text-8xl lg:text-[8rem] font-bebas uppercase leading-[0.9] mb-8 text-white text-outline-black"
+            className="text-6xl sm:text-7xl md:text-8xl lg:text-[7rem] font-bebas uppercase leading-[0.9] mb-6 text-white text-outline-black"
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ type: "spring", stiffness: 300, damping: 20, delay: 0.1 }}
@@ -85,7 +88,7 @@ export default function Home() {
           </motion.h1>
 
           <motion.div 
-            className="space-y-4 text-xl md:text-2xl text-white font-bold uppercase max-w-2xl mx-auto bg-black p-4 md:p-6 border-4 border-white shadow-comic-white rotate-[1deg]"
+            className="space-y-4 text-lg md:text-xl text-white font-bold uppercase max-w-2xl mx-auto bg-black p-4 md:p-5 border-4 border-white shadow-comic-white rotate-[1deg]"
             variants={comicStagger}
             initial="hidden"
             animate="visible"
@@ -96,7 +99,7 @@ export default function Home() {
           </motion.div>
 
           <motion.div 
-            className="mt-10 flex flex-col sm:flex-row gap-6 w-full sm:w-auto"
+            className="mt-8 flex flex-col sm:flex-row gap-4 w-full sm:w-auto"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, ...comicSpring }}
@@ -104,14 +107,14 @@ export default function Home() {
             <motion.button 
               whileHover={{ scale: 1.05, rotate: -2 }}
               whileTap={{ scale: 0.95, y: 4, boxShadow: "0px 0px 0px 0px rgba(0,0,0,1)" }}
-              className="px-8 py-4 bg-comic-yellow text-black font-bebas text-3xl tracking-wider uppercase rounded-xl border-4 border-black shadow-comic transition-all w-full sm:w-auto"
+              className="px-8 py-4 bg-comic-yellow text-black font-bebas text-2xl md:text-3xl tracking-wider uppercase rounded-xl border-4 border-black shadow-comic transition-all w-full sm:w-auto"
             >
               Book Your Session
             </motion.button>
             <motion.button 
               whileHover={{ scale: 1.05, rotate: 2 }}
               whileTap={{ scale: 0.95, y: 4, boxShadow: "0px 0px 0px 0px rgba(0,0,0,1)" }}
-              className="px-8 py-4 bg-white text-black font-bebas text-3xl tracking-wider uppercase rounded-xl border-4 border-black shadow-comic transition-all w-full sm:w-auto"
+              className="px-8 py-4 bg-white text-black font-bebas text-2xl md:text-3xl tracking-wider uppercase rounded-xl border-4 border-black shadow-comic transition-all w-full sm:w-auto"
             >
               View Packages
             </motion.button>
