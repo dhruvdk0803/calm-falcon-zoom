@@ -4,6 +4,7 @@ import React from "react";
 import { motion, Variants } from "framer-motion";
 import { Calendar, MapPin, HelpCircle } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import Link from "next/link";
 
 // --- Snappy Comic Animations ---
 const comicSpring = { type: "spring" as const, stiffness: 400, damping: 15 };
@@ -39,9 +40,9 @@ export default function FAQPage() {
       a: (
         <>
           Yes! Waivers are required and will be provided at check-in. <br /><br />
-          <a href="#" className="text-comic-blue underline hover:text-comic-red transition-colors">Click here to download it</a> if you would like to fill it out beforehand. <br /><br />
+          <a href="mailto:contact@supersmashkc.com" className="text-comic-blue underline hover:text-comic-red transition-colors">Click here to request it</a> if you would like to fill it out beforehand. <br /><br />
           Or you can go here to complete your waiver form online: <br />
-          <a href="#" className="text-comic-blue underline hover:text-comic-red transition-colors">WaiverFile | Online Waiver Form Entry</a>
+          <a href="mailto:contact@supersmashkc.com" className="text-comic-blue underline hover:text-comic-red transition-colors">WaiverFile | Online Waiver Form Entry</a>
         </>
       )
     },
@@ -114,20 +115,24 @@ export default function FAQPage() {
           </div>
 
           <div className="flex flex-col sm:flex-row justify-center gap-6">
-            <motion.button 
-              whileHover={{ scale: 1.1, rotate: -2 }}
-              whileTap={{ scale: 0.9, y: 4, boxShadow: "0px 0px 0px 0px rgba(0,0,0,1)" }}
-              className="px-8 py-6 bg-comic-yellow text-black font-bebas text-3xl md:text-4xl tracking-wider uppercase rounded-xl border-4 border-black shadow-comic flex items-center justify-center gap-3"
-            >
-              <Calendar className="w-8 h-8" strokeWidth={3} /> Book Your Session
-            </motion.button>
-            <motion.button 
-              whileHover={{ scale: 1.1, rotate: 2 }}
-              whileTap={{ scale: 0.9, y: 4, boxShadow: "0px 0px 0px 0px rgba(0,0,0,1)" }}
-              className="px-8 py-6 bg-comic-blue text-white font-bebas text-3xl md:text-4xl tracking-wider uppercase rounded-xl border-4 border-black shadow-comic flex items-center justify-center gap-3"
-            >
-              <MapPin className="w-8 h-8" strokeWidth={3} /> Get Directions
-            </motion.button>
+            <Link href="/packages">
+              <motion.button 
+                whileHover={{ scale: 1.1, rotate: -2 }}
+                whileTap={{ scale: 0.9, y: 4, boxShadow: "0px 0px 0px 0px rgba(0,0,0,1)" }}
+                className="px-8 py-6 bg-comic-yellow text-black font-bebas text-3xl md:text-4xl tracking-wider uppercase rounded-xl border-4 border-black shadow-comic flex items-center justify-center gap-3 w-full"
+              >
+                <Calendar className="w-8 h-8" strokeWidth={3} /> Book Your Session
+              </motion.button>
+            </Link>
+            <a href="https://maps.google.com/?q=7360+W+162nd+St,+Suite+106,+Overland+Park,+KS+66085" target="_blank" rel="noopener noreferrer">
+              <motion.button 
+                whileHover={{ scale: 1.1, rotate: 2 }}
+                whileTap={{ scale: 0.9, y: 4, boxShadow: "0px 0px 0px 0px rgba(0,0,0,1)" }}
+                className="px-8 py-6 bg-comic-blue text-white font-bebas text-3xl md:text-4xl tracking-wider uppercase rounded-xl border-4 border-black shadow-comic flex items-center justify-center gap-3 w-full"
+              >
+                <MapPin className="w-8 h-8" strokeWidth={3} /> Get Directions
+              </motion.button>
+            </a>
           </div>
         </motion.div>
       </section>

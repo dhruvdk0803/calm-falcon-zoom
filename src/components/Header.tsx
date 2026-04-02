@@ -68,13 +68,15 @@ export default function Header() {
           </Link>
         </nav>
 
-        <motion.button 
-          whileHover={{ scale: 1.05, rotate: 2 }}
-          whileTap={{ scale: 0.9, y: 4, boxShadow: "0px 0px 0px 0px rgba(0,0,0,1)" }}
-          className="hidden md:block px-6 py-2 bg-comic-red text-white font-bebas text-2xl tracking-wider uppercase rounded-md border-4 border-black shadow-comic transition-all"
-        >
-          Book Now
-        </motion.button>
+        <Link href="/packages" className="hidden md:block">
+          <motion.button 
+            whileHover={{ scale: 1.05, rotate: 2 }}
+            whileTap={{ scale: 0.9, y: 4, boxShadow: "0px 0px 0px 0px rgba(0,0,0,1)" }}
+            className="px-6 py-2 bg-comic-red text-white font-bebas text-2xl tracking-wider uppercase rounded-md border-4 border-black shadow-comic transition-all"
+          >
+            Book Now
+          </motion.button>
+        </Link>
 
         {/* Mobile Menu Toggle */}
         <motion.button
@@ -108,9 +110,11 @@ export default function Header() {
               <Link href="/faq" onClick={closeMobileMenu} className="text-3xl font-bebas tracking-widest uppercase text-white hover:text-comic-blue transition-colors text-outline-black">
                 FAQ
               </Link>
-              <button className="mt-4 px-6 py-4 bg-comic-red text-white font-bebas text-3xl tracking-wider uppercase rounded-md border-4 border-black shadow-comic transition-all w-full">
-                Book Now
-              </button>
+              <Link href="/packages" onClick={closeMobileMenu} className="w-full block mt-4">
+                <button className="px-6 py-4 bg-comic-red text-white font-bebas text-3xl tracking-wider uppercase rounded-md border-4 border-black shadow-comic transition-all w-full">
+                  Book Now
+                </button>
+              </Link>
             </div>
           </motion.div>
         )}

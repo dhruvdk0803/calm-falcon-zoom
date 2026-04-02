@@ -3,6 +3,7 @@
 import React from "react";
 import { motion, useScroll, useTransform, Variants } from "framer-motion";
 import { Shield, Zap, Target, Flame, Users, User, HeartHandshake, Briefcase, Phone, Calendar, Clock, CheckCircle2, Star } from "lucide-react";
+import Link from "next/link";
 
 // --- Snappy Comic Animations ---
 const comicSpring = { type: "spring" as const, stiffness: 400, damping: 15 };
@@ -180,20 +181,24 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, ...comicSpring }}
           >
-            <motion.button 
-              whileHover={{ scale: 1.05, rotate: -2 }}
-              whileTap={{ scale: 0.95, y: 4, boxShadow: "0px 0px 0px 0px rgba(0,0,0,1)" }}
-              className="px-8 py-4 bg-comic-yellow text-black font-bebas text-2xl md:text-3xl tracking-wider uppercase rounded-xl border-4 border-black shadow-comic transition-all w-full sm:w-auto"
-            >
-              Book Your Session
-            </motion.button>
-            <motion.button 
-              whileHover={{ scale: 1.05, rotate: 2 }}
-              whileTap={{ scale: 0.95, y: 4, boxShadow: "0px 0px 0px 0px rgba(0,0,0,1)" }}
-              className="px-8 py-4 bg-white text-black font-bebas text-2xl md:text-3xl tracking-wider uppercase rounded-xl border-4 border-black shadow-comic transition-all w-full sm:w-auto"
-            >
-              View Packages
-            </motion.button>
+            <Link href="/packages" className="w-full sm:w-auto">
+              <motion.button 
+                whileHover={{ scale: 1.05, rotate: -2 }}
+                whileTap={{ scale: 0.95, y: 4, boxShadow: "0px 0px 0px 0px rgba(0,0,0,1)" }}
+                className="px-8 py-4 bg-comic-yellow text-black font-bebas text-2xl md:text-3xl tracking-wider uppercase rounded-xl border-4 border-black shadow-comic transition-all w-full"
+              >
+                Book Your Session
+              </motion.button>
+            </Link>
+            <Link href="/packages" className="w-full sm:w-auto">
+              <motion.button 
+                whileHover={{ scale: 1.05, rotate: 2 }}
+                whileTap={{ scale: 0.95, y: 4, boxShadow: "0px 0px 0px 0px rgba(0,0,0,1)" }}
+                className="px-8 py-4 bg-white text-black font-bebas text-2xl md:text-3xl tracking-wider uppercase rounded-xl border-4 border-black shadow-comic transition-all w-full"
+              >
+                View Packages
+              </motion.button>
+            </Link>
           </motion.div>
         </motion.div>
       </section>
@@ -317,9 +322,11 @@ export default function Home() {
                     </ul>
                   </div>
 
-                  <button className={`w-full py-4 ${pkg.color} ${pkg.textColor || 'text-black'} font-bebas text-2xl tracking-wider uppercase rounded-xl border-4 border-black shadow-comic hover:translate-y-1 hover:shadow-comic-sm transition-all active:translate-y-2 active:shadow-none`}>
-                    {pkg.cta}
-                  </button>
+                  <Link href="/packages" className="w-full block">
+                    <button className={`w-full py-4 ${pkg.color} ${pkg.textColor || 'text-black'} font-bebas text-2xl tracking-wider uppercase rounded-xl border-4 border-black shadow-comic hover:translate-y-1 hover:shadow-comic-sm transition-all active:translate-y-2 active:shadow-none`}>
+                      {pkg.cta}
+                    </button>
+                  </Link>
                 </div>
               </motion.div>
             ))}
@@ -448,29 +455,35 @@ export default function Home() {
           </p>
 
           <div className="flex flex-col sm:flex-row justify-center gap-6">
-            <motion.button 
-              whileHover={{ scale: 1.1, rotate: 2 }}
-              whileTap={{ scale: 0.9, y: 4, boxShadow: "0px 0px 0px 0px rgba(0,0,0,1)" }}
-              className="px-10 py-6 bg-comic-yellow text-black font-bebas text-4xl tracking-wider uppercase rounded-xl border-4 border-black shadow-comic flex items-center justify-center gap-3"
-            >
-              <Calendar className="w-8 h-8" strokeWidth={3} /> Book Now
-            </motion.button>
-            <motion.button 
-              whileHover={{ scale: 1.1, rotate: -2 }}
-              whileTap={{ scale: 0.9, y: 4, boxShadow: "0px 0px 0px 0px rgba(0,0,0,1)" }}
-              className="px-10 py-6 bg-comic-blue text-white font-bebas text-4xl tracking-wider uppercase rounded-xl border-4 border-black shadow-comic flex items-center justify-center gap-3"
-            >
-              <Phone className="w-8 h-8" strokeWidth={3} /> Call Now
-            </motion.button>
+            <Link href="/packages">
+              <motion.button 
+                whileHover={{ scale: 1.1, rotate: 2 }}
+                whileTap={{ scale: 0.9, y: 4, boxShadow: "0px 0px 0px 0px rgba(0,0,0,1)" }}
+                className="px-10 py-6 bg-comic-yellow text-black font-bebas text-4xl tracking-wider uppercase rounded-xl border-4 border-black shadow-comic flex items-center justify-center gap-3 w-full"
+              >
+                <Calendar className="w-8 h-8" strokeWidth={3} /> Book Now
+              </motion.button>
+            </Link>
+            <a href="tel:9134999330">
+              <motion.button 
+                whileHover={{ scale: 1.1, rotate: -2 }}
+                whileTap={{ scale: 0.9, y: 4, boxShadow: "0px 0px 0px 0px rgba(0,0,0,1)" }}
+                className="px-10 py-6 bg-comic-blue text-white font-bebas text-4xl tracking-wider uppercase rounded-xl border-4 border-black shadow-comic flex items-center justify-center gap-3 w-full"
+              >
+                <Phone className="w-8 h-8" strokeWidth={3} /> Call Now
+              </motion.button>
+            </a>
           </div>
         </motion.div>
       </section>
 
       {/* --- MOBILE STICKY CTA --- */}
       <div className="fixed bottom-4 left-4 right-4 z-50 md:hidden">
-        <button className="w-full py-4 bg-comic-yellow text-black font-bebas text-3xl tracking-wider uppercase rounded-xl border-4 border-black shadow-comic active:translate-y-1 active:shadow-none transition-all">
-          Book Now
-        </button>
+        <Link href="/packages" className="w-full block">
+          <button className="w-full py-4 bg-comic-yellow text-black font-bebas text-3xl tracking-wider uppercase rounded-xl border-4 border-black shadow-comic active:translate-y-1 active:shadow-none transition-all">
+            Book Now
+          </button>
+        </Link>
       </div>
 
     </div>
