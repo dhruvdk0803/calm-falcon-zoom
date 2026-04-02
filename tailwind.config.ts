@@ -22,6 +22,15 @@ const config = {
         bebas: ['var(--font-bebas)', 'sans-serif'],
       },
       colors: {
+        comic: {
+          yellow: "#FFD400",
+          red: "#FF2D2D",
+          blue: "#007BFF",
+          green: "#00C853",
+          black: "#000000",
+          white: "#FFFFFF",
+          dark: "#111111",
+        },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -55,6 +64,12 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+      },
+      boxShadow: {
+        'comic': '6px 6px 0px 0px rgba(0,0,0,1)',
+        'comic-lg': '12px 12px 0px 0px rgba(0,0,0,1)',
+        'comic-sm': '4px 4px 0px 0px rgba(0,0,0,1)',
+        'comic-white': '6px 6px 0px 0px rgba(255,255,255,1)',
       },
       borderRadius: {
         lg: "var(--radius)",

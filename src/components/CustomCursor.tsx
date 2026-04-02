@@ -41,7 +41,6 @@ export default function CustomCursor() {
     };
   }, [isVisible]);
 
-  // Hide custom cursor on touch devices
   if (typeof window !== 'undefined' && window.matchMedia("(pointer: coarse)").matches) {
     return null;
   }
@@ -49,24 +48,14 @@ export default function CustomCursor() {
   return (
     <>
       <motion.div
-        className="fixed top-0 left-0 w-3 h-3 bg-red-600 rounded-full pointer-events-none z-[100] mix-blend-screen hidden md:block"
+        className="fixed top-0 left-0 w-6 h-6 bg-comic-yellow border-2 border-black rounded-full pointer-events-none z-[100] hidden md:block shadow-comic-sm"
         animate={{
-          x: mousePosition.x - 6,
-          y: mousePosition.y - 6,
-          scale: isHovering ? 3 : 1,
-          opacity: isVisible ? 1 : 0,
-        }}
-        transition={{ type: "spring", stiffness: 500, damping: 28, mass: 0.5 }}
-      />
-      <motion.div
-        className="fixed top-0 left-0 w-10 h-10 border border-red-600/50 rounded-full pointer-events-none z-[99] hidden md:block"
-        animate={{
-          x: mousePosition.x - 20,
-          y: mousePosition.y - 20,
+          x: mousePosition.x - 12,
+          y: mousePosition.y - 12,
           scale: isHovering ? 1.5 : 1,
           opacity: isVisible ? 1 : 0,
         }}
-        transition={{ type: "spring", stiffness: 250, damping: 20, mass: 1 }}
+        transition={{ type: "spring", stiffness: 800, damping: 20, mass: 0.5 }}
       />
     </>
   );

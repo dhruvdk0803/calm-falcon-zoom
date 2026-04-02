@@ -26,24 +26,34 @@ export default function Header() {
         hidden: { y: "-100%" },
       }}
       animate={hidden ? "hidden" : "visible"}
-      transition={{ duration: 0.35, ease: "easeInOut" }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
-        isScrolled ? "bg-black/80 backdrop-blur-md border-b border-white/10 py-4" : "bg-transparent py-6"
+      transition={{ type: "spring", stiffness: 300, damping: 30 }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled ? "bg-comic-dark border-b-4 border-black py-4 shadow-comic" : "bg-transparent py-6"
       }`}
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
-        <div className="flex items-center gap-2 text-white font-bebas text-2xl tracking-wider cursor-pointer">
-          <Flame className="text-red-600 w-6 h-6" />
+        <motion.div 
+          whileHover={{ scale: 1.05, rotate: -2 }}
+          whileTap={{ scale: 0.95 }}
+          className="flex items-center gap-2 text-white font-bebas text-3xl tracking-wider cursor-pointer text-outline-black"
+        >
+          <Flame className="text-comic-yellow w-8 h-8 fill-comic-yellow" strokeWidth={2} stroke="black" />
           <span>SUPER SMASH KC</span>
-        </div>
-        <nav className="hidden md:flex items-center gap-8 text-sm font-medium tracking-widest uppercase text-gray-400">
-          <a href="#" className="hover:text-white transition-colors">Experience</a>
-          <a href="#" className="hover:text-white transition-colors">Packages</a>
-          <a href="#" className="hover:text-white transition-colors">FAQ</a>
+        </motion.div>
+        
+        <nav className="hidden md:flex items-center gap-8 text-xl font-bebas tracking-widest uppercase text-white">
+          <motion.a whileHover={{ y: -2, color: "#FFD400" }} href="#" className="transition-colors text-outline-black">Experience</motion.a>
+          <motion.a whileHover={{ y: -2, color: "#00C853" }} href="#" className="transition-colors text-outline-black">Packages</motion.a>
+          <motion.a whileHover={{ y: -2, color: "#007BFF" }} href="#" className="transition-colors text-outline-black">FAQ</motion.a>
         </nav>
-        <button className="px-6 py-2 bg-red-600 text-white font-bebas text-xl tracking-wider uppercase rounded-sm hover:bg-red-500 transition-colors box-glow">
+
+        <motion.button 
+          whileHover={{ scale: 1.05, rotate: 2 }}
+          whileTap={{ scale: 0.9, y: 4, boxShadow: "0px 0px 0px 0px rgba(0,0,0,1)" }}
+          className="px-6 py-2 bg-comic-red text-white font-bebas text-2xl tracking-wider uppercase rounded-md border-4 border-black shadow-comic transition-all"
+        >
           Book Now
-        </button>
+        </motion.button>
       </div>
     </motion.header>
   );
