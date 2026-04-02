@@ -15,11 +15,15 @@ export default function Footer() {
             </p>
           </div>
           <div>
-            <h4 className="text-comic-blue font-bebas text-3xl tracking-widest uppercase mb-6 text-outline-black">Location</h4>
+            <h4 className="text-comic-blue font-bebas text-3xl tracking-widest uppercase mb-4 text-outline-black">Location</h4>
+            <p className="text-black font-bold text-lg uppercase mb-6">
+              SUPER SMASH KC<br />
+              7360 W 162nd St, Suite 106<br />
+              Overland Park, KS 66085
+            </p>
+            <h4 className="text-comic-blue font-bebas text-3xl tracking-widest uppercase mb-4 text-outline-black">Hours</h4>
             <p className="text-black font-bold text-lg uppercase">
-              1234 Smash Avenue<br />
-              Kansas City, MO 64108<br />
-              (555) 123-4567
+              Wed - Sat: 12pm - 9pm
             </p>
           </div>
           <div>
