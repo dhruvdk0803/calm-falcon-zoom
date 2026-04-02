@@ -1,17 +1,17 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, Variants } from "framer-motion";
 import { Shield, Zap, Target, Flame, Users, User, HeartHandshake, Briefcase, Phone, Calendar } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 // --- Animation Variants ---
-const fadeInUp = {
+const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
 };
 
-const staggerContainer = {
+const staggerContainer: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -29,8 +29,8 @@ const ParticleBackground = () => {
           key={i}
           className="absolute w-1 h-1 bg-red-500 rounded-full"
           initial={{
-            x: Math.random() * typeof window !== 'undefined' ? window.innerWidth : 1000,
-            y: Math.random() * typeof window !== 'undefined' ? window.innerHeight : 1000,
+            x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1000),
+            y: Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 1000),
             opacity: Math.random() * 0.5 + 0.2,
             scale: Math.random() * 2,
           }}
