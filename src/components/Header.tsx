@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "framer-motion";
-import { Flame, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import Link from "next/link";
 
 export default function Header() {
@@ -34,7 +34,7 @@ export default function Header() {
       animate={hidden ? "hidden" : "visible"}
       transition={{ type: "spring", stiffness: 300, damping: 30 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled || isMobileMenuOpen ? "bg-comic-dark border-b-4 border-black py-4 shadow-comic" : "bg-transparent py-6"
+        isScrolled || isMobileMenuOpen ? "bg-comic-dark border-b-4 border-black py-3 shadow-comic" : "bg-transparent py-5"
       }`}
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
@@ -42,10 +42,13 @@ export default function Header() {
           <motion.div 
             whileHover={{ scale: 1.05, rotate: -2 }}
             whileTap={{ scale: 0.95 }}
-            className="flex items-center gap-2 text-white font-bebas text-3xl tracking-wider cursor-pointer text-outline-black"
+            className="flex items-center cursor-pointer"
           >
-            <Flame className="text-comic-yellow w-8 h-8 fill-comic-yellow" strokeWidth={2} stroke="black" />
-            <span>SUPER SMASH KC</span>
+            <img 
+              src="/logo.jpg" 
+              alt="Super Smash KC Logo" 
+              className="h-14 md:h-20 w-auto object-contain rounded-xl border-2 border-black shadow-comic-sm bg-white"
+            />
           </motion.div>
         </Link>
         
