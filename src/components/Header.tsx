@@ -45,7 +45,7 @@ export default function Header() {
             className="flex items-center cursor-pointer"
           >
             <img 
-              src="/supersmah logo.png" 
+              src="/supersmash-logo.png" 
               alt="Super Smash KC Logo" 
               className="h-16 md:h-24 w-auto object-contain drop-shadow-md"
             />
