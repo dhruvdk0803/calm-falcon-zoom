@@ -10,6 +10,9 @@ export default function Header() {
   const [hidden, setHidden] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  
+  // State to handle image path fallbacks
+  const [logoSrc, setLogoSrc] = useState("/supersmash-logo.png");
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     const previous = scrollY.getPrevious() ?? 0;
@@ -24,6 +27,17 @@ export default function Header() {
 
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
   const closeMobileMenu = () => setIsMobileMenuOpen(false);
+
+  const handleLogoError = () => {
+    // If the renamed version fails, try the original uploaded name with URL encoding
+    if (logoSrc === "/supersmash-logo.png") {
+      setLogoSrc("/supersmah%20logo.png");
+    } 
+    // If that fails too, fallback to the default logo.png in the codebase
+    else if (logoSrc === "/supersmah%20logo.png") {
+      setLogoSrc("/logo.png");
+    }
+  };
 
   return (
     <motion.header
@@ -45,9 +59,10 @@ export default function Header() {
             className="flex items-center cursor-pointer"
           >
             <img 
-              src="/supersmash-logo.png" 
+              src={logoSrc} 
               alt="Super Smash KC Logo" 
               className="h-16 md:h-24 w-auto object-contain drop-shadow-md"
+              onError={handleLogoError}
             />
           </motion.div>
         </Link>
