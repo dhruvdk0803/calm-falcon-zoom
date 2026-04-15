@@ -52,27 +52,43 @@ export default function AboutPage() {
 
       {/* --- WHY WE EXIST --- */}
       <section className="py-24 relative bg-comic-dark bg-halftone-white">
-        <div className="container mx-auto px-6 max-w-4xl">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={comicStagger} className="space-y-8">
-            <motion.h2 variants={comicPop} className="text-5xl md:text-7xl font-bebas uppercase text-white text-outline-black text-center mb-12">
-              Why We <span className="text-comic-blue">Exist</span>
-            </motion.h2>
-            
-            <div className="grid gap-6 text-xl font-bold text-black uppercase">
-              <motion.div variants={comicPop} className="bg-comic-yellow p-6 border-4 border-black shadow-comic rotate-[1deg]">
-                At its core, Super Smash KC is built around a simple belief: Sometimes, the fastest way to feel better is to release what you’re holding onto — not suppress it.
-              </motion.div>
-              <motion.div variants={comicPop} className="bg-white p-6 border-4 border-black shadow-comic rotate-[-1deg]">
-                We saw how people were dealing with stress. Long days, constant pressure, and very few real outlets. Traditional ways of coping don’t always work for everyone.
-              </motion.div>
-              <motion.div variants={comicPop} className="bg-comic-blue text-white p-6 border-4 border-black shadow-comic rotate-[1deg]">
-                So instead of creating another passive activity, we built something active. Something physical. Something immediate.
-              </motion.div>
-              <motion.div variants={comicPop} className="bg-white p-6 border-4 border-black shadow-comic rotate-[-1deg]">
-                A space where you can walk in carrying tension and walk out feeling different. Not because you ignored it — but because you actually let it out.
-              </motion.div>
-            </div>
-          </motion.div>
+        <div className="container mx-auto px-6 max-w-6xl">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={comicStagger} className="space-y-8">
+              <motion.h2 variants={comicPop} className="text-5xl md:text-7xl font-bebas uppercase text-white text-outline-black mb-8">
+                Why We <span className="text-comic-blue">Exist</span>
+              </motion.h2>
+              
+              <div className="grid gap-6 text-xl font-bold text-black uppercase">
+                <motion.div variants={comicPop} className="bg-comic-yellow p-6 border-4 border-black shadow-comic rotate-[1deg]">
+                  At its core, Super Smash KC is built around a simple belief: Sometimes, the fastest way to feel better is to release what you’re holding onto — not suppress it.
+                </motion.div>
+                <motion.div variants={comicPop} className="bg-white p-6 border-4 border-black shadow-comic rotate-[-1deg]">
+                  We saw how people were dealing with stress. Long days, constant pressure, and very few real outlets. Traditional ways of coping don’t always work for everyone.
+                </motion.div>
+                <motion.div variants={comicPop} className="bg-comic-blue text-white p-6 border-4 border-black shadow-comic rotate-[1deg]">
+                  So instead of creating another passive activity, we built something active. Something physical. Something immediate.
+                </motion.div>
+              </div>
+            </motion.div>
+
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9, rotate: 5 }} whileInView={{ opacity: 1, scale: 1, rotate: -2 }} viewport={{ once: true }} transition={comicSpring}
+              className="relative"
+            >
+              <div className="absolute -inset-4 bg-comic-red border-8 border-black shadow-comic-lg rounded-2xl rotate-3"></div>
+              <video 
+                autoPlay 
+                loop 
+                muted 
+                playsInline 
+                className="relative w-full h-auto object-cover rounded-xl border-4 border-black shadow-comic z-10"
+              >
+                <source src="/media/vid-2.mp4" type="video/mp4" />
+              </video>
+              <img src="/media/comic-wham.png" alt="Wham" className="absolute -bottom-10 -right-10 w-40 z-20 rotate-12 drop-shadow-xl" />
+            </motion.div>
+          </div>
         </div>
       </section>
 
@@ -115,37 +131,47 @@ export default function AboutPage() {
 
       {/* --- BUILT FOR REAL PEOPLE --- */}
       <section className="py-24 relative bg-comic-yellow border-b-8 border-black bg-halftone-black">
-        <div className="container mx-auto px-6 max-w-5xl text-center">
-          <motion.h2 initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-5xl md:text-7xl font-bebas uppercase text-white text-outline-black mb-12">
-            Built for Real People, <span className="text-comic-red block">Real Emotions, and Real Moments</span>
-          </motion.h2>
-          
-          <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="text-2xl font-bold text-black uppercase mb-12 max-w-3xl mx-auto bg-white p-6 border-4 border-black shadow-comic rotate-[1deg]">
-            Stress doesn’t look the same for everyone. And neither should the way you deal with it. That’s why Super Smash KC is designed to be flexible — not just in how the experience works, but in who it’s for.
-          </motion.p>
+        <div className="container mx-auto px-6 max-w-6xl">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <motion.div 
+              initial={{ opacity: 0, x: -50, rotate: -5 }} whileInView={{ opacity: 1, x: 0, rotate: 2 }} viewport={{ once: true }} transition={comicSpring}
+              className="relative order-2 lg:order-1"
+            >
+              <img 
+                src="/media/group.jpg" 
+                alt="Group at Super Smash KC" 
+                className="w-full h-auto object-cover rounded-2xl border-8 border-black shadow-comic-lg"
+              />
+              <img src="/media/comic-bang.png" alt="Bang" className="absolute -top-10 -left-10 w-40 z-20 -rotate-12 drop-shadow-xl" />
+            </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12 text-left">
-            {[
-              "Some people come in after a long week, needing a reset.",
-              "Some come in with friends, looking for something different and memorable.",
-              "Some come in to celebrate — birthdays, milestones, or just a reason to do something exciting.",
-              "And some come in simply because they’re curious."
-            ].map((text, i) => (
-              <motion.div 
-                key={i}
-                initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.1, ...comicSpring }}
-                className="bg-black text-white p-6 border-4 border-white shadow-comic-white flex items-center gap-4"
-              >
-                <Target className="w-8 h-8 text-comic-green shrink-0" strokeWidth={3} />
-                <span className="text-lg font-bold uppercase">{text}</span>
-              </motion.div>
-            ))}
+            <div className="order-1 lg:order-2">
+              <motion.h2 initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-5xl md:text-7xl font-bebas uppercase text-white text-outline-black mb-8">
+                Built for Real People, <span className="text-comic-red block">Real Emotions</span>
+              </motion.h2>
+              
+              <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="text-xl font-bold text-black uppercase mb-8 bg-white p-6 border-4 border-black shadow-comic rotate-[1deg]">
+                Stress doesn’t look the same for everyone. And neither should the way you deal with it. That’s why Super Smash KC is designed to be flexible — not just in how the experience works, but in who it’s for.
+              </motion.p>
+
+              <div className="grid grid-cols-1 gap-4 mb-8 text-left">
+                {[
+                  "Some people come in after a long week, needing a reset.",
+                  "Some come in with friends, looking for something different and memorable.",
+                  "Some come in to celebrate — birthdays, milestones, or just a reason to do something exciting."
+                ].map((text, i) => (
+                  <motion.div 
+                    key={i}
+                    initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.1, ...comicSpring }}
+                    className="bg-black text-white p-4 border-4 border-white shadow-comic-white flex items-center gap-4"
+                  >
+                    <Target className="w-6 h-6 text-comic-green shrink-0" strokeWidth={3} />
+                    <span className="text-lg font-bold uppercase">{text}</span>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
           </div>
-
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-3xl font-bebas text-black uppercase bg-white inline-block p-6 border-4 border-black shadow-comic rotate-[-1deg]">
-            No matter the reason, the experience meets you where you are.<br/>
-            <span className="text-comic-blue">Because at the end of the day, it’s not about why you came in — it’s about how you feel when you leave.</span>
-          </motion.div>
         </div>
       </section>
 
@@ -250,72 +276,6 @@ export default function AboutPage() {
             </motion.div>
 
           </div>
-        </div>
-      </section>
-
-      {/* --- FAQ SECTION --- */}
-      <section className="py-24 relative bg-comic-dark bg-halftone-white">
-        <div className="container mx-auto px-6 max-w-4xl">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={comicStagger} className="text-center mb-16">
-            <motion.h2 variants={comicPop} className="text-5xl md:text-7xl font-bebas uppercase text-white text-outline-black mb-6">
-              Frequently Asked <span className="text-comic-yellow">Questions</span>
-            </motion.h2>
-            <motion.p variants={comicPop} className="text-xl font-bold text-white bg-black p-4 border-4 border-white shadow-comic-white inline-block rotate-[-1deg] uppercase">
-              Before visiting, many people want to understand what Super Smash KC is about. Here are the most common questions we get.
-            </motion.p>
-          </motion.div>
-
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={comicSpring}>
-            <Accordion type="single" collapsible className="w-full space-y-6">
-              {[
-                {
-                  q: "What is Super Smash KC?",
-                  a: "Super Smash KC is a rage room experience in Kansas City where individuals and groups can safely break objects in a controlled environment. It is designed as a form of stress relief, entertainment, and physical release."
-                },
-                {
-                  q: "Is Super Smash KC safe?",
-                  a: "Yes, safety is a core part of the experience. All participants are provided with protective gear, and sessions take place in controlled environments designed specifically for smashing activities. The setup ensures that you can fully engage without unnecessary risk."
-                },
-                {
-                  q: "Do I need any experience before visiting?",
-                  a: "No prior experience is required. The experience is designed for beginners as well as returning visitors. You are guided through the process, and everything is structured to be simple and accessible."
-                },
-                {
-                  q: "Who is this experience for?",
-                  a: "Super Smash KC is built for a wide range of people. Some visit for stress relief, others for entertainment, and many for group activities such as birthdays, date nights, or team events. It is suitable for individuals, couples, and groups looking for something different."
-                },
-                {
-                  q: "Is this meant to be therapy or just entertainment?",
-                  a: "While many people find the experience therapeutic, Super Smash KC is primarily designed as an entertainment experience. The stress relief comes naturally from the physical activity and environment."
-                },
-                {
-                  q: "What makes Super Smash KC different from other activities?",
-                  a: "Unlike passive activities, this experience is fully interactive and physical. It allows you to release energy and emotions in a way that most traditional entertainment options do not provide. The combination of action, adrenaline, and controlled environment makes it unique."
-                },
-                {
-                  q: "Can I visit alone or do I need a group?",
-                  a: "You can visit alone or with others. Many people come in solo for a personal reset, while others prefer to share the experience with friends or groups."
-                },
-                {
-                  q: "Why do people choose rage rooms for stress relief?",
-                  a: "Rage rooms provide a direct and physical way to release built-up tension. Instead of suppressing stress, the experience allows you to act on it in a safe and controlled setting, which often leads to immediate relief."
-                },
-                {
-                  q: "Where is Super Smash KC located?",
-                  a: "Super Smash KC is located in Kansas City and serves individuals and groups from across the area looking for a unique and engaging experience."
-                }
-              ].map((faq, i) => (
-                <AccordionItem key={i} value={`item-${i}`} className="bg-white border-4 border-black shadow-comic rounded-xl px-6 data-[state=open]:bg-comic-yellow transition-colors">
-                  <AccordionTrigger className="text-2xl md:text-3xl font-bebas uppercase text-black hover:no-underline py-6 text-left">
-                    {faq.q}
-                  </AccordionTrigger>
-                  <AccordionContent className="text-lg font-bold text-black uppercase pb-6 leading-relaxed">
-                    {faq.a}
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
-          </motion.div>
         </div>
       </section>
 

@@ -18,7 +18,6 @@ const comicPop: Variants = {
 
 // --- Broken Glass Effect Component ---
 const BrokenGlassEffect = () => {
-  // Hardcoded values to prevent hydration mismatch, simulating random explosion trajectories
   const shards = [
     { id: 1, d: "M0,0 L30,-10 L20,20 Z", x: -150, y: -200, rot: -120, dur: 1.2 },
     { id: 2, d: "M0,0 L40,-20 L10,30 Z", x: -80, y: -250, rot: -45, dur: 1.4 },
@@ -34,7 +33,6 @@ const BrokenGlassEffect = () => {
 
   return (
     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full pointer-events-none z-50 flex items-center justify-center">
-      {/* Impact Flash */}
       <motion.svg
         className="absolute w-64 h-64 md:w-96 md:h-96 drop-shadow-lg"
         viewBox="0 0 100 100"
@@ -45,7 +43,6 @@ const BrokenGlassEffect = () => {
         <path d="M50,5 L60,35 L95,30 L70,55 L90,90 L50,75 L10,90 L30,55 L5,30 L40,35 Z" fill="#FFFFFF" stroke="#000" strokeWidth="2" />
       </motion.svg>
 
-      {/* Glass Shards */}
       {shards.map((shard) => (
         <motion.svg
           key={shard.id}
@@ -53,71 +50,52 @@ const BrokenGlassEffect = () => {
           initial={{ x: 0, y: 0, scale: 0, opacity: 0, rotate: 0 }}
           animate={{ 
             x: shard.x, 
-            y: [0, shard.y - 50, shard.y + 150], // Arc trajectory simulating gravity
+            y: [0, shard.y - 50, shard.y + 150],
             scale: [0, 1.5, 1], 
             opacity: [0, 1, 1, 0], 
             rotate: shard.rot 
           }}
           transition={{ duration: shard.dur, delay: 0.8, ease: "easeOut" }}
         >
-          {/* Main Shard Body */}
-          <path
-            d={shard.d}
-            fill="#E0F2FE"
-            stroke="#000"
-            strokeWidth="3"
-            strokeLinejoin="round"
-          />
-          {/* Shard Highlight */}
-          <path
-            d={shard.d}
-            fill="none"
-            stroke="#FFFFFF"
-            strokeWidth="2"
-            transform="translate(-2, -2)"
-          />
+          <path d={shard.d} fill="#E0F2FE" stroke="#000" strokeWidth="3" strokeLinejoin="round" />
+          <path d={shard.d} fill="none" stroke="#FFFFFF" strokeWidth="2" transform="translate(-2, -2)" />
         </motion.svg>
       ))}
     </div>
   );
 };
 
-// --- Floating Action Words Component ---
-const FloatingWords = () => {
-  // Adjusted positions to keep all words strictly on the far left and right edges
-  const words = [
-    { text: "SMASH!", color: "text-comic-yellow", top: "15%", left: "8%", rotate: -15, delay: 0, size: "text-5xl lg:text-7xl" },
-    { text: "BAM!", color: "text-comic-red", top: "20%", right: "8%", rotate: 20, delay: 0.3, size: "text-6xl lg:text-8xl" },
-    { text: "CRASH!", color: "text-comic-green", bottom: "25%", left: "10%", rotate: 10, delay: 0.6, size: "text-5xl lg:text-6xl" },
-    { text: "BOOM!", color: "text-comic-blue", bottom: "20%", right: "10%", rotate: -25, delay: 0.9, size: "text-6xl lg:text-7xl" },
-    { text: "POW!", color: "text-white", top: "45%", left: "5%", rotate: -30, delay: 1.2, size: "text-4xl lg:text-5xl" },
-    { text: "WHACK!", color: "text-comic-yellow", top: "50%", right: "6%", rotate: 15, delay: 1.5, size: "text-5xl lg:text-6xl" },
-    { text: "KAPOW!", color: "text-comic-red", bottom: "45%", left: "8%", rotate: -10, delay: 1.8, size: "text-6xl lg:text-7xl" },
-    { text: "BASH!", color: "text-comic-blue", bottom: "10%", right: "12%", rotate: -20, delay: 2.4, size: "text-5xl lg:text-6xl" },
-    { text: "THWACK!", color: "text-white", top: "75%", left: "12%", rotate: 25, delay: 2.7, size: "text-4xl lg:text-5xl" },
-    { text: "BONK!", color: "text-comic-red", top: "35%", right: "12%", rotate: 10, delay: 3.3, size: "text-4xl lg:text-5xl" },
+// --- Floating Comic Graphics Component ---
+const FloatingComics = () => {
+  const comics = [
+    { src: "/media/comic-smash.png", top: "10%", left: "5%", rotate: -15, delay: 0, width: "w-48 md:w-64" },
+    { src: "/media/comic-bam.png", top: "15%", right: "5%", rotate: 20, delay: 0.5, width: "w-40 md:w-56" },
+    { src: "/media/comic-pow.png", bottom: "20%", left: "8%", rotate: 10, delay: 1.0, width: "w-44 md:w-60" },
+    { src: "/media/comic-boom.png", bottom: "15%", right: "8%", rotate: -25, delay: 1.5, width: "w-52 md:w-72" },
+    { src: "/media/comic-wham.png", top: "45%", left: "2%", rotate: -30, delay: 2.0, width: "w-36 md:w-48" },
+    { src: "/media/comic-kapow.png", top: "50%", right: "2%", rotate: 15, delay: 2.5, width: "w-48 md:w-64" },
+    { src: "/media/comic-bang.png", bottom: "45%", left: "5%", rotate: -10, delay: 3.0, width: "w-40 md:w-56" },
   ];
 
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none z-0 hidden md:block">
-      {words.map((w, i) => (
-        <motion.div
+      {comics.map((c, i) => (
+        <motion.img
           key={i}
-          className={`absolute font-bebas ${w.size} ${w.color} text-outline-black opacity-90`}
-          style={{ top: w.top, left: w.left, right: w.right, bottom: w.bottom }}
+          src={c.src}
+          alt="Comic Graphic"
+          className={`absolute object-contain drop-shadow-2xl ${c.width}`}
+          style={{ top: c.top, left: c.left, right: c.right, bottom: c.bottom }}
           initial={{ opacity: 0, scale: 0 }}
-          animate={{ opacity: [0, 1, 1, 0], scale: [0, 1.2, 1, 0], rotate: w.rotate }}
-          transition={{ duration: 3, delay: w.delay, repeat: Infinity, repeatDelay: 1 }}
-        >
-          {w.text}
-        </motion.div>
+          animate={{ opacity: [0, 1, 1, 0], scale: [0, 1.1, 1, 0], rotate: c.rotate }}
+          transition={{ duration: 4, delay: c.delay, repeat: Infinity, repeatDelay: 2 }}
+        />
       ))}
     </div>
   );
 };
 
 export default function Home() {
-  // Use absolute scrollY instead of scrollYProgress for more stable initial calculations
   const { scrollY } = useScroll();
   const yParallax = useTransform(scrollY, [0, 800], [0, -150]);
 
@@ -129,11 +107,7 @@ export default function Home() {
       duration: "10 Minutes",
       capacity: "Up to 6 People",
       desc: "Built for quick, high-impact sessions. Ideal for first-time visitors or anyone looking for a fast way to release tension.",
-      included: [
-        "15 breakable items",
-        "Full protective safety gear",
-        "Access to smash tools"
-      ],
+      included: ["15 breakable items", "Full protective safety gear", "Access to smash tools"],
       cta: "Book Starter Smash",
       color: "bg-comic-blue",
       rotate: "-rotate-1"
@@ -146,11 +120,7 @@ export default function Home() {
       duration: "20 Minutes",
       capacity: "Up to 6 People",
       desc: "Offers a more complete experience. With additional time and larger items, the session becomes more immersive.",
-      included: [
-        "25 breakable items",
-        "1 medium item (electronics)",
-        "Extended session time"
-      ],
+      included: ["25 breakable items", "1 medium item (electronics)", "Extended session time"],
       cta: "Book Super Smash",
       color: "bg-comic-red",
       rotate: "rotate-1",
@@ -163,11 +133,7 @@ export default function Home() {
       duration: "15–20 Minutes",
       capacity: "Up to 6 People",
       desc: "Designed for shared experiences. Brings energy into the room and turns the session into something social.",
-      included: [
-        "Group crate of breakable items",
-        "Shared smash environment",
-        "Safety gear for all"
-      ],
+      included: ["Group crate of breakable items", "Shared smash environment", "Safety gear for all"],
       cta: "Book Multiplayer",
       color: "bg-comic-yellow",
       rotate: "-rotate-2"
@@ -179,11 +145,7 @@ export default function Home() {
       duration: "2 Hours",
       capacity: "6 People (expandable)",
       desc: "Designed for larger experiences and special occasions. A full event with extended access and flexibility.",
-      included: [
-        "Two-hour private room access",
-        "Dedicated party area",
-        "Option to bring food/drinks"
-      ],
+      included: ["Two-hour private room access", "Dedicated party area", "Option to bring food/drinks"],
       cta: "Book Party Pack",
       color: "bg-comic-green",
       rotate: "rotate-2"
@@ -195,11 +157,7 @@ export default function Home() {
       duration: "10 Minutes",
       capacity: "Up to 6 People",
       desc: "A lower-cost option for those looking for a quick midweek reset. Shorter and more accessible.",
-      included: [
-        "15 breakable items",
-        "Full protective gear",
-        "Controlled smash environment"
-      ],
+      included: ["15 breakable items", "Full protective gear", "Controlled smash environment"],
       cta: "Book Therapy Session",
       color: "bg-black",
       textColor: "text-white",
@@ -211,8 +169,22 @@ export default function Home() {
     <div className="bg-comic-dark min-h-screen text-white font-sans selection:bg-comic-yellow selection:text-black overflow-hidden">
       
       {/* --- HERO SECTION --- */}
-      <section className="relative min-h-[100svh] flex items-center justify-center pt-20 md:pt-32 pb-16 bg-halftone-white">
-        <FloatingWords />
+      <section className="relative min-h-[100svh] flex items-center justify-center pt-20 md:pt-32 pb-16 bg-black overflow-hidden">
+        {/* Video Background */}
+        <video 
+          autoPlay 
+          loop 
+          muted 
+          playsInline 
+          className="absolute inset-0 w-full h-full object-cover opacity-50 mix-blend-screen"
+        >
+          <source src="/media/vid-1.mp4" type="video/mp4" />
+        </video>
+        
+        {/* Dark Overlay for text readability */}
+        <div className="absolute inset-0 bg-black/40 z-0"></div>
+
+        <FloatingComics />
         
         <motion.div 
           className="relative z-10 container mx-auto px-6 flex flex-col items-center text-center max-w-5xl mt-12 md:mt-0"
@@ -226,7 +198,6 @@ export default function Home() {
           >
             Smash Stress.<br/>
             
-            {/* Shattering Text Container */}
             <motion.span 
               className="text-comic-red relative inline-block"
               initial={{ scale: 1 }}
@@ -308,32 +279,32 @@ export default function Home() {
 
             <motion.div 
               initial={{ opacity: 0, x: 100, rotate: 10 }} whileInView={{ opacity: 1, x: 0, rotate: 2 }} viewport={{ once: true }} transition={comicSpring}
-              className="bg-comic-red border-8 border-black shadow-comic-lg rounded-2xl p-8 flex flex-col justify-center"
+              className="relative"
             >
-              <h3 className="text-5xl font-bebas text-white mb-8 uppercase tracking-wide text-outline-black">People discover the same thing:</h3>
-              <ul className="space-y-6">
-                {[
-                  "It feels good to let go",
-                  "It feels powerful to act instead of suppress",
-                  "It feels different in a way that stays with you"
-                ].map((text, i) => (
-                  <motion.li 
-                    key={i}
-                    whileHover={{ scale: 1.05, x: 10 }}
-                    className="flex items-center gap-4 text-2xl font-bold text-black bg-white p-4 border-4 border-black shadow-comic-sm rounded-lg"
-                  >
-                    <Zap className="w-8 h-8 text-comic-yellow fill-comic-yellow shrink-0" stroke="black" strokeWidth={2} />
-                    <span>{text}</span>
-                  </motion.li>
-                ))}
-              </ul>
+              {/* Added Real Photo Here */}
+              <img 
+                src="/media/couple.jpg" 
+                alt="Couple at Super Smash KC" 
+                className="w-full h-auto object-cover rounded-2xl border-8 border-black shadow-comic-lg rotate-2 mb-8"
+              />
+              <div className="bg-comic-red border-8 border-black shadow-comic-lg rounded-2xl p-8 flex flex-col justify-center absolute -bottom-12 -left-8 md:-left-16 rotate-[-4deg] max-w-md">
+                <h3 className="text-4xl font-bebas text-white mb-4 uppercase tracking-wide text-outline-black">People discover the same thing:</h3>
+                <ul className="space-y-3">
+                  {["It feels good to let go", "It feels powerful to act", "It stays with you"].map((text, i) => (
+                    <li key={i} className="flex items-center gap-3 text-xl font-bold text-black bg-white p-3 border-4 border-black shadow-comic-sm rounded-lg">
+                      <Zap className="w-6 h-6 text-comic-yellow fill-comic-yellow shrink-0" stroke="black" strokeWidth={2} />
+                      <span>{text}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </motion.div>
           </div>
         </div>
       </section>
 
       {/* --- SECTION 1.5: PACKAGES (WHITE) --- */}
-      <section className="py-32 relative bg-white border-b-8 border-black bg-halftone-black">
+      <section className="py-32 relative bg-white border-b-8 border-black bg-halftone-black mt-12 md:mt-0">
         <div className="container mx-auto px-6 max-w-7xl">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={comicStagger} className="text-center mb-16">
             <motion.h2 variants={comicPop} className="text-6xl md:text-8xl font-bebas uppercase leading-none text-black mb-6">
@@ -361,7 +332,6 @@ export default function Home() {
                   </div>
                 )}
                 
-                {/* Card Header */}
                 <div className={`${pkg.color} ${pkg.textColor || 'text-black'} p-6 border-b-8 border-black rounded-t-lg`}>
                   <h3 className={`text-4xl font-bebas uppercase tracking-wide mb-2 ${pkg.textColor ? '' : 'text-outline-white'}`}>{pkg.title}</h3>
                   <div className="flex items-baseline gap-2">
@@ -370,7 +340,6 @@ export default function Home() {
                   </div>
                 </div>
 
-                {/* Card Body */}
                 <div className="p-6 flex-grow flex flex-col">
                   <div className="flex flex-wrap gap-4 mb-6">
                     <div className="flex items-center gap-2 bg-gray-100 px-3 py-1 border-2 border-black rounded-md shadow-comic-sm">
@@ -516,8 +485,9 @@ export default function Home() {
       </section>
 
       {/* --- FINAL CTA (RED) --- */}
-      <section className="py-40 relative bg-comic-red border-t-8 border-black bg-halftone-black flex items-center justify-center">
-        <FloatingWords />
+      <section className="py-40 relative bg-comic-red border-t-8 border-black bg-halftone-black flex items-center justify-center overflow-hidden">
+        <img src="/media/comic-boom.png" alt="Boom" className="absolute top-10 left-10 w-48 opacity-50 rotate-12" />
+        <img src="/media/comic-pow.png" alt="Pow" className="absolute bottom-10 right-10 w-48 opacity-50 -rotate-12" />
         
         <motion.div 
           initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={comicSpring}

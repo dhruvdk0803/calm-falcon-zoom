@@ -4,6 +4,7 @@ import React from "react";
 import { motion, Variants } from "framer-motion";
 import { Shield, Zap, Users, Clock, CheckCircle2, Calendar, ArrowRight, Star } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import Link from "next/link";
 
 // --- Snappy Comic Animations ---
 const comicSpring = { type: "spring" as const, stiffness: 400, damping: 15 };
@@ -203,11 +204,11 @@ export default function PackagesPage() {
                     </ul>
                   </div>
 
-                  <a href="tel:9134999330" className="w-full block">
+                  <Link href="/packages" className="w-full block">
                     <button className={`w-full py-4 ${pkg.color} ${pkg.textColor || 'text-black'} font-bebas text-2xl tracking-wider uppercase rounded-xl border-4 border-black shadow-comic hover:translate-y-1 hover:shadow-comic-sm transition-all active:translate-y-2 active:shadow-none`}>
                       {pkg.cta}
                     </button>
-                  </a>
+                  </Link>
                 </div>
               </motion.div>
             ))}
@@ -215,10 +216,10 @@ export default function PackagesPage() {
         </div>
       </section>
 
-      {/* --- INFO SECTIONS --- */}
+      {/* --- INFO SECTIONS WITH PARTY PHOTO --- */}
       <section className="py-24 relative bg-comic-blue border-y-8 border-black bg-halftone-black">
         <div className="container mx-auto px-6 max-w-6xl">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             
             {/* Choosing the Right Package */}
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={comicStagger} className="space-y-6">
@@ -238,32 +239,17 @@ export default function PackagesPage() {
               </motion.div>
             </motion.div>
 
-            {/* What Every Package Includes */}
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={comicStagger} className="space-y-6">
-              <motion.h2 variants={comicPop} className="text-5xl font-bebas uppercase text-white text-outline-black mb-6">
-                What Every <span className="text-comic-green">Package Includes</span>
-              </motion.h2>
-              <motion.div variants={comicPop} className="bg-black text-white p-8 border-4 border-white shadow-comic-white rotate-[1deg] h-full">
-                <p className="text-lg font-bold uppercase mb-6">
-                  Every session at Super Smash KC is built on a consistent foundation to ensure both safety and quality. Regardless of the package, you can expect:
-                </p>
-                <ul className="space-y-4 mb-6">
-                  {[
-                    "A controlled and secure smashing environment",
-                    "Protective gear including helmet, gloves, and eye protection",
-                    "Access to a variety of tools designed for safe use",
-                    "A curated selection of breakable items"
-                  ].map((item, i) => (
-                    <li key={i} className="flex items-start gap-3">
-                      <Shield className="w-6 h-6 text-comic-blue shrink-0 mt-0.5" strokeWidth={2} />
-                      <span className="text-lg font-bold uppercase">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-                <p className="text-xl font-bebas text-comic-yellow tracking-wide uppercase">
-                  This structure ensures that every session delivers a balance of safety, engagement, and real physical release.
-                </p>
-              </motion.div>
+            {/* Party Photo */}
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9, rotate: 5 }} whileInView={{ opacity: 1, scale: 1, rotate: 2 }} viewport={{ once: true }} transition={comicSpring}
+              className="relative"
+            >
+              <img 
+                src="/media/party.jpg" 
+                alt="Party Setup at Super Smash KC" 
+                className="w-full h-auto object-cover rounded-2xl border-8 border-black shadow-comic-lg"
+              />
+              <img src="/media/comic-pow.png" alt="Pow" className="absolute -bottom-8 -left-8 w-32 z-20 -rotate-12 drop-shadow-xl" />
             </motion.div>
 
           </div>
@@ -348,7 +334,7 @@ export default function PackagesPage() {
           </div>
 
           <div className="flex flex-col sm:flex-row justify-center gap-6">
-            <a href="tel:9134999330">
+            <Link href="/packages">
               <motion.button 
                 whileHover={{ scale: 1.1, rotate: -2 }}
                 whileTap={{ scale: 0.9, y: 4, boxShadow: "0px 0px 0px 0px rgba(0,0,0,1)" }}
@@ -356,7 +342,7 @@ export default function PackagesPage() {
               >
                 <Zap className="w-8 h-8 fill-black" strokeWidth={2} /> Book Now
               </motion.button>
-            </a>
+            </Link>
             <a href="tel:9134999330">
               <motion.button 
                 whileHover={{ scale: 1.1, rotate: 2 }}
