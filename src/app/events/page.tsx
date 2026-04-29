@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion, Variants } from "framer-motion";
-import { Calendar, ArrowRight, Flame } from "lucide-react";
+import { Calendar, ArrowRight, Flame, BookOpen } from "lucide-react";
 import Link from "next/link";
 import FloatingComics from "@/components/FloatingComics";
 
@@ -24,8 +24,18 @@ export default function EventsPage() {
       slug: "heartbreak-and-hammers",
       excerpt: "Whether you’re smashing away a breakup, letting go of stress, or just in it for the vibes—this Valentine’s Day, we’re turning heartbreak into power.",
       tag: "Special Event",
+      icon: Flame,
       color: "bg-comic-red",
       rotate: "rotate-1"
+    },
+    {
+      title: "What Exactly is a Destroy Room?",
+      slug: "what-is-a-destroy-room",
+      excerpt: "A destroy room in Kansas City is a designated space where people can release pent-up anger and frustration by destroying objects in a controlled environment.",
+      tag: "Blog",
+      icon: BookOpen,
+      color: "bg-comic-blue",
+      rotate: "-rotate-1"
     }
   ];
 
@@ -73,7 +83,7 @@ export default function EventsPage() {
                 className={`relative bg-white border-8 border-black shadow-comic-lg rounded-2xl flex flex-col h-full ${event.rotate}`}
               >
                 <div className="absolute -top-5 -right-5 bg-comic-yellow text-black font-bebas text-xl px-4 py-1 border-4 border-black shadow-comic rotate-12 z-20 flex items-center gap-2">
-                  <Flame className="w-4 h-4 fill-black" /> {event.tag}
+                  <event.icon className="w-4 h-4 fill-black" /> {event.tag}
                 </div>
                 
                 <div className={`${event.color} p-8 border-b-8 border-black rounded-t-lg flex items-center justify-center min-h-[160px]`}>
