@@ -8,10 +8,22 @@ import Link from "next/link";
 export default function Header() {
   const { scrollY } = useScroll();
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isHidden, setIsHidden] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
+    const previous = scrollY.getPrevious() ?? 0;
+    
+    // Handle background transparency (transparent at top, solid when scrolled)
     setIsScrolled(latest > 50);
+
+    // Handle hide/show on scroll (hide when scrolling down, show when scrolling up)
+    if (latest > 250 && latest > previous) {
+      setIsHidden(true);
+      setIsMobileMenuOpen(false); // Close mobile menu if scrolling down
+    } else {
+      setIsHidden(false);
+    }
   });
 
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -19,8 +31,16 @@ export default function Header() {
 
   return (
     <motion.header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-black border-b-4 border-white/20 shadow-comic ${
-        isScrolled ? "py-2" : "py-3"
+      variants={{
+        visible: { y: 0 },
+        hidden: { y: "-100%" }
+      }}
+      animate={isHidden ? "hidden" : "visible"}
+      transition={{ duration: 0.3, ease: "easeInOut" }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
+        isScrolled 
+          ? "bg-black border-b-4 border-white/20 shadow-comic py-2" 
+          : "bg-transparent border-transparent py-4 md:py-6"
       }`}
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
@@ -35,13 +55,13 @@ export default function Header() {
             <img 
               src="/supersmash-logo-new.png" 
               alt="Super Smash KC Logo" 
-              className="h-12 md:h-16 w-auto object-contain drop-shadow-md"
+              className="h-10 md:h-14 w-auto object-contain drop-shadow-md transition-all duration-300"
             />
           </motion.div>
         </Link>
         
-        {/* Desktop Navigation - Added pt-1 to visually center the Bebas font */}
-        <nav className="hidden md:flex items-center gap-8 text-xl font-bebas tracking-widest uppercase text-white pt-1">
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex items-center gap-8 text-lg md:text-xl font-bebas tracking-widest uppercase text-white pt-1">
           <Link href="/">
             <motion.span whileHover={{ y: -2, color: "#FF2D2D" }} className="transition-colors text-outline-black cursor-pointer block">Home</motion.span>
           </Link>
@@ -62,7 +82,7 @@ export default function Header() {
             <motion.button 
               whileHover={{ scale: 1.05, rotate: 2 }}
               whileTap={{ scale: 0.9, y: 4, boxShadow: "0px 0px 0px 0px rgba(0,0,0,1)" }}
-              className="px-6 py-2 pt-2.5 bg-comic-red text-white font-bebas text-2xl tracking-wider uppercase rounded-md border-4 border-white shadow-comic transition-all flex items-center justify-center"
+              className="px-5 py-2 pt-2.5 bg-comic-red text-white font-bebas text-xl md:text-2xl tracking-wider uppercase rounded-md border-4 border-black shadow-comic transition-all flex items-center justify-center"
             >
               Book Now
             </motion.button>
@@ -75,7 +95,7 @@ export default function Header() {
           onClick={toggleMobileMenu}
           className="md:hidden text-white p-2 bg-black border-2 border-white rounded-md shadow-comic-sm flex items-center justify-center"
         >
-          {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </motion.button>
       </div>
 
@@ -102,7 +122,7 @@ export default function Header() {
                 FAQ
               </Link>
               <Link href="/packages" onClick={closeMobileMenu} className="w-full block mt-4">
-                <button className="px-6 py-4 bg-comic-red text-white font-bebas text-3xl tracking-wider uppercase rounded-md border-4 border-white shadow-comic transition-all w-full">
+                <button className="px-6 py-4 bg-comic-red text-white font-bebas text-3xl tracking-wider uppercase rounded-md border-4 border-black shadow-comic transition-all w-full">
                   Book Now
                 </button>
               </Link>
