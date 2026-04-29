@@ -61,7 +61,7 @@ export default function Header() {
         </Link>
         
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-8 text-lg md:text-xl font-bebas tracking-widest uppercase text-white pt-1">
+        <nav className="hidden md:flex items-center gap-6 lg:gap-8 text-lg md:text-xl font-bebas tracking-widest uppercase text-white pt-1">
           <Link href="/">
             <motion.span whileHover={{ y: -2, color: "#FF2D2D" }} className="transition-colors text-outline-black cursor-pointer block">Home</motion.span>
           </Link>
@@ -71,8 +71,11 @@ export default function Header() {
           <Link href="/packages">
             <motion.span whileHover={{ y: -2, color: "#00C853" }} className="transition-colors text-outline-black cursor-pointer block">Packages</motion.span>
           </Link>
+          <Link href="/events">
+            <motion.span whileHover={{ y: -2, color: "#007BFF" }} className="transition-colors text-outline-black cursor-pointer block">Events</motion.span>
+          </Link>
           <Link href="/faq">
-            <motion.span whileHover={{ y: -2, color: "#007BFF" }} className="transition-colors text-outline-black cursor-pointer block">FAQ</motion.span>
+            <motion.span whileHover={{ y: -2, color: "#FF2D2D" }} className="transition-colors text-outline-black cursor-pointer block">FAQ</motion.span>
           </Link>
         </nav>
 
@@ -118,7 +121,10 @@ export default function Header() {
               <Link href="/packages" onClick={closeMobileMenu} className="text-3xl font-bebas tracking-widest uppercase text-white hover:text-comic-green transition-colors text-outline-black">
                 Packages
               </Link>
-              <Link href="/faq" onClick={closeMobileMenu} className="text-3xl font-bebas tracking-widest uppercase text-white hover:text-comic-blue transition-colors text-outline-black">
+              <Link href="/events" onClick={closeMobileMenu} className="text-3xl font-bebas tracking-widest uppercase text-white hover:text-comic-blue transition-colors text-outline-black">
+                Events
+              </Link>
+              <Link href="/faq" onClick={closeMobileMenu} className="text-3xl font-bebas tracking-widest uppercase text-white hover:text-comic-red transition-colors text-outline-black">
                 FAQ
               </Link>
               <Link href="/packages" onClick={closeMobileMenu} className="w-full block mt-4">
