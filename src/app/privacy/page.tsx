@@ -3,6 +3,7 @@
 import React from "react";
 import { motion, Variants } from "framer-motion";
 import { ShieldCheck } from "lucide-react";
+import FloatingComics from "@/components/FloatingComics";
 
 // --- Snappy Comic Animations ---
 const comicSpring = { type: "spring" as const, stiffness: 400, damping: 15 };
@@ -20,7 +21,8 @@ export default function PrivacyPolicyPage() {
     <div className="bg-comic-dark min-h-screen text-white font-sans selection:bg-comic-yellow selection:text-black overflow-hidden pt-24">
       
       {/* --- HERO SECTION --- */}
-      <section className="py-20 relative bg-comic-blue border-b-8 border-black bg-halftone-black">
+      <section className="py-20 relative bg-comic-blue border-b-8 border-black bg-halftone-black overflow-hidden">
+        <FloatingComics />
         <div className="container mx-auto px-6 max-w-4xl relative z-10">
           <motion.div 
             initial="hidden" animate="visible" variants={comicStagger}

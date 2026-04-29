@@ -7,47 +7,47 @@ import Link from "next/link";
 
 export default function Header() {
   const { scrollY } = useScroll();
-  const [hidden, setHidden] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  
+  // State to handle image path fallbacks
+  const [logoSrc, setLogoSrc] = useState("/supersmash-logo-new.png");
 
   useMotionValueEvent(scrollY, "change", (latest) => {
-    const previous = scrollY.getPrevious() ?? 0;
-    // Don't hide the header if the mobile menu is open
-    if (latest > previous && latest > 150 && !isMobileMenuOpen) {
-      setHidden(true);
-    } else {
-      setHidden(false);
-    }
     setIsScrolled(latest > 50);
   });
 
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
   const closeMobileMenu = () => setIsMobileMenuOpen(false);
 
+  const handleLogoError = () => {
+    if (logoSrc === "/supersmash-logo-new.png") {
+      setLogoSrc("/supersmash-logo.png");
+    } else if (logoSrc === "/supersmash-logo.png") {
+      setLogoSrc("/logo.png");
+    }
+  };
+
   return (
     <motion.header
-      variants={{
-        visible: { y: 0 },
-        hidden: { y: "-100%" },
-      }}
-      animate={hidden ? "hidden" : "visible"}
-      transition={{ type: "spring", stiffness: 300, damping: 30 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled || isMobileMenuOpen ? "bg-comic-dark border-b-4 border-black py-3 shadow-comic" : "bg-transparent py-5"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-black border-b-4 border-white/20 shadow-comic ${
+        isScrolled ? "py-2" : "py-4"
       }`}
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
-        <Link href="/" onClick={closeMobileMenu}>
+        
+        {/* Logo */}
+        <Link href="/" onClick={closeMobileMenu} className="flex items-center shrink-0">
           <motion.div 
             whileHover={{ scale: 1.05, rotate: -2 }}
             whileTap={{ scale: 0.95 }}
             className="flex items-center cursor-pointer"
           >
             <img 
-              src="/supersmash-logo-new.png" 
+              src={logoSrc} 
               alt="Super Smash KC Logo" 
-              className="h-16 md:h-24 w-auto object-contain drop-shadow-md"
+              className="h-16 md:h-20 w-auto object-contain drop-shadow-md"
+              onError={handleLogoError}
             />
           </motion.div>
         </Link>
@@ -68,21 +68,24 @@ export default function Header() {
           </Link>
         </nav>
 
-        <Link href="/packages" className="hidden md:block">
-          <motion.button 
-            whileHover={{ scale: 1.05, rotate: 2 }}
-            whileTap={{ scale: 0.9, y: 4, boxShadow: "0px 0px 0px 0px rgba(0,0,0,1)" }}
-            className="px-6 py-2 bg-comic-red text-white font-bebas text-2xl tracking-wider uppercase rounded-md border-4 border-black shadow-comic transition-all"
-          >
-            Book Now
-          </motion.button>
-        </Link>
+        {/* Desktop Book Now Button */}
+        <div className="hidden md:flex items-center shrink-0">
+          <Link href="/packages">
+            <motion.button 
+              whileHover={{ scale: 1.05, rotate: 2 }}
+              whileTap={{ scale: 0.9, y: 4, boxShadow: "0px 0px 0px 0px rgba(0,0,0,1)" }}
+              className="px-6 py-2.5 bg-comic-red text-white font-bebas text-2xl tracking-wider uppercase rounded-md border-4 border-white shadow-comic transition-all flex items-center justify-center"
+            >
+              Book Now
+            </motion.button>
+          </Link>
+        </div>
 
         {/* Mobile Menu Toggle */}
         <motion.button
           whileTap={{ scale: 0.9 }}
           onClick={toggleMobileMenu}
-          className="md:hidden text-white p-2 bg-black border-2 border-white rounded-md shadow-comic-sm"
+          className="md:hidden text-white p-2 bg-black border-2 border-white rounded-md shadow-comic-sm flex items-center justify-center"
         >
           {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
         </motion.button>
@@ -95,7 +98,7 @@ export default function Header() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="absolute top-full left-0 right-0 bg-comic-dark border-b-4 border-black shadow-comic overflow-hidden md:hidden"
+            className="absolute top-full left-0 right-0 bg-black border-b-4 border-white/20 shadow-comic overflow-hidden md:hidden"
           >
             <div className="p-6 flex flex-col gap-6 text-center bg-halftone-white">
               <Link href="/" onClick={closeMobileMenu} className="text-3xl font-bebas tracking-widest uppercase text-white hover:text-comic-red transition-colors text-outline-black">
@@ -111,7 +114,7 @@ export default function Header() {
                 FAQ
               </Link>
               <Link href="/packages" onClick={closeMobileMenu} className="w-full block mt-4">
-                <button className="px-6 py-4 bg-comic-red text-white font-bebas text-3xl tracking-wider uppercase rounded-md border-4 border-black shadow-comic transition-all w-full">
+                <button className="px-6 py-4 bg-comic-red text-white font-bebas text-3xl tracking-wider uppercase rounded-md border-4 border-white shadow-comic transition-all w-full">
                   Book Now
                 </button>
               </Link>

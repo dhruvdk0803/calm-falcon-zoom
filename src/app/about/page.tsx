@@ -5,6 +5,7 @@ import { motion, Variants } from "framer-motion";
 import { Shield, Zap, Target, Flame, CheckCircle2, Calendar, MapPin } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import Link from "next/link";
+import FloatingComics from "@/components/FloatingComics";
 
 // --- Snappy Comic Animations ---
 const comicSpring = { type: "spring" as const, stiffness: 400, damping: 15 };
@@ -22,7 +23,8 @@ export default function AboutPage() {
     <div className="bg-comic-dark min-h-screen text-white font-sans selection:bg-comic-yellow selection:text-black overflow-hidden pt-24">
       
       {/* --- HERO SECTION --- */}
-      <section className="py-20 md:py-32 relative bg-comic-red border-b-8 border-black bg-halftone-black">
+      <section className="py-20 md:py-32 relative bg-comic-red border-b-8 border-black bg-halftone-black overflow-hidden">
+        <FloatingComics />
         <div className="container mx-auto px-6 max-w-5xl relative z-10">
           <motion.div 
             initial="hidden" animate="visible" variants={comicStagger}
