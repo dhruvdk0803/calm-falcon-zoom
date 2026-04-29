@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion, Variants } from "framer-motion";
-import { Calendar, ArrowRight, Flame, BookOpen } from "lucide-react";
+import { Calendar, ArrowRight, Flame, BookOpen, Zap } from "lucide-react";
 import Link from "next/link";
 import FloatingComics from "@/components/FloatingComics";
 
@@ -36,6 +36,15 @@ export default function EventsPage() {
       icon: BookOpen,
       color: "bg-comic-blue",
       rotate: "-rotate-1"
+    },
+    {
+      title: "3 Reasons Why Breaking Things Can Be Therapeutic",
+      slug: "3-reasons-why-breaking-things-can-be-therapeutic",
+      excerpt: "Breaking things can be a surprisingly therapeutic experience. For many of us, there is a sense of release and catharsis when we intentionally or unintentionally break something.",
+      tag: "Blog",
+      icon: Zap,
+      color: "bg-comic-green",
+      rotate: "rotate-2"
     }
   ];
 
