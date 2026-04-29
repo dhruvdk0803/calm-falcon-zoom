@@ -9,9 +9,6 @@ export default function Header() {
   const { scrollY } = useScroll();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  
-  // State to handle image path fallbacks
-  const [logoSrc, setLogoSrc] = useState("/supersmash-logo-new.png");
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     setIsScrolled(latest > 50);
@@ -20,18 +17,10 @@ export default function Header() {
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
   const closeMobileMenu = () => setIsMobileMenuOpen(false);
 
-  const handleLogoError = () => {
-    if (logoSrc === "/supersmash-logo-new.png") {
-      setLogoSrc("/supersmash-logo.png");
-    } else if (logoSrc === "/supersmash-logo.png") {
-      setLogoSrc("/logo.png");
-    }
-  };
-
   return (
     <motion.header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-black border-b-4 border-white/20 shadow-comic ${
-        isScrolled ? "py-2" : "py-4"
+        isScrolled ? "py-2" : "py-3"
       }`}
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
@@ -44,16 +33,15 @@ export default function Header() {
             className="flex items-center cursor-pointer"
           >
             <img 
-              src={logoSrc} 
+              src="/supersmash-logo-new.png" 
               alt="Super Smash KC Logo" 
-              className="h-16 md:h-20 w-auto object-contain drop-shadow-md"
-              onError={handleLogoError}
+              className="h-12 md:h-16 w-auto object-contain drop-shadow-md"
             />
           </motion.div>
         </Link>
         
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-8 text-xl font-bebas tracking-widest uppercase text-white">
+        {/* Desktop Navigation - Added pt-1 to visually center the Bebas font */}
+        <nav className="hidden md:flex items-center gap-8 text-xl font-bebas tracking-widest uppercase text-white pt-1">
           <Link href="/">
             <motion.span whileHover={{ y: -2, color: "#FF2D2D" }} className="transition-colors text-outline-black cursor-pointer block">Home</motion.span>
           </Link>
@@ -74,7 +62,7 @@ export default function Header() {
             <motion.button 
               whileHover={{ scale: 1.05, rotate: 2 }}
               whileTap={{ scale: 0.9, y: 4, boxShadow: "0px 0px 0px 0px rgba(0,0,0,1)" }}
-              className="px-6 py-2.5 bg-comic-red text-white font-bebas text-2xl tracking-wider uppercase rounded-md border-4 border-white shadow-comic transition-all flex items-center justify-center"
+              className="px-6 py-2 pt-2.5 bg-comic-red text-white font-bebas text-2xl tracking-wider uppercase rounded-md border-4 border-white shadow-comic transition-all flex items-center justify-center"
             >
               Book Now
             </motion.button>
