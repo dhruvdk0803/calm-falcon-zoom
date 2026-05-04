@@ -2,12 +2,38 @@
 
 import { useState } from 'react';
 import { savePost } from '../../actions';
+import { toast } from 'sonner';
+import { useRouter } from 'next/navigation';
+import { Save, Loader2 } from 'lucide-react';
 
 export default function PostEditor({ post }: { post?: any }) {
   const [activeTab, setActiveTab] = useState('content');
+  const [isPending, setIsPending] = useState(false);
+  const router = useRouter();
+
+  async function handleSubmit(formData: FormData) {
+    setIsPending(true);
+    
+    // Handle checkbox value correctly for FormData
+    if (!formData.get('published')) {
+      formData.set('published', 'false');
+    }
+
+    const result = await savePost(formData);
+    
+    setIsPending(false);
+
+    if (result.success) {
+      toast.success(post ? 'Post updated successfully!' : 'Post created successfully!');
+      router.push('/admin/posts');
+      router.refresh();
+    } else {
+      toast.error(result.error || 'Failed to save post');
+    }
+  }
 
   return (
-    <form action={savePost} className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+    <form action={handleSubmit} className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
       {post && <input type="hidden" name="id" value={post.id} />}
       
       {/* Tabs */}
@@ -176,9 +202,11 @@ export default function PostEditor({ post }: { post?: any }) {
         </div>
         <button 
           type="submit" 
-          className="bg-black text-white px-8 py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors shadow-sm"
+          disabled={isPending}
+          className="bg-black text-white px-8 py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors shadow-sm flex items-center gap-2 disabled:opacity-70"
         >
-          Save Post
+          {isPending ? <Loader2 className="animate-spin" size={18} /> : <Save size={18} />}
+          {isPending ? 'Saving...' : 'Save Post'}
         </button>
       </div>
     </form>

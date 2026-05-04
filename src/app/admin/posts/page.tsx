@@ -1,7 +1,7 @@
 import { sql } from '@/db';
 import Link from 'next/link';
-import { Plus, Edit, Trash2 } from 'lucide-react';
-import { deletePost } from '../actions';
+import { Plus, Edit } from 'lucide-react';
+import DeletePostButton from './_components/DeletePostButton';
 
 export const dynamic = 'force-dynamic';
 
@@ -44,17 +44,10 @@ export default async function PostsPage() {
                 </td>
                 <td className="p-4 text-right">
                   <div className="flex items-center justify-end gap-3">
-                    <Link href={`/admin/posts/${post.id}/edit`} className="text-blue-600 hover:text-blue-800 p-2 hover:bg-blue-50 rounded-md transition-colors">
+                    <Link href={`/admin/posts/${post.id}/edit`} className="text-blue-600 hover:text-blue-800 p-2 hover:bg-blue-50 rounded-md transition-colors" title="Edit Post">
                       <Edit size={18} />
                     </Link>
-                    <form action={async () => {
-                      'use server';
-                      await deletePost(post.id);
-                    }}>
-                      <button type="submit" className="text-red-600 hover:text-red-800 p-2 hover:bg-red-50 rounded-md transition-colors">
-                        <Trash2 size={18} />
-                      </button>
-                    </form>
+                    <DeletePostButton id={post.id} />
                   </div>
                 </td>
               </tr>

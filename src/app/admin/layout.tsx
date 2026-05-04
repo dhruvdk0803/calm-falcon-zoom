@@ -1,8 +1,8 @@
 import { auth } from '@/lib/auth/server';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
-import { LayoutDashboard, FileText, Settings, LogOut, Home } from 'lucide-react';
-import { authClient } from '@/lib/auth/client';
+import { LayoutDashboard, FileText, LogOut, Home } from 'lucide-react';
+import { Toaster } from 'sonner';
 
 export const dynamic = 'force-dynamic';
 
@@ -15,6 +15,8 @@ export default async function AdminLayout({ children }: { children: React.ReactN
 
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col md:flex-row font-sans text-gray-900">
+      <Toaster richColors position="top-right" />
+      
       {/* Sidebar */}
       <aside className="w-full md:w-64 bg-white border-r border-gray-200 flex flex-col">
         <div className="p-6 border-b border-gray-200">
