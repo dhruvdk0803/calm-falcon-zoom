@@ -1,17 +1,35 @@
 import { sql } from '@/db';
 import { notFound } from 'next/navigation';
-import FloatingComics from '@/components/FloatingComics';
+import { Calendar, Phone, BookOpen } from 'lucide-react';
 import Link from 'next/link';
-import { Calendar, Phone } from 'lucide-react';
+import FloatingComics from '@/components/FloatingComics';
 
 export const dynamic = 'force-dynamic';
 
-export default async function DynamicPostPage({ params }: { params: Promise<{ slug: string }> }) {
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
+  const posts = await sql`SELECT meta_title, meta_description, keywords, canonical_url, og_image, title, excerpt FROM posts WHERE slug = ${slug} AND published = true`;
   
-  // Fetch the post from the database
-  const posts = await sql`SELECT * FROM posts WHERE slug = ${slug} AND published = true LIMIT 1`;
+  if (!posts.length) return {};
   
+  const post = posts[0];
+  return {
+    title: post.meta_title || `${post.title} | Super Smash KC`,
+    description: post.meta_description || post.excerpt,
+    keywords: post.keywords,
+    alternates: {
+      canonical: post.canonical_url,
+    },
+    openGraph: {
+      images: post.og_image ? [post.og_image] : [],
+    }
+  };
+}
+
+export default async function DynamicBlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const posts = await sql`SELECT * FROM posts WHERE slug = ${slug} AND published = true`;
+
   if (posts.length === 0) {
     notFound();
   }
@@ -51,7 +69,6 @@ export default async function DynamicPostPage({ params }: { params: Promise<{ sl
           )}
 
           <div className="bg-white border-8 border-black shadow-comic-lg rounded-2xl p-8 md:p-12 text-black rotate-[1deg] mb-16">
-            {/* Render content (simple split by newlines for basic markdown support) */}
             <div className="space-y-6 text-xl font-bold text-gray-800 leading-relaxed uppercase">
               {post.content.split('\n').map((paragraph: string, i: number) => (
                 paragraph.trim() ? <p key={i}>{paragraph}</p> : <br key={i} />
