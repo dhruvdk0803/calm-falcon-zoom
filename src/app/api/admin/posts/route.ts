@@ -1,18 +1,16 @@
-import { neon } from '@neondatabase/serverless';
-import { auth } from '@/lib/auth/server';
 import { NextResponse } from 'next/server';
 
 export const dynamic = "force-dynamic";
-export const revalidate = 0;
 
 export async function POST(req: Request) {
   try {
+    // lazy import inside function to prevent top-level execution during build
+    const { neon } = await import('@neondatabase/serverless');
+    const { auth } = await import('@/lib/auth/server');
+
     // Safe env checks inside handler
     if (!process.env.DATABASE_URL) {
-      return NextResponse.json(
-        { error: "DATABASE_URL environment variable is missing." },
-        { status: 500 }
-      );
+      return NextResponse.json({ error: "DATABASE_URL missing" }, { status: 500 });
     }
 
     // Initialize database connection INSIDE the handler only
@@ -21,10 +19,7 @@ export async function POST(req: Request) {
     // Check authentication
     const { data: session } = await auth.getSession();
     if (!session?.user) {
-      return NextResponse.json(
-        { error: "Unauthorized" },
-        { status: 401 }
-      );
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const body = await req.json();
@@ -44,10 +39,8 @@ export async function POST(req: Request) {
     `;
     
     return NextResponse.json(result[0], { status: 201 });
-  } catch (error: any) {
-    return NextResponse.json(
-      { error: error.message || "Internal Server Error" },
-      { status: 500 }
-    );
+  } catch (err: any) {
+    console.error(err);
+    return NextResponse.json({ error: "Server error" }, { status: 500 });
   }
 }
