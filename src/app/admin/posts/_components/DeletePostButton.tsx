@@ -4,11 +4,9 @@ import { useState } from 'react';
 import { Trash2, Loader2 } from 'lucide-react';
 import { deletePost } from '../../actions';
 import { toast } from 'sonner';
-import { useRouter } from 'next/navigation';
 
 export default function DeletePostButton({ id }: { id: string }) {
   const [isDeleting, setIsDeleting] = useState(false);
-  const router = useRouter();
 
   const handleDelete = async () => {
     if (!window.confirm('Are you sure you want to delete this post? This action cannot be undone.')) {
@@ -21,7 +19,6 @@ export default function DeletePostButton({ id }: { id: string }) {
 
     if (result.success) {
       toast.success('Post deleted successfully');
-      router.refresh();
     } else {
       toast.error(result.error || 'Failed to delete post');
     }
