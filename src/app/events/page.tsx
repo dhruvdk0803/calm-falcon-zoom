@@ -9,14 +9,31 @@ export const dynamic = 'force-dynamic';
 export default async function EventsPage() {
   // Fetch published posts from the database
   const dbPosts = await sql`
-    SELECT id, title, slug, excerpt, cover_image, created_at 
+    SELECT id, title, slug, excerpt, created_at 
     FROM posts 
     WHERE published = true 
     ORDER BY created_at DESC
   `;
 
-  // Hardcoded events (keeping your existing ones)
-  const hardcodedEvents = [
+  // Map DB posts to the format expected by the UI
+  const dynamicEvents = dbPosts.map((post, index) => {
+    // Alternate colors and rotations for the comic theme
+    const colors = ["bg-comic-red", "bg-comic-blue", "bg-comic-green", "bg-comic-yellow"];
+    const rotations = ["rotate-1", "-rotate-1", "rotate-2", "-rotate-2"];
+    
+    return {
+      title: post.title,
+      slug: post.slug,
+      excerpt: post.excerpt || "Read more about this exciting update from Super Smash KC!",
+      tag: "Blog",
+      icon: BookOpen,
+      color: colors[index % colors.length],
+      rotate: rotations[index % rotations.length]
+    };
+  });
+
+  // Combine static events with dynamic ones
+  const staticEvents = [
     {
       title: "Heartbreak & Hammers",
       slug: "heartbreak-and-hammers",
@@ -46,19 +63,11 @@ export default async function EventsPage() {
     }
   ];
 
-  // Map DB posts to match the UI format
-  const dynamicEvents = dbPosts.map((post, index) => ({
-    title: post.title,
-    slug: post.slug,
-    excerpt: post.excerpt || "Read more about this topic...",
-    tag: "Blog",
-    icon: BookOpen,
-    color: index % 2 === 0 ? "bg-comic-yellow" : "bg-comic-green",
-    rotate: index % 2 === 0 ? "rotate-2" : "-rotate-2",
-    isDynamic: true
-  }));
+  // Filter out static events if they have the same slug as a DB event to prevent duplicates
+  const dbSlugs = new Set(dynamicEvents.map(e => e.slug));
+  const filteredStaticEvents = staticEvents.filter(e => !dbSlugs.has(e.slug));
 
-  const allEvents = [...hardcodedEvents, ...dynamicEvents];
+  const allEvents = [...filteredStaticEvents, ...dynamicEvents];
 
   return (
     <div className="bg-comic-dark min-h-screen text-white font-sans selection:bg-comic-yellow selection:text-black overflow-hidden pt-24">
@@ -95,14 +104,14 @@ export default async function EventsPage() {
               return (
                 <div 
                   key={i}
-                  className={`relative bg-white border-8 border-black shadow-comic-lg rounded-2xl flex flex-col h-full ${event.rotate} hover:scale-105 hover:-translate-y-2 transition-transform duration-300`}
+                  className={`relative bg-white border-8 border-black shadow-comic-lg rounded-2xl flex flex-col h-full ${event.rotate} hover:scale-[1.02] hover:-translate-y-1 transition-transform duration-300`}
                 >
                   <div className="absolute -top-5 -right-5 bg-comic-yellow text-black font-bebas text-xl px-4 py-1 border-4 border-black shadow-comic rotate-12 z-20 flex items-center gap-2">
                     <Icon className="w-4 h-4 fill-black" /> {event.tag}
                   </div>
                   
                   <div className={`${event.color} p-8 border-b-8 border-black rounded-t-lg flex items-center justify-center min-h-[160px]`}>
-                    <h3 className={`text-4xl md:text-5xl font-bebas uppercase tracking-wide text-center leading-none ${event.color === 'bg-comic-yellow' ? 'text-black text-outline-white' : 'text-white text-outline-black'}`}>
+                    <h3 className="text-4xl md:text-5xl font-bebas uppercase tracking-wide text-white text-outline-black text-center leading-none">
                       {event.title}
                     </h3>
                   </div>
@@ -124,6 +133,7 @@ export default async function EventsPage() {
           </div>
         </div>
       </section>
+
     </div>
   );
 }

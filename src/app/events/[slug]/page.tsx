@@ -59,38 +59,53 @@ export default async function DynamicBlogPostPage({ params }: { params: Promise<
         <div className="container mx-auto px-6 max-w-4xl">
           
           {post.cover_image && (
-            <div className="mb-12 rotate-[-1deg]">
+            <div className="mb-16 relative flex justify-center">
               <img 
                 src={post.cover_image} 
                 alt={post.title} 
-                className="w-full h-auto object-cover rounded-2xl border-8 border-black shadow-comic-lg"
+                className="w-full h-auto max-h-[500px] object-cover rounded-2xl border-8 border-black shadow-comic-lg rotate-[-1deg]"
               />
             </div>
           )}
 
           <div className="bg-white border-8 border-black shadow-comic-lg rounded-2xl p-8 md:p-12 text-black rotate-[1deg] mb-16">
-            <div className="space-y-6 text-xl font-bold text-gray-800 leading-relaxed uppercase">
-              {post.content.split('\n').map((paragraph: string, i: number) => (
-                paragraph.trim() ? <p key={i}>{paragraph}</p> : <br key={i} />
-              ))}
-            </div>
+            {/* Render HTML content safely. In a real app, you might want to use a markdown parser or DOM sanitizer here */}
+            <div 
+              className="prose prose-lg max-w-none prose-headings:font-bebas prose-headings:uppercase prose-headings:tracking-wide prose-headings:text-comic-red prose-p:font-bold prose-p:uppercase prose-p:leading-relaxed prose-a:text-comic-blue prose-a:underline hover:prose-a:text-comic-red"
+              dangerouslySetInnerHTML={{ __html: post.content.replace(/\n/g, '<br/>') }}
+            />
           </div>
 
           {/* CTA */}
           <div className="bg-comic-red border-8 border-black shadow-comic-lg rounded-2xl p-8 md:p-12 text-center text-white rotate-[-1deg] max-w-4xl mx-auto relative overflow-hidden">
+            <img src="/media/comic-boom.png" alt="Boom" className="absolute top-4 left-4 w-32 opacity-50 -rotate-12 pointer-events-none" />
+            <img src="/media/comic-pow.png" alt="Pow" className="absolute bottom-4 right-4 w-32 opacity-50 rotate-12 pointer-events-none" />
+            
             <div className="relative z-10">
               <h2 className="text-5xl md:text-6xl font-bebas uppercase text-white text-outline-black mb-6 tracking-wide">
                 Are You Ready to Visit the Best Destroy Room in Kansas City?
               </h2>
+              <div className="bg-white text-black p-6 border-4 border-black shadow-comic-sm rounded-xl mb-8 rotate-[1deg]">
+                <p className="text-xl font-bold leading-relaxed uppercase mb-4">
+                  Super Smash KC is a top rage room in Kansas City that offers several packages to help you have a smashing good time.
+                </p>
+                <p className="text-xl font-bebas text-comic-blue tracking-widest uppercase">
+                  Unleash your rage, in a safe way, at Super Smash KC!
+                </p>
+              </div>
               
-              <div className="flex flex-col sm:flex-row justify-center gap-6 mt-8">
+              <h3 className="text-3xl font-bebas uppercase text-comic-yellow text-outline-black mb-8 tracking-wide">
+                Contact KANSAS CITY'S PREMIER RAGE ROOM!
+              </h3>
+              
+              <div className="flex flex-col sm:flex-row justify-center gap-6">
                 <Link href="/packages">
-                  <button className="px-8 py-5 bg-comic-yellow text-black font-bebas text-3xl tracking-wider uppercase rounded-xl border-4 border-black shadow-comic flex items-center justify-center gap-3 w-full hover:scale-105 transition-transform">
+                  <button className="px-8 py-5 bg-comic-yellow text-black font-bebas text-3xl tracking-wider uppercase rounded-xl border-4 border-black shadow-comic flex items-center justify-center gap-3 w-full hover:scale-105 hover:-rotate-2 transition-transform">
                     <Calendar className="w-8 h-8" strokeWidth={3} /> Book Online Here
                   </button>
                 </Link>
                 <a href="tel:9134999330">
-                  <button className="px-8 py-5 bg-comic-blue text-white font-bebas text-3xl tracking-wider uppercase rounded-xl border-4 border-black shadow-comic flex items-center justify-center gap-3 w-full hover:scale-105 transition-transform">
+                  <button className="px-8 py-5 bg-comic-blue text-white font-bebas text-3xl tracking-wider uppercase rounded-xl border-4 border-black shadow-comic flex items-center justify-center gap-3 w-full hover:scale-105 hover:rotate-2 transition-transform">
                     <Phone className="w-8 h-8" strokeWidth={3} /> Call 913-499-9330
                   </button>
                 </a>
@@ -100,6 +115,7 @@ export default async function DynamicBlogPostPage({ params }: { params: Promise<
 
         </div>
       </section>
+
     </div>
   );
 }

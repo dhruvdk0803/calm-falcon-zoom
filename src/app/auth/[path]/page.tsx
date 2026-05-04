@@ -1,6 +1,5 @@
 import { AuthView } from '@neondatabase/auth/react';
 import FloatingComics from '@/components/FloatingComics';
-import './auth.css';
 
 export const dynamicParams = false;
 
@@ -12,15 +11,19 @@ export default async function AuthPage({
   const { path } = await params;
 
   return (
-    <div className="min-h-screen bg-comic-blue bg-halftone-black flex items-center justify-center p-6 relative overflow-hidden pt-24">
+    <div className="min-h-screen bg-comic-dark bg-halftone-white flex items-center justify-center p-6 pt-24 relative overflow-hidden">
       <FloatingComics />
-      <div className="relative z-10 w-full max-w-md">
+      <div className="relative z-10 w-full max-w-md bg-white border-8 border-black shadow-comic-lg rounded-2xl p-8 rotate-[-1deg]">
         <div className="text-center mb-8">
-          <h1 className="text-6xl font-bebas uppercase text-white text-outline-black rotate-[-2deg]">
-            Admin <span className="text-comic-yellow">Access</span>
+          <h1 className="text-5xl font-bebas uppercase text-comic-red tracking-wide text-outline-black">
+            Admin Access
           </h1>
+          <p className="text-black font-bold uppercase mt-2">Authorized Personnel Only</p>
         </div>
-        <div className="neon-auth-container">
+        
+        {/* We wrap AuthView to apply some global CSS overrides for the auth form if needed, 
+            but Neon Auth UI is highly customizable via CSS variables. */}
+        <div className="auth-container">
           <AuthView path={path} />
         </div>
       </div>
