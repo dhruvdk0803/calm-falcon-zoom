@@ -1,4 +1,4 @@
-import { auth } from '@/lib/auth/server';
+import { getAuth } from '@/lib/auth/server';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import { LayoutDashboard, FileText, LogOut, Home } from 'lucide-react';
@@ -7,6 +7,7 @@ import { Toaster } from 'sonner';
 export const dynamic = 'force-dynamic';
 
 export default async function AdminLayout({ children }: { children: React.ReactNode }) {
+  const auth = await getAuth();
   const { data: session } = await auth.getSession();
 
   if (!session?.user) {

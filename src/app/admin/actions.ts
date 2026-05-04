@@ -1,7 +1,7 @@
 'use server';
 
 import { getDb } from '@/db';
-import { auth } from '@/lib/auth/server';
+import { getAuth } from '@/lib/auth/server';
 import { revalidatePath } from 'next/cache';
 
 function generateSlug(title: string) {
@@ -19,6 +19,7 @@ function calculateReadingTime(content: string) {
 
 export async function savePost(formData: FormData) {
   try {
+    const auth = await getAuth();
     const { data: session } = await auth.getSession();
     if (!session?.user) throw new Error('Unauthorized');
 
@@ -77,6 +78,7 @@ export async function savePost(formData: FormData) {
 
 export async function deletePost(id: string) {
   try {
+    const auth = await getAuth();
     const { data: session } = await auth.getSession();
     if (!session?.user) throw new Error('Unauthorized');
 

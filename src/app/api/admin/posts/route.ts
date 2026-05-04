@@ -6,7 +6,7 @@ export async function POST(req: Request) {
   try {
     // lazy import inside function to prevent top-level execution during build
     const { neon } = await import('@neondatabase/serverless');
-    const { auth } = await import('@/lib/auth/server');
+    const { getAuth } = await import('@/lib/auth/server');
 
     // Safe env checks inside handler
     if (!process.env.DATABASE_URL) {
@@ -17,6 +17,7 @@ export async function POST(req: Request) {
     const sql = neon(process.env.DATABASE_URL);
 
     // Check authentication
+    const auth = await getAuth();
     const { data: session } = await auth.getSession();
     if (!session?.user) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
@@ -41,6 +42,6 @@ export async function POST(req: Request) {
     return NextResponse.json(result[0], { status: 201 });
   } catch (err: any) {
     console.error(err);
-    return NextResponse.json({ error: "Server error" }, { status: 500 });
+    return NextResponse.json({ error: err.message || "Server error" }, { status: 500 });
   }
 }
