@@ -1,4 +1,4 @@
-import { sql } from '@/db';
+import { getDb } from '@/db';
 import Link from 'next/link';
 import { Plus, Edit } from 'lucide-react';
 import DeletePostButton from './_components/DeletePostButton';
@@ -6,6 +6,7 @@ import DeletePostButton from './_components/DeletePostButton';
 export const dynamic = 'force-dynamic';
 
 export default async function PostsPage() {
+  const sql = await getDb();
   const posts = await sql`SELECT id, title, slug, published, created_at FROM posts ORDER BY created_at DESC`;
 
   return (

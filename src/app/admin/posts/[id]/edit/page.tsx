@@ -1,4 +1,4 @@
-import { sql } from '@/db';
+import { getDb } from '@/db';
 import PostEditor from '../../_components/PostEditor';
 import { notFound } from 'next/navigation';
 
@@ -6,6 +6,7 @@ export const dynamic = 'force-dynamic';
 
 export default async function EditPostPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
+  const sql = await getDb();
   const posts = await sql`SELECT * FROM posts WHERE id = ${id}`;
   
   if (posts.length === 0) notFound();

@@ -1,6 +1,6 @@
 'use server';
 
-import { sql } from '@/db';
+import { getDb } from '@/db';
 import { auth } from '@/lib/auth/server';
 import { revalidatePath } from 'next/cache';
 
@@ -21,6 +21,8 @@ export async function savePost(formData: FormData) {
   try {
     const { data: session } = await auth.getSession();
     if (!session?.user) throw new Error('Unauthorized');
+
+    const sql = await getDb();
 
     const id = formData.get('id') as string;
     const title = formData.get('title') as string;
@@ -78,6 +80,7 @@ export async function deletePost(id: string) {
     const { data: session } = await auth.getSession();
     if (!session?.user) throw new Error('Unauthorized');
 
+    const sql = await getDb();
     await sql`DELETE FROM posts WHERE id = ${id}`;
     
     revalidatePath('/admin/posts');

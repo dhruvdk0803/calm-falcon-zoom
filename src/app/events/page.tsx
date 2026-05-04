@@ -2,11 +2,12 @@ import React from "react";
 import { Calendar, ArrowRight, Flame, BookOpen, Zap } from "lucide-react";
 import Link from "next/link";
 import FloatingComics from "@/components/FloatingComics";
-import { sql } from "@/db";
+import { getDb } from "@/db";
 
 export const dynamic = 'force-dynamic';
 
 export default async function EventsPage() {
+  const sql = await getDb();
   // Fetch published posts from the database
   const dbPosts = await sql`
     SELECT id, title, slug, excerpt, created_at 

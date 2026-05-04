@@ -1,10 +1,11 @@
-import { sql } from '@/db';
+import { getDb } from '@/db';
 import { FileText, CheckCircle, Clock } from 'lucide-react';
 import Link from 'next/link';
 
 export const dynamic = 'force-dynamic';
 
 export default async function AdminDashboard() {
+  const sql = await getDb();
   const posts = await sql`SELECT id, title, published, created_at FROM posts ORDER BY created_at DESC LIMIT 5`;
   const stats = await sql`
     SELECT 

@@ -1,4 +1,4 @@
-import { sql } from '@/db';
+import { getDb } from '@/db';
 import { notFound } from 'next/navigation';
 import { Calendar, Phone, BookOpen } from 'lucide-react';
 import Link from 'next/link';
@@ -8,6 +8,7 @@ export const dynamic = 'force-dynamic';
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
+  const sql = await getDb();
   const posts = await sql`SELECT meta_title, meta_description, keywords, canonical_url, og_image, title, excerpt FROM posts WHERE slug = ${slug} AND published = true`;
   
   if (!posts.length) return {};
@@ -28,6 +29,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function DynamicBlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
+  const sql = await getDb();
   const posts = await sql`SELECT * FROM posts WHERE slug = ${slug} AND published = true`;
 
   if (posts.length === 0) {
