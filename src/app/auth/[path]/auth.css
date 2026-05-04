@@ -1,0 +1,15 @@
+.neon-auth-container {
+  @apply bg-white border-8 border-black shadow-comic-lg rounded-2xl p-8 max-w-md w-full mx-auto rotate-[-1deg];
+}
+
+.neon-auth-container input {
+  @apply bg-gray-100 border-4 border-black shadow-comic-sm rounded-lg p-3 text-black font-bold uppercase focus:outline-none focus:ring-4 focus:ring-comic-yellow transition-all;
+}
+
+.neon-auth-container button[type="submit"] {
+  @apply bg-comic-red text-white font-bebas text-2xl tracking-wider uppercase rounded-xl border-4 border-black shadow-comic hover:translate-y-1 hover:shadow-comic-sm transition-all active:translate-y-2 active:shadow-none w-full py-3 mt-4;
+}
+
+.neon-auth-container label {
+  @apply font-bebas text-xl text-black uppercase tracking-wide;
+}
