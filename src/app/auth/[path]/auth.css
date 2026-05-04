@@ -13,3 +13,10 @@
 .neon-auth-container label {
   @apply font-bebas text-xl text-black uppercase tracking-wide;
 }
+
+/* Hide the Sign Up tab and any links to sign up */
+.neon-auth-container [role="tablist"],
+.neon-auth-container a[href*="sign-up"],
+.neon-auth-container button[value="sign-up"] {
+  display: none !important;
+}
