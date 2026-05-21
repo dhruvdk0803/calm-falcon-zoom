@@ -1,5 +1,16 @@
-import { Flame, Instagram, Facebook, Twitter } from "lucide-react";
+import { Flame, Instagram, Facebook } from "lucide-react";
 import Link from "next/link";
+
+const TikTokIcon = ({ className }: { className?: string }) => (
+  <svg
+    className={className}
+    viewBox="0 0 448 512"
+    fill="currentColor"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M448 209.91a210.06 210.06 0 0 1-122.77-39.25V349.38A162.55 162.55 0 1 1 185 188.31V278.2a74.62 74.62 0 1 0 52.23 71.18V0l88 0a121.18 121.18 0 0 0 1.86 22.17h0A122.18 122.18 0 0 0 381 102.39a121.43 121.43 0 0 0 67 20.14Z" />
+  </svg>
+);
 
 export default function Footer() {
   return (
@@ -41,8 +52,8 @@ export default function Footer() {
               <a href="https://www.facebook.com/people/Super-Smash-Events-KC/61582955951009/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-comic-yellow border-4 border-black shadow-comic-sm flex items-center justify-center text-black hover:-translate-y-1 hover:shadow-comic transition-all">
                 <Facebook className="w-6 h-6" />
               </a>
-              <a href="#" className="w-12 h-12 rounded-full bg-comic-green border-4 border-black shadow-comic-sm flex items-center justify-center text-white hover:-translate-y-1 hover:shadow-comic transition-all">
-                <Twitter className="w-6 h-6" />
+              <a href="https://www.tiktok.com/@supersmashkc" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-comic-green border-4 border-black shadow-comic-sm flex items-center justify-center text-white hover:-translate-y-1 hover:shadow-comic transition-all">
+                <TikTokIcon className="w-5 h-5" />
               </a>
             </div>
           </div>
