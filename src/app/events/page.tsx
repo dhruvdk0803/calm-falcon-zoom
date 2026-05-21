@@ -1,5 +1,5 @@
 import React from "react";
-import { Calendar, ArrowRight, Flame, BookOpen, Zap } from "lucide-react";
+import { Calendar, ArrowRight, Flame, BookOpen, Zap, Target } from "lucide-react";
 import Link from "next/link";
 import FloatingComics from "@/components/FloatingComics";
 import { getDb } from "@/db";
@@ -36,6 +36,15 @@ export default async function EventsPage() {
   // Combine static events with dynamic ones
   const staticEvents = [
     {
+      title: "Summer of Soccer",
+      slug: "summer-of-soccer",
+      excerpt: "Kick off the summer with our soccer-themed smash sessions! Celebrate the season with high energy and flying kicks.",
+      tag: "Themed Smash",
+      icon: Target,
+      color: "bg-comic-green",
+      rotate: "rotate-2"
+    },
+    {
       title: "Heartbreak & Hammers",
       slug: "heartbreak-and-hammers",
       excerpt: "Whether you’re smashing away a breakup, letting go of stress, or just in it for the vibes—this Valentine’s Day, we’re turning heartbreak into power.",
@@ -45,7 +54,7 @@ export default async function EventsPage() {
       rotate: "rotate-1"
     },
     {
-      title: "What Exactly is a Destroy Room?",
+      title: "Destroy Room? That's an ICK",
       slug: "what-is-a-destroy-room",
       excerpt: "A destroy room in Kansas City is a designated space where people can release pent-up anger and frustration by destroying objects in a controlled environment.",
       tag: "Blog",
@@ -59,7 +68,7 @@ export default async function EventsPage() {
       excerpt: "Breaking things can be a surprisingly therapeutic experience. For many of us, there is a sense of release and catharsis when we intentionally or unintentionally break something.",
       tag: "Blog",
       icon: Zap,
-      color: "bg-comic-green",
+      color: "bg-comic-yellow",
       rotate: "rotate-2"
     }
   ];
@@ -84,7 +93,7 @@ export default async function EventsPage() {
               </div>
             </div>
             <h1 className="text-6xl sm:text-7xl md:text-8xl font-bebas uppercase leading-[0.9] mb-8 text-white text-outline-black">
-              Events & <span className="text-comic-yellow block">News</span>
+              Themed Smashes, <span className="text-comic-yellow block">Events & News</span>
             </h1>
             
             <div className="bg-white p-6 md:p-8 border-8 border-black shadow-comic-lg rotate-[-1deg] inline-block text-center max-w-3xl">

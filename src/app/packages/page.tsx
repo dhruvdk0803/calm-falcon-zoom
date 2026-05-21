@@ -28,7 +28,7 @@ export default function PackagesPage() {
       capacity: "Up to 6 People",
       desc: "Built for quick, high-impact sessions. Ideal for first-time visitors or anyone looking for a fast way to release tension without committing to a longer experience. In a short amount of time, you move from built-up stress to immediate physical release. It is direct, efficient, and surprisingly effective.",
       included: [
-        "15 breakable items",
+        "12-15 breakable items",
         "Full protective safety gear",
         "Access to smash tools including bats, hammers, and crowbars"
       ],
@@ -45,8 +45,8 @@ export default function PackagesPage() {
       capacity: "Up to 6 People",
       desc: "Offers a more complete experience. With additional time and larger items, the session becomes more immersive and physically engaging. This is where the experience shifts from simple activity to a deeper level of release. The added time allows you to fully engage without rushing, making the impact more noticeable.",
       included: [
-        "25 breakable items",
-        "1 medium item such as electronics or equipment",
+        "22-25 breakable items",
+        "Medium-Large items based on inventory",
         "Full protective gear and tools",
         "Extended session time for a more complete experience"
       ],
@@ -59,7 +59,7 @@ export default function PackagesPage() {
       title: "MULTIPLAYER SMASH",
       price: "$150",
       unit: "per group",
-      duration: "15–20 Minutes",
+      duration: "15 Minutes",
       capacity: "Up to 6 People",
       desc: "Designed for shared experiences. Whether it is friends, coworkers, or small groups, this package brings energy into the room and turns the session into something social. The dynamic changes when multiple people are involved. The experience becomes faster, louder, and more engaging.",
       included: [
@@ -98,7 +98,7 @@ export default function PackagesPage() {
       capacity: "Up to 6 People",
       desc: "A lower-cost option for those looking for a quick midweek reset. The experience remains the same, but the format is shorter and more accessible. Suited for spontaneous visits, solo sessions, or anyone looking to release stress without planning a full experience.",
       included: [
-        "15 breakable items",
+        "12-15 breakable items",
         "Full protective gear",
         "Controlled smash environment"
       ],

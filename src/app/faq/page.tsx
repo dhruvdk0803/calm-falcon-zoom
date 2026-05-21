@@ -26,11 +26,11 @@ export default function FAQPage() {
     },
     {
       q: "Do I need to bring my own protective gear?",
-      a: "You are more than welcome to bring your own protective gear, however, we offer aprons, gloves, head, and face gear. If you are bringing a child bring a helmet for them as the ones we have at the moment may be too large. All you need to bring is closed toed shoes (No Crocs), long sleeves, and a camera for photos! Protective gear is required to participate."
+      a: "You are more than welcome to bring your own protective gear, however, we offer aprons, gloves, head, and face gear. For children or participants with smaller heads, consider bringing a stocking cap or other item to fill space in the helmet. All you need to bring is closed toed shoes (No Crocs), long sleeves, and a camera for photos! We also strongly suggest wearing long pants. Protective gear is required to participate."
     },
     {
       q: "Can I bring my own items to break?",
-      a: "Yes! You can bring as many of your own items to break as long as you stay within your designated time period. We hold the right to refuse any items that may pose a risk to the participant."
+      a: "Yes! You can bring as many of your own items to break as long as you stay within your designated time period. We hold the right to refuse any items that may pose a risk to the participant (including toxic items, liquids, and pressurized containers)."
     },
     {
       q: "Can children participate?",

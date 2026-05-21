@@ -33,7 +33,7 @@ export default function WhatIsADestroyRoomPage() {
               Blog Post
             </motion.div>
             <motion.h1 variants={comicPop} className="text-5xl sm:text-6xl md:text-8xl font-bebas uppercase leading-[0.9] mb-8 text-white text-outline-black">
-              So, What Exactly is a <span className="text-comic-yellow block">Destroy Room in Kansas City?</span> We Explain
+              Destroy Room? <span className="text-comic-yellow block">That's an ICK</span>
             </motion.h1>
           </motion.div>
         </div>

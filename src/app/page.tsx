@@ -78,7 +78,7 @@ export default function Home() {
       duration: "10 Minutes",
       capacity: "Up to 6 People",
       desc: "Built for quick, high-impact sessions. Ideal for first-time visitors or anyone looking for a fast way to release tension.",
-      included: ["15 breakable items", "Full protective safety gear", "Access to smash tools"],
+      included: ["12-15 breakable items", "Full protective safety gear", "Access to smash tools"],
       cta: "Book Starter Smash",
       color: "bg-comic-blue",
       rotate: "-rotate-1"
@@ -91,7 +91,7 @@ export default function Home() {
       duration: "20 Minutes",
       capacity: "Up to 6 People",
       desc: "Offers a more complete experience. With additional time and larger items, the session becomes more immersive.",
-      included: ["25 breakable items", "1 medium item (electronics)", "Extended session time"],
+      included: ["22-25 breakable items", "Medium-Large items based on inventory", "Extended session time"],
       cta: "Book Super Smash",
       color: "bg-comic-red",
       rotate: "rotate-1",
@@ -101,7 +101,7 @@ export default function Home() {
       title: "MULTIPLAYER SMASH",
       price: "$150",
       unit: "per group",
-      duration: "15–20 Minutes",
+      duration: "15 Minutes",
       capacity: "Up to 6 People",
       desc: "Designed for shared experiences. Brings energy into the room and turns the session into something social.",
       included: ["Group crate of breakable items", "Shared smash environment", "Safety gear for all"],
@@ -128,7 +128,7 @@ export default function Home() {
       duration: "10 Minutes",
       capacity: "Up to 6 People",
       desc: "A lower-cost option for those looking for a quick midweek reset. Shorter and more accessible.",
-      included: ["15 breakable items", "Full protective gear", "Controlled smash environment"],
+      included: ["12-15 breakable items", "Full protective gear", "Controlled smash environment"],
       cta: "Book Therapy Session",
       color: "bg-black",
       textColor: "text-white",
@@ -428,12 +428,14 @@ export default function Home() {
             </motion.h2>
           </motion.div>
 
-          <div className="space-y-12">
+          <div className="space-y-8 md:space-y-12">
             {[
-              { step: "01", title: "Gear Up", text: "Get equipped with premium protective gear.", color: "bg-comic-yellow" },
-              { step: "02", title: "Choose Weapons", text: "Pick your tools of destruction.", color: "bg-comic-blue" },
-              { step: "03", title: "Enter Room", text: "Step into your private smash space.", color: "bg-comic-green" },
-              { step: "04", title: "Smash", text: "Stop thinking and just act. Release it all.", color: "bg-comic-red" }
+              { step: "01", title: "Sign Waiver", text: "Complete your safety waiver before the action begins.", color: "bg-comic-yellow" },
+              { step: "02", title: "Choose Music", text: "Pick the perfect playlist to set the vibe for your session.", color: "bg-comic-blue" },
+              { step: "03", title: "Gear Up", text: "Get equipped with premium protective gear.", color: "bg-comic-green" },
+              { step: "04", title: "Enter Room & Hear Rules", text: "Step into your private space and get a quick safety rundown.", color: "bg-comic-red" },
+              { step: "05", title: "Choose Weapons", text: "Pick your tools of destruction.", color: "bg-comic-yellow" },
+              { step: "06", title: "BREAK STUFF", text: "Stop thinking and just act. Release it all.", color: "bg-comic-blue" }
             ].map((item, i) => (
               <motion.div 
                 key={i}

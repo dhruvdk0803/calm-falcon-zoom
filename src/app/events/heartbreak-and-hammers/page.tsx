@@ -146,6 +146,27 @@ export default function HeartbreakAndHammersPage() {
             </p>
           </motion.div>
 
+          {/* Setup Pictures */}
+          <motion.div 
+            initial={{ opacity: 0, y: 40 }} 
+            whileInView={{ opacity: 1, y: 0 }} 
+            viewport={{ once: true }}
+            transition={comicSpring}
+            className="mb-16"
+          >
+            <div className="text-center mb-10">
+              <h2 className="text-5xl font-bebas uppercase text-white text-outline-black">Event Setup <span className="text-comic-red">&</span> Vibes</h2>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="bg-white p-4 border-8 border-black shadow-comic-lg rounded-2xl rotate-[-2deg]">
+                <img src="/media/party.jpg" alt="Party Setup" className="w-full h-72 object-cover rounded-xl border-4 border-black" />
+              </div>
+              <div className="bg-comic-yellow p-4 border-8 border-black shadow-comic-lg rounded-2xl rotate-[2deg]">
+                <img src="/media/couple.jpg" alt="Couple Ready to Smash" className="w-full h-72 object-cover rounded-xl border-4 border-black" />
+              </div>
+            </div>
+          </motion.div>
+
           {/* Why This Event Stands Out & Group/Kid Images */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
             <motion.div 
