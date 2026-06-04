@@ -1,35 +1,8 @@
 "use client";
 
-import { useEffect } from "react";
+import BookeoWidget from "@/components/BookeoWidget";
 
 export default function BookPage() {
-  useEffect(() => {
-    // 1. Bookeo looks for a unique div id mapped to your account suffix
-    // For your key, Bookeo natively attempts to target "bookeo_41571M9F6LX1810C95EFBB"
-    const targetId = "bookeo_41571M9F6LX1810C95EFBB";
-    const container = document.getElementById(targetId);
-
-    if (!container) return;
-
-    // 2. Clean up any previous iframe instances left behind by Next.js hot-reloads
-    container.innerHTML = "";
-
-    // 3. Inject the script directly into that specific target container
-    const script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src = "https://bookeo.com/widget.js?a=41571M9F6LX1810C95EFBB";
-    script.async = true;
-    
-    container.appendChild(script);
-
-    return () => {
-      // Clean up script on unmount
-      if (container.contains(script)) {
-        container.removeChild(script);
-      }
-    };
-  }, []);
-
   return (
     <div className="min-h-screen bg-comic-dark pt-24">
       <div className="container mx-auto px-6 py-12">
@@ -41,13 +14,8 @@ export default function BookPage() {
             Select your preferred time and package below to lock in your smash experience.
           </p>
         </div>
-        
-        {/* We changed h-[600px] to min-h-[700px] because Bookeo will expand past 700px on step 2/3 */}
-        <div className="bg-white border-8 border-black shadow-comic-lg rounded-2xl p-4 md:p-8 min-h-[700px]">
-          <div 
-            id="bookeo_41571M9F6LX1810C95EFBB" 
-            className="w-full h-full"
-          />
+                <div className="bg-white border-8 border-black shadow-comic-lg rounded-2xl p-4 md:p-8 min-h-[700px]">
+          <BookeoWidget />
         </div>
       </div>
     </div>
