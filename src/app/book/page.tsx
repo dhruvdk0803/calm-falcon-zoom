@@ -1,28 +1,31 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import { useEffect } from "react";
 
 export default function BookPage() {
-  const containerRef = useRef<HTMLDivElement>(null);
-
   useEffect(() => {
-    // Load the Bookeo widget script
+    // 1. Bookeo looks for a unique div id mapped to your account suffix
+    // For your key, Bookeo natively attempts to target "bookeo_41571M9F6LX1810C95EFBB"
+    const targetId = "bookeo_41571M9F6LX1810C95EFBB";
+    const container = document.getElementById(targetId);
+
+    if (!container) return;
+
+    // 2. Clean up any previous iframe instances left behind by Next.js hot-reloads
+    container.innerHTML = "";
+
+    // 3. Inject the script directly into that specific target container
     const script = document.createElement("script");
     script.type = "text/javascript";
     script.src = "https://bookeo.com/widget.js?a=41571M9F6LX1810C95EFBB";
     script.async = true;
-        // When script loads, Bookeo automatically initializes on the container
-    script.onload = () => {
-      // If the widget needs explicit initialization, you could call it here
-      // window.bookeoWidget?.init();
-    };
     
-    document.body.appendChild(script);
-    
-    // Cleanup script when component unmounts
+    container.appendChild(script);
+
     return () => {
-      if (document.body.contains(script)) {
-        document.body.removeChild(script);
+      // Clean up script on unmount
+      if (container.contains(script)) {
+        container.removeChild(script);
       }
     };
   }, []);
@@ -39,12 +42,11 @@ export default function BookPage() {
           </p>
         </div>
         
-        <div className="bg-white border-8 border-black shadow-comic-lg rounded-2xl p-4 md:p-8 h-[600px] md:h-[700px]">
-          {/* Bookeo widget will render inside this div */}
+        {/* We changed h-[600px] to min-h-[700px] because Bookeo will expand past 700px on step 2/3 */}
+        <div className="bg-white border-8 border-black shadow-comic-lg rounded-2xl p-4 md:p-8 min-h-[700px]">
           <div 
-            id="bookeo-container" 
+            id="bookeo_41571M9F6LX1810C95EFBB" 
             className="w-full h-full"
-            data-bookeo-widget="41571M9F6LX1810C95EFBB"
           />
         </div>
       </div>
