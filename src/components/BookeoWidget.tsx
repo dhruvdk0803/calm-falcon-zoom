@@ -2,53 +2,46 @@
 
 import { useEffect, useRef } from "react";
 
-const BookeoWidget = () => {
-  const hasLoaded = useRef(false);
+export default function BookeoWidget() {
+  const containerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    // Prevent multiple script injections
-    if (hasLoaded.current) return;
-    hasLoaded.current = true;
+    const container = containerRef.current;
+    if (!container) return;
 
-    // Create the Bookeo script element
+    // Clear out any stale widget content from hot-reloads
+    container.innerHTML = "";
+
+    // Prevent duplicate script injections by removing old Bookeo scripts
+    document.querySelectorAll('script[src*="bookeo.com/widget.js"]').forEach((el) => {
+      el.remove();
+    });
+
+    // Create and inject the Bookeo script directly into the container
+    // so it runs in body context and can immediately find the target div
     const script = document.createElement("script");
     script.type = "text/javascript";
     script.src = "https://bookeo.com/widget.js?a=41571M9F6LX1810C95EFBB";
-    script.async = true;
-    script.defer = true;
 
-    // When the script loads, initialize the widget if needed
-    script.onload = () => {
-      if (typeof window !== "undefined" && (window as any).BookeoWidget) {
-        (window as any).BookeoWidget.init();
-      }
-    };
+    container.appendChild(script);
 
-    // Append the script to the document head
-    document.head.appendChild(script);
-
-    // Cleanup the script when the component unmounts
     return () => {
-      if (script.parentNode) {
-        script.parentNode.removeChild(script);
+      // Clean up widget contents and scripts on unmount / fast-refresh
+      if (container) {
+        container.innerHTML = "";
       }
+      document.querySelectorAll('script[src*="bookeo.com/widget.js"]').forEach((el) => {
+        el.remove();
+      });
     };
   }, []);
 
-  // Container for the Bookeo widget
-  const containerStyle: React.CSSProperties = {
-    width: "100%",
-    minHeight: "700px", // Ensure enough height for the widget
-  };
-
   return (
     <div
-      id="bookeo_container"
-      data-bookeo-widget="41571M9F6LX1810C95EFBB"
+      ref={containerRef}
+      id="bookeo_41571M9F6LX1810C95EFBB"
       className="w-full"
-      style={containerStyle}
+      style={{ minHeight: "700px" }}
     />
   );
-};
-
-export default BookeoWidget;
+}
