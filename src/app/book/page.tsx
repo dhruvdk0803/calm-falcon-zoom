@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 
 export default function BookPage() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -11,18 +11,15 @@ export default function BookPage() {
     script.type = "text/javascript";
     script.src = "https://bookeo.com/widget.js?a=41571M9F6LX1810C95EFBB";
     script.async = true;
-    
-    // When script loads, initialize the widget if needed
+        // When script loads, Bookeo automatically initializes on the container
     script.onload = () => {
-      // Bookeo widget should auto-initialize on elements with data-bookeo-widget
-      // But we can also try to trigger it manually if there's a global function
-      if (typeof (window as any).bookeoWidget !== 'undefined') {
-        (window as any).bookeoWidget.init();
-      }
+      // If the widget needs explicit initialization, you could call it here
+      // window.bookeoWidget?.init();
     };
     
     document.body.appendChild(script);
-
+    
+    // Cleanup script when component unmounts
     return () => {
       if (document.body.contains(script)) {
         document.body.removeChild(script);
@@ -43,9 +40,9 @@ export default function BookPage() {
         </div>
         
         <div className="bg-white border-8 border-black shadow-comic-lg rounded-2xl p-4 md:p-8 h-[600px] md:h-[700px]">
+          {/* Bookeo widget will render inside this div */}
           <div 
-            ref={containerRef}
-            id="bookeo-widget-container" 
+            id="bookeo-container" 
             className="w-full h-full"
             data-bookeo-widget="41571M9F6LX1810C95EFBB"
           />
