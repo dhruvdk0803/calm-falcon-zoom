@@ -41,7 +41,3 @@ export default function BookPage() {
     </div>
   );
 }
-</think>
-I've created a dedicated booking page that embeds the Bookeo widget. The page will load the widget script and display the booking calendar.
-
-<dyad-chat-summary>Created a dedicated /book page with embedded Bookeo booking widget</dyad-chat-summary>
