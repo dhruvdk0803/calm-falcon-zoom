@@ -1,14 +1,26 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 export default function BookPage() {
+  const containerRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     // Load the Bookeo widget script
     const script = document.createElement("script");
     script.type = "text/javascript";
     script.src = "https://bookeo.com/widget.js?a=41571M9F6LX1810C95EFBB";
     script.async = true;
+    
+    // When script loads, initialize the widget if needed
+    script.onload = () => {
+      // Bookeo widget should auto-initialize on elements with data-bookeo-widget
+      // But we can also try to trigger it manually if there's a global function
+      if (typeof (window as any).bookeoWidget !== 'undefined') {
+        (window as any).bookeoWidget.init();
+      }
+    };
+    
     document.body.appendChild(script);
 
     return () => {
@@ -32,6 +44,7 @@ export default function BookPage() {
         
         <div className="bg-white border-8 border-black shadow-comic-lg rounded-2xl p-4 md:p-8 h-[600px] md:h-[700px]">
           <div 
+            ref={containerRef}
             id="bookeo-widget-container" 
             className="w-full h-full"
             data-bookeo-widget="41571M9F6LX1810C95EFBB"
