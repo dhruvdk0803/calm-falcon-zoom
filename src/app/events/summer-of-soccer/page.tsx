@@ -127,8 +127,8 @@ export default function SummerOfSoccerPage() {
               </div>
               
               <div className="flex flex-col sm:flex-row justify-center gap-6">
-                <Link href="/packages">
-                  <motion.button 
+                <Link href="/book">
+                  <motion.button
                     whileHover={{ scale: 1.05, rotate: -2 }}
                     whileTap={{ scale: 0.95, y: 4, boxShadow: "0px 0px 0px 0px rgba(0,0,0,1)" }}
                     className="px-8 py-5 bg-comic-yellow text-black font-bebas text-3xl tracking-wider uppercase rounded-xl border-4 border-black shadow-comic flex items-center justify-center gap-3 w-full"

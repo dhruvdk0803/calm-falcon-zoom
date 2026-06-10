@@ -81,7 +81,7 @@ export default function Header() {
 
         {/* Desktop Book Now Button */}
         <div className="hidden md:flex items-center shrink-0">
-          <Link href="/packages">
+          <Link href="/book">
             <motion.button 
               whileHover={{ scale: 1.05, rotate: 2 }}
               whileTap={{ scale: 0.9, y: 4, boxShadow: "0px 0px 0px 0px rgba(0,0,0,1)" }}
@@ -127,7 +127,7 @@ export default function Header() {
               <Link href="/faq" onClick={closeMobileMenu} className="text-3xl font-bebas tracking-widest uppercase text-white hover:text-comic-red transition-colors text-outline-black">
                 FAQ
               </Link>
-              <Link href="/packages" onClick={closeMobileMenu} className="w-full block mt-4">
+              <Link href="/book" onClick={closeMobileMenu} className="w-full block mt-4">
                 <button className="px-6 py-4 bg-comic-red text-white font-bebas text-3xl tracking-wider uppercase rounded-md border-4 border-black shadow-comic transition-all w-full">
                   Book Now
                 </button>

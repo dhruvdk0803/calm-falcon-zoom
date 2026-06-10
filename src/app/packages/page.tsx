@@ -206,7 +206,7 @@ export default function PackagesPage() {
                     </ul>
                   </div>
 
-                  <Link href="/packages" className="w-full block">
+                  <Link href="/book" className="w-full block">
                     <button className={`w-full py-4 ${pkg.color} ${pkg.textColor || 'text-black'} font-bebas text-2xl tracking-wider uppercase rounded-xl border-4 border-black shadow-comic hover:translate-y-1 hover:shadow-comic-sm transition-all active:translate-y-2 active:shadow-none`}>
                       {pkg.cta}
                     </button>
@@ -336,8 +336,8 @@ export default function PackagesPage() {
           </div>
 
           <div className="flex flex-col sm:flex-row justify-center gap-6">
-            <Link href="/packages">
-              <motion.button 
+            <Link href="/book">
+              <motion.button
                 whileHover={{ scale: 1.1, rotate: -2 }}
                 whileTap={{ scale: 0.9, y: 4, boxShadow: "0px 0px 0px 0px rgba(0,0,0,1)" }}
                 className="px-8 py-6 bg-comic-yellow text-black font-bebas text-3xl md:text-4xl tracking-wider uppercase rounded-xl border-4 border-black shadow-comic flex items-center justify-center gap-3 w-full"
@@ -345,15 +345,15 @@ export default function PackagesPage() {
                 <Zap className="w-8 h-8 fill-black" strokeWidth={2} /> Book Now
               </motion.button>
             </Link>
-            <a href="tel:9134999330">
-              <motion.button 
+            <Link href="/book">
+              <motion.button
                 whileHover={{ scale: 1.1, rotate: 2 }}
                 whileTap={{ scale: 0.9, y: 4, boxShadow: "0px 0px 0px 0px rgba(0,0,0,1)" }}
                 className="px-8 py-6 bg-black text-white font-bebas text-3xl md:text-4xl tracking-wider uppercase rounded-xl border-4 border-white shadow-comic-white flex items-center justify-center gap-3 w-full"
               >
                 <Calendar className="w-8 h-8" strokeWidth={2} /> View Availability
               </motion.button>
-            </a>
+            </Link>
           </div>
         </motion.div>
       </section>

@@ -101,7 +101,7 @@ export default async function DynamicBlogPostPage({ params }: { params: Promise<
               </h3>
               
               <div className="flex flex-col sm:flex-row justify-center gap-6">
-                <Link href="/packages">
+                <Link href="/book">
                   <button className="px-8 py-5 bg-comic-yellow text-black font-bebas text-3xl tracking-wider uppercase rounded-xl border-4 border-black shadow-comic flex items-center justify-center gap-3 w-full hover:scale-105 hover:-rotate-2 transition-transform">
                     <Calendar className="w-8 h-8" strokeWidth={3} /> Book Online Here
                   </button>

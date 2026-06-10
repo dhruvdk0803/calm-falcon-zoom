@@ -23,6 +23,16 @@ export default function BookeoWidget() {
     script.type = "text/javascript";
     script.src = "https://bookeo.com/widget.js?a=41571M9F6LX1810C95EFBB";
 
+    // widget.js only auto-starts on the window "load" event, which has
+    // already fired by the time React injects this script — so start it
+    // manually once loaded (unless it managed to auto-start an iframe)
+    script.onload = () => {
+      const w = window as unknown as { bookeo_start?: () => void };
+      if (w.bookeo_start && !container.querySelector("iframe")) {
+        w.bookeo_start();
+      }
+    };
+
     container.appendChild(script);
 
     return () => {

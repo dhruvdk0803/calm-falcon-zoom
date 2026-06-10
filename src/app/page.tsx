@@ -90,12 +90,8 @@ export default function Home() {
       unit: "per person",
       duration: "20 Minutes",
       capacity: "Up to 6 People",
-      desc: "Offers a more complete experience. With additional time and larger items, the session becomes more immersive and physically engaging.",
-      included: [
-        "22-25 breakable items",
-        "Medium-Large items based on inventory",
-        "Extended session time for a more complete experience"
-      ],
+      desc: "Offers a more complete experience. With additional time and larger items, the session becomes more immersive.",
+      included: ["22-25 breakable items", "Medium-Large items based on inventory", "Extended session time"],
       cta: "Book Super Smash",
       color: "bg-comic-red",
       rotate: "rotate-1",
@@ -108,12 +104,8 @@ export default function Home() {
       duration: "15 Minutes",
       capacity: "Up to 6 People",
       desc: "Designed for shared experiences. Brings energy into the room and turns the session into something social.",
-      included: [
-        "Group crate of breakable items",
-        "Shared smash environment",
-        "Safety gear for all"
-      ],
-      cta: "Book Multiplayer Session",
+      included: ["Group crate of breakable items", "Shared smash environment", "Safety gear for all"],
+      cta: "Book Multiplayer",
       color: "bg-comic-yellow",
       rotate: "-rotate-2"
     },
@@ -124,13 +116,7 @@ export default function Home() {
       duration: "2 Hours",
       capacity: "6 People (expandable)",
       desc: "Designed for larger experiences and special occasions. A full event with extended access and flexibility.",
-      included: [
-        "Two-hour private room access",
-        "Dedicated party area",
-        "Smash sessions included",
-        "Option to bring food/drinks",
-        "Flexibility to expand group size"
-      ],
+      included: ["Two-hour private room access", "Dedicated party area", "Option to bring food/drinks"],
       cta: "Book Party Pack",
       color: "bg-comic-green",
       rotate: "rotate-2"
@@ -141,12 +127,8 @@ export default function Home() {
       unit: "per person",
       duration: "10 Minutes",
       capacity: "Up to 6 People",
-      desc: "A lower-cost option for those looking for a quick midweek reset.",
-      included: [
-        "12-15 breakable items",
-        "Full protective gear",
-        "Controlled smash environment"
-      ],
+      desc: "A lower-cost option for those looking for a quick midweek reset. Shorter and more accessible.",
+      included: ["12-15 breakable items", "Full protective gear", "Controlled smash environment"],
       cta: "Book Therapy Session",
       color: "bg-black",
       textColor: "text-white",
@@ -156,8 +138,10 @@ export default function Home() {
 
   return (
     <div className="bg-comic-dark min-h-screen text-white font-sans selection:bg-comic-yellow selection:text-black overflow-hidden">
+      
       {/* --- HERO SECTION --- */}
       <section className="relative min-h-[100svh] flex items-center justify-center pt-20 md:pt-32 pb-16 bg-black overflow-hidden">
+        {/* Video Background */}
         <video 
           autoPlay 
           loop 
@@ -167,6 +151,8 @@ export default function Home() {
         >
           <source src="/media/vid-1.mp4" type="video/mp4" />
         </video>
+        
+        {/* Dark Overlay for text readability */}
         <div className="absolute inset-0 bg-black/40 z-0"></div>
 
         <FloatingComics />
@@ -214,8 +200,8 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, ...comicSpring }}
           >
-            <Link href="/packages">
-              <motion.button 
+            <Link href="/book" className="w-full sm:w-auto">
+              <motion.button
                 whileHover={{ scale: 1.05, rotate: -2 }}
                 whileTap={{ scale: 0.95, y: 4, boxShadow: "0px 0px 0px 0px rgba(0,0,0,1)" }}
                 className="px-8 py-4 bg-comic-yellow text-black font-bebas text-2xl md:text-3xl tracking-wider uppercase rounded-xl border-4 border-black shadow-comic transition-all w-full"
@@ -223,7 +209,7 @@ export default function Home() {
                 Book Your Session
               </motion.button>
             </Link>
-            <Link href="/packages">
+            <Link href="/packages" className="w-full sm:w-auto">
               <motion.button 
                 whileHover={{ scale: 1.05, rotate: 2 }}
                 whileTap={{ scale: 0.95, y: 4, boxShadow: "0px 0px 0px 0px rgba(0,0,0,1)" }}
@@ -236,113 +222,66 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* --- INTRO SECTION --- */}
-      <section className="py-20 md:py-32 relative bg-comic-red border-y-8 border-black bg-halftone-black overflow-hidden">
-        <FloatingComics />
-        <div className="container mx-auto px-6 max-w-5xl relative z-10">
-          <motion.div 
-            initial="hidden" whileInView="visible" viewport={{ once: true }} variants={comicStagger}
-            className="text-center"
-          >
-            <motion.h2 variants={comicPop} className="text-5xl sm:text-6xl md:text-7xl font-bebas uppercase leading-[0.9] mb-8 text-white text-outline-black">
-              Welcome to Kansas City's <span className="text-comic-yellow">Premier Rage Room</span>
-            </motion.h2>
-            
-            <motion.div variants={comicPop} className="bg-white p-6 md:p-10 border-8 border-black shadow-comic-lg rotate-[-1deg] inline-block text-left max-w-4xl">
-              <p className="text-xl md:text-2xl font-bold text-black uppercase leading-relaxed mb-4">
-                At Super Smash KC, you don't just break things. You break through the stress, pressure, and tension you've been carrying around.
-              </p>
-              <p className="text-lg md:text-xl font-bold text-gray-800 uppercase leading-relaxed">
-                Step into our controlled smash environment, grab a bat, and let it all go. No judgment. No limits. Just pure, immediate release.
-              </p>
+      {/* --- SECTION 1: A New Kind of Experience (YELLOW) --- */}
+      <section className="py-32 relative bg-comic-yellow border-y-8 border-black bg-halftone-black">
+        <div className="container mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <motion.div 
+              initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }}
+              variants={comicStagger}
+              className="space-y-8"
+            >
+              <motion.h2 variants={comicPop} className="text-6xl md:text-8xl font-bebas uppercase leading-none text-white text-outline-black">
+                A New Kind of Experience <span className="text-comic-red block">KC Didn’t Know It Needed</span>
+              </motion.h2>
+              
+              <div className="space-y-6 text-2xl font-bold text-black uppercase">
+                <motion.p variants={comicPop} className="bg-white p-4 border-4 border-black shadow-comic-sm rotate-[-1deg]">
+                  Entertainment has changed. People are looking for experiences that make them feel something.
+                </motion.p>
+                <motion.p variants={comicPop} className="bg-comic-blue text-white p-4 border-4 border-black shadow-comic-sm rotate-[1deg]">
+                  Inside our rage rooms, you’re given permission to do something you’re normally told not to — break things.
+                </motion.p>
+                <motion.p variants={comicPop} className="bg-white p-4 border-4 border-black shadow-comic-sm rotate-[-1deg]">
+                  When you combine physical action with emotional release, something shifts. You stop overthinking.
+                </motion.p>
+              </div>
             </motion.div>
-          </motion.div>
-        </div>
-      </section>
 
-      {/* --- WHAT WE OFFER --- */}
-      <section className="py-24 relative bg-comic-dark bg-halftone-white">
-        <div className="container mx-auto px-6 max-w-6xl">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={comicStagger} className="text-center mb-16">
-            <motion.h2 variants={comicPop} className="text-5xl md:text-7xl font-bebas uppercase text-white text-outline-black mb-6">
-              What We <span className="text-comic-blue">Offer</span>
-            </motion.h2>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                icon: Shield,
-                title: "Safe Environment",
-                desc: "Full protective gear and trained staff ensure a controlled, secure smash experience every time.",
-                color: "bg-comic-blue",
-                rotate: "-rotate-1"
-              },
-              {
-                icon: Zap,
-                title: "Instant Release",
-                desc: "Physical, immediate stress relief you can feel the moment you swing. No waiting, no buildup.",
-                color: "bg-comic-yellow",
-                rotate: "rotate-1"
-              },
-              {
-                icon: Target,
-                title: "Variety of Items",
-                desc: "Glass, electronics, ceramics, and more. Choose your targets based on your session package.",
-                color: "bg-comic-red",
-                rotate: "-rotate-2"
-              },
-              {
-                icon: Users,
-                title: "Group Sessions",
-                desc: "Bring friends, coworkers, or family. Shared energy turns stress relief into an unforgettable event.",
-                color: "bg-comic-green",
-                rotate: "rotate-2"
-              },
-              {
-                icon: Clock,
-                title: "Flexible Times",
-                desc: "10-minute quick resets or 2-hour private events. Pick what fits your schedule and intensity level.",
-                color: "bg-comic-blue",
-                rotate: "-rotate-1"
-              },
-              {
-                icon: HeartHandshake,
-                title: "No Judgment",
-                desc: "Come solo, with a date, or with a crew. Everyone deserves a place to release without expectations.",
-                color: "bg-comic-yellow",
-                rotate: "rotate-1"
-              }
-            ].map((item, i) => {
-              const Icon = item.icon;
-              return (
-                <motion.div
-                  key={i}
-                  variants={comicPop}
-                  whileHover={{ scale: 1.03, y: -5 }}
-                  className={`bg-white border-8 border-black shadow-comic-lg rounded-2xl p-8 ${item.rotate}`}
-                >
-                  <div className={`${item.color} w-16 h-16 rounded-full border-4 border-black shadow-comic-sm flex items-center justify-center mb-6`}>
-                    <Icon className="w-8 h-8 text-white" strokeWidth={2.5} />
-                  </div>
-                  <h3 className="text-3xl font-bebas uppercase text-black mb-4 tracking-wide">{item.title}</h3>
-                  <p className="text-lg font-bold text-gray-800 uppercase leading-relaxed">{item.desc}</p>
-                </motion.div>
-              );
-            })}
+            <motion.div 
+              initial={{ opacity: 0, x: 100, rotate: 10 }} whileInView={{ opacity: 1, x: 0, rotate: 2 }} viewport={{ once: true }} transition={comicSpring}
+              className="relative"
+            >
+              <img 
+                src="/media/couple.jpg" 
+                alt="Couple at Super Smash KC" 
+                className="w-full h-auto object-cover rounded-2xl border-8 border-black shadow-comic-lg rotate-2 mb-8"
+              />
+              <div className="bg-comic-red border-8 border-black shadow-comic-lg rounded-2xl p-8 flex flex-col justify-center absolute -bottom-12 -left-8 md:-left-16 rotate-[-4deg] max-w-md">
+                <h3 className="text-4xl font-bebas text-white mb-4 uppercase tracking-wide text-outline-black">People discover the same thing:</h3>
+                <ul className="space-y-3">
+                  {["It feels good to let go", "It feels powerful to act", "It stays with you"].map((text, i) => (
+                    <li key={i} className="flex items-center gap-3 text-xl font-bold text-black bg-white p-3 border-4 border-black shadow-comic-sm rounded-lg">
+                      <Zap className="w-6 h-6 text-comic-yellow fill-comic-yellow shrink-0" stroke="black" strokeWidth={2} />
+                      <span>{text}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* --- PACKAGES SECTION --- */}
-      <section className="py-24 relative bg-comic-yellow border-y-8 border-black bg-halftone-black">
+      {/* --- SECTION 1.5: PACKAGES (WHITE) --- */}
+      <section className="py-32 relative bg-white border-b-8 border-black bg-halftone-black mt-12 md:mt-0">
         <div className="container mx-auto px-6 max-w-7xl">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={comicStagger} className="text-center mb-16">
-            <motion.h2 variants={comicPop} className="text-5xl md:text-7xl font-bebas uppercase text-white text-outline-black mb-6">
+            <motion.h2 variants={comicPop} className="text-6xl md:text-8xl font-bebas uppercase leading-none text-black mb-6">
               Choose Your <span className="text-comic-red">Smash Experience</span>
             </motion.h2>
-            <motion.p variants={comicPop} className="text-xl font-bold text-black bg-white p-4 border-4 border-black shadow-comic inline-block rotate-[-1deg] uppercase max-w-3xl">
-              Every package offers the same core experience — a safe environment, real physical release, and a noticeable shift in how you feel. What changes is the time, intensity, and scale of what you break.
+            <motion.p variants={comicPop} className="text-xl font-bold text-black bg-comic-yellow p-4 border-4 border-black shadow-comic inline-block rotate-[-1deg] uppercase max-w-3xl">
+              Every package offers the same core experience — a safe environment, real physical release, and a noticeable shift in how you feel.
             </motion.p>
           </motion.div>
 
@@ -399,7 +338,7 @@ export default function Home() {
                     </ul>
                   </div>
 
-                  <Link href="/packages" className="w-full block">
+                  <Link href="/book" className="w-full block">
                     <button className={`w-full py-4 ${pkg.color} ${pkg.textColor || 'text-black'} font-bebas text-2xl tracking-wider uppercase rounded-xl border-4 border-black shadow-comic hover:translate-y-1 hover:shadow-comic-sm transition-all active:translate-y-2 active:shadow-none`}>
                       {pkg.cta}
                     </button>
@@ -411,90 +350,160 @@ export default function Home() {
         </div>
       </section>
 
-      {/* --- WHO IS THIS FOR --- */}
-      <section className="py-24 relative bg-comic-blue border-y-8 border-black bg-halftone-black">
-        <div className="container mx-auto px-6 max-w-6xl">
+      {/* --- SECTION 2: Why Rage Rooms (DARK) --- */}
+      <section className="py-32 bg-comic-dark relative bg-halftone-white">
+        <div className="container mx-auto px-6 max-w-5xl">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={comicStagger} className="text-center mb-16">
-            <motion.h2 variants={comicPop} className="text-5xl md:text-7xl font-bebas uppercase text-white text-outline-black mb-6">
-              Who Comes to <span className="text-comic-yellow">Super Smash KC?</span>
+            <motion.h2 variants={comicPop} className="text-6xl md:text-8xl font-bebas uppercase leading-none text-white text-outline-black mb-8">
+              Why Rage Rooms Are <span className="text-comic-green">Blowing Up</span>
             </motion.h2>
+            <motion.p variants={comicPop} className="text-2xl font-bold text-white bg-black p-6 border-4 border-white shadow-comic-white inline-block rotate-[-1deg]">
+              Modern life is filled with constant pressure. We target the source.
+            </motion.p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
             {[
-              {
-                icon: User,
-                title: "Individuals",
-                desc: "Looking for a personal reset after a tough week. No agenda, no pressure — just you and a bat.",
-                color: "bg-comic-red"
-              },
-              {
-                icon: Users,
-                title: "Friends",
-                desc: "Birthdays, reunions, or just a Saturday night. Smash together and make a memory worth talking about.",
-                color: "bg-comic-yellow"
-              },
-              {
-                icon: Briefcase,
-                title: "Corporate Teams",
-                desc: "Team building that doesn't feel forced. Bond over breaking things instead of trust falls.",
-                color: "bg-comic-green"
-              }
-            ].map((item, i) => {
-              const Icon = item.icon;
-              return (
-                <motion.div
-                  key={i}
-                  variants={comicPop}
-                  className={`${item.color} border-8 border-black shadow-comic-lg rounded-2xl p-8 text-black ${i === 0 ? 'rotate-[-1deg]' : i === 1 ? 'rotate-[1deg]' : 'rotate-[-2deg]'}`}
-                >
-                  <Icon className="w-16 h-16 mb-4" strokeWidth={2.5} />
-                  <h3 className="text-4xl font-bebas uppercase tracking-wide mb-4 text-outline-white">{item.title}</h3>
-                  <p className="text-lg font-bold uppercase leading-relaxed">{item.desc}</p>
-                </motion.div>
-              );
-            })}
+              { icon: Flame, text: "Turns internal stress into physical action", color: "bg-comic-red" },
+              { icon: Shield, text: "A rare sense of freedom — no holding back", color: "bg-comic-blue" },
+              { icon: HeartHandshake, text: "A safe outlet for suppressed emotions", color: "bg-comic-yellow" },
+              { icon: Target, text: "Adrenaline, movement, and satisfaction", color: "bg-comic-green" }
+            ].map((item, i) => (
+              <motion.div 
+                key={i}
+                initial={{ opacity: 0, scale: 0.5 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.1, ...comicSpring }}
+                whileHover={{ scale: 1.05, rotate: i % 2 === 0 ? 2 : -2 }}
+                className={`${item.color} p-8 rounded-xl border-4 border-black shadow-comic flex flex-col items-center text-center gap-6`}
+              >
+                <div className="w-20 h-20 rounded-full bg-white border-4 border-black shadow-comic-sm flex items-center justify-center">
+                  <item.icon className="w-10 h-10 text-black" strokeWidth={2.5} />
+                </div>
+                <p className="text-black font-bold text-2xl uppercase">{item.text}</p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* --- CTA SECTION --- */}
-      <section className="py-32 relative bg-comic-red border-t-8 border-black bg-halftone-black flex items-center justify-center">
+      {/* --- SECTION 3: Designed for Anyone (BLUE) --- */}
+      <section className="py-32 relative bg-comic-blue border-y-8 border-black bg-halftone-black">
+        <div className="container mx-auto px-6">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={comicStagger} className="text-center max-w-4xl mx-auto mb-20">
+            <motion.h2 variants={comicPop} className="text-6xl md:text-8xl font-bebas uppercase leading-none text-white text-outline-black mb-8">
+              Designed for Anyone Who Wants <span className="text-comic-yellow">More Than a Typical Night Out</span>
+            </motion.h2>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              { title: "Individuals", icon: User, text: "A personal reset. Clear your head and release tension.", rotate: "-rotate-2" },
+              { title: "Couples", icon: HeartHandshake, text: "An unexpected, engaging shared experience.", rotate: "rotate-2" },
+              { title: "Friends", icon: Users, text: "Fun, competition, and unforgettable moments.", rotate: "-rotate-1" },
+              { title: "Groups", icon: Target, text: "Bring energy into the room instantly for any event.", rotate: "rotate-3" },
+              { title: "Teams", icon: Briefcase, text: "Bond, reset, and step outside the usual work dynamic.", rotate: "-rotate-2" }
+            ].map((card, i) => (
+              <motion.div 
+                key={i}
+                initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1, ...comicSpring }}
+                whileHover={{ scale: 1.05, y: -10 }}
+                className={`bg-white p-8 rounded-xl border-4 border-black shadow-comic ${card.rotate} ${i === 3 ? 'lg:col-span-1 lg:col-start-2' : ''} ${i === 4 ? 'lg:col-span-1' : ''}`}
+              >
+                <div className="bg-comic-yellow w-16 h-16 rounded-full border-4 border-black flex items-center justify-center mb-6 shadow-comic-sm">
+                  <card.icon className="w-8 h-8 text-black" strokeWidth={2.5} />
+                </div>
+                <h3 className="text-4xl font-bebas text-black uppercase tracking-wide mb-4">{card.title}</h3>
+                <p className="text-black font-bold text-lg uppercase">{card.text}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* --- SECTION 4: What Happens (DARK) --- */}
+      <section className="py-32 bg-comic-dark relative bg-halftone-white">
+        <div className="container mx-auto px-6 max-w-5xl">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={comicStagger} className="text-center mb-20">
+            <motion.h2 variants={comicPop} className="text-6xl md:text-8xl font-bebas uppercase leading-none text-white text-outline-black mb-8">
+              What Happens When You Step Inside <span className="text-comic-red">Super Smash KC</span>
+            </motion.h2>
+          </motion.div>
+
+          <div className="space-y-8 md:space-y-12">
+            {[
+              { step: "01", title: "Sign Waiver", text: "Complete your safety waiver before the action begins.", color: "bg-comic-yellow" },
+              { step: "02", title: "Choose Music", text: "Pick the perfect playlist to set the vibe for your session.", color: "bg-comic-blue" },
+              { step: "03", title: "Gear Up", text: "Get equipped with premium protective gear.", color: "bg-comic-green" },
+              { step: "04", title: "Enter Room & Hear Rules", text: "Step into your private space and get a quick safety rundown.", color: "bg-comic-red" },
+              { step: "05", title: "Choose Weapons", text: "Pick your tools of destruction.", color: "bg-comic-yellow" },
+              { step: "06", title: "BREAK STUFF", text: "Stop thinking and just act. Release it all.", color: "bg-comic-blue" }
+            ].map((item, i) => (
+              <motion.div 
+                key={i}
+                initial={{ opacity: 0, x: i % 2 === 0 ? -50 : 50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={comicSpring}
+                whileHover={{ scale: 1.02 }}
+                className={`flex flex-col md:flex-row items-center gap-8 bg-white border-4 border-black shadow-comic rounded-2xl p-6 ${i % 2 === 0 ? 'rotate-1' : '-rotate-1'}`}
+              >
+                <div className={`${item.color} w-24 h-24 shrink-0 rounded-full border-4 border-black shadow-comic-sm flex items-center justify-center text-black font-bebas text-5xl`}>
+                  {item.step}
+                </div>
+                <div className="text-center md:text-left">
+                  <h3 className="text-5xl font-bebas text-black uppercase tracking-wide mb-2">{item.title}</h3>
+                  <p className="text-black font-bold text-xl uppercase">{item.text}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* --- FINAL CTA (RED) --- */}
+      <section className="py-40 relative bg-comic-red border-t-8 border-black bg-halftone-black flex items-center justify-center overflow-hidden">
+        <img src="/media/comic-boom.png" alt="Boom" className="absolute top-10 left-10 w-48 opacity-50 rotate-12" />
+        <img src="/media/comic-pow.png" alt="Pow" className="absolute bottom-10 right-10 w-48 opacity-50 -rotate-12" />
+        
         <motion.div 
           initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={comicSpring}
-          className="relative z-10 container mx-auto px-6 text-center max-w-4xl bg-white border-8 border-black shadow-comic-lg p-12 rounded-3xl rotate-[1deg]"
+          className="relative z-10 container mx-auto px-6 text-center max-w-4xl bg-white border-8 border-black shadow-comic-lg p-12 rounded-3xl rotate-[-1deg]"
         >
-          <h2 className="text-6xl md:text-8xl font-bebas uppercase leading-none text-white text-outline-black mb-8">
-            Ready to <span className="text-comic-yellow">Smash?</span>
+          <h2 className="text-7xl md:text-9xl font-bebas uppercase leading-none text-white text-outline-black mb-8">
+            Ready to Experience It <span className="text-comic-yellow">for Yourself?</span>
           </h2>
           
-          <div className="text-2xl font-bold text-black uppercase mb-12 space-y-4">
-            <p>Stop carrying it. Start breaking it.</p>
-            <p className="text-comic-blue font-bebas text-4xl tracking-wide">Book your session today and feel the difference the moment you swing.</p>
-          </div>
+          <p className="text-3xl font-bold text-black uppercase mb-12">
+            You don’t need a special occasion. You just need the willingness to try something different.
+          </p>
 
           <div className="flex flex-col sm:flex-row justify-center gap-6">
-            <Link href="/packages">
-              <motion.button 
-                whileHover={{ scale: 1.1, rotate: -2 }}
+            <Link href="/book">
+              <motion.button
+                whileHover={{ scale: 1.1, rotate: 2 }}
                 whileTap={{ scale: 0.9, y: 4, boxShadow: "0px 0px 0px 0px rgba(0,0,0,1)" }}
-                className="px-8 py-6 bg-comic-yellow text-black font-bebas text-3xl md:text-4xl tracking-wider uppercase rounded-xl border-4 border-black shadow-comic flex items-center justify-center gap-3 w-full"
+                className="px-10 py-6 bg-comic-yellow text-black font-bebas text-4xl tracking-wider uppercase rounded-xl border-4 border-black shadow-comic flex items-center justify-center gap-3 w-full"
               >
-                <Calendar className="w-8 h-8" strokeWidth={3} /> Book Your Session
+                <Calendar className="w-8 h-8" strokeWidth={3} /> Book Now
               </motion.button>
             </Link>
             <a href="tel:9134999330">
               <motion.button 
-                whileHover={{ scale: 1.1, rotate: 2 }}
+                whileHover={{ scale: 1.1, rotate: -2 }}
                 whileTap={{ scale: 0.9, y: 4, boxShadow: "0px 0px 0px 0px rgba(0,0,0,1)" }}
-                className="px-8 py-6 bg-comic-blue text-white font-bebas text-3xl md:text-4xl tracking-wider uppercase rounded-xl border-4 border-black shadow-comic flex items-center justify-center gap-3 w-full"
+                className="px-10 py-6 bg-comic-blue text-white font-bebas text-4xl tracking-wider uppercase rounded-xl border-4 border-black shadow-comic flex items-center justify-center gap-3 w-full"
               >
-                <Phone className="w-8 h-8" strokeWidth={3} /> Call 913-499-9330
+                <Phone className="w-8 h-8" strokeWidth={3} /> Call Now
               </motion.button>
             </a>
           </div>
         </motion.div>
       </section>
+
+      {/* --- MOBILE STICKY CTA --- */}
+      <div className="fixed bottom-4 left-4 right-4 z-50 md:hidden">
+        <Link href="/book" className="w-full block">
+          <button className="w-full py-4 bg-comic-yellow text-black font-bebas text-3xl tracking-wider uppercase rounded-xl border-4 border-black shadow-comic active:translate-y-1 active:shadow-none transition-all">
+            Book Now
+          </button>
+        </Link>
+      </div>
 
     </div>
   );

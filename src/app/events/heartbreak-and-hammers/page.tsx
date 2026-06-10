@@ -247,7 +247,7 @@ export default function HeartbreakAndHammersPage() {
               Reserve your Heartbreak & Hammers experience today and turn emotional release into an unforgettable night out.
             </p>
             
-            <Link href="/packages" className="inline-block">
+            <Link href="/book" className="inline-block">
               <motion.button 
                 whileHover={{ scale: 1.05, rotate: 2 }}
                 whileTap={{ scale: 0.95, y: 4, boxShadow: "0px 0px 0px 0px rgba(0,0,0,1)" }}
