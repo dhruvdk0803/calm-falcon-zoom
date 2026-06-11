@@ -130,7 +130,7 @@ export default function WhatIsADestroyRoomPage() {
               className="flex flex-col"
             >
               <img 
-                src="/media/events/kid-gear.webp" 
+                src="/media/events/kid-gear.png" 
                 alt="Safety gear in a destroy room" 
                 className="w-full h-64 object-cover rounded-2xl border-8 border-black shadow-comic-lg -rotate-2 mb-6"
               />

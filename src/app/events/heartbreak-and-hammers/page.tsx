@@ -67,10 +67,10 @@ export default function HeartbreakAndHammersPage() {
               transition={comicSpring}
               className="relative flex justify-center"
             >
-              <img 
-                src="/media/events/heartbreak/pic-4.jpg" 
-                alt="Heartbreak & Hammers Setup" 
-                className="w-full max-w-md h-auto object-cover rounded-2xl border-8 border-black shadow-comic-lg rotate-2"
+              <img
+                src="/media/events/heartbreak-logo.jpg"
+                alt="Heartbreak & Hammers Logo"
+                className="w-full max-w-md h-auto rounded-2xl border-8 border-black shadow-comic-lg bg-black rotate-2"
               />
             </motion.div>
           </div>
@@ -157,12 +157,15 @@ export default function HeartbreakAndHammersPage() {
             <div className="text-center mb-10">
               <h2 className="text-5xl font-bebas uppercase text-white text-outline-black">Event Setup <span className="text-comic-red">&</span> Vibes</h2>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="bg-white p-4 border-8 border-black shadow-comic-lg rounded-2xl rotate-[-2deg]">
                 <img src="/media/events/heartbreak/pic-2.jpg" alt="Party Setup" className="w-full h-72 object-cover rounded-xl border-4 border-black" />
               </div>
               <div className="bg-comic-yellow p-4 border-8 border-black shadow-comic-lg rounded-2xl rotate-[2deg]">
                 <img src="/media/events/heartbreak/pic-3.jpg" alt="Setup Details" className="w-full h-72 object-cover rounded-xl border-4 border-black" />
+              </div>
+              <div className="bg-white p-4 border-8 border-black shadow-comic-lg rounded-2xl rotate-[-1deg]">
+                <img src="/media/events/heartbreak/pic-4.jpg" alt="Heartbreak & Hammers Setup" className="w-full h-72 object-cover rounded-xl border-4 border-black" />
               </div>
             </div>
           </motion.div>
@@ -196,7 +199,7 @@ export default function HeartbreakAndHammersPage() {
                 </li>
               </ul>
               <img 
-                src="/media/events/kid-gear.webp" 
+                src="/media/events/kid-gear.png"
                 alt="Kid in protective gear" 
                 className="w-full h-64 object-cover rounded-xl border-4 border-black shadow-comic-sm rotate-1 mt-auto"
               />
