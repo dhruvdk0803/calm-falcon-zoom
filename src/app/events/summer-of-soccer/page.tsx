@@ -53,10 +53,10 @@ export default function SummerOfSoccerPage() {
               className="bg-white border-8 border-black shadow-comic-lg rounded-2xl p-8 md:p-10 text-black rotate-[-1deg]"
             >
               <h2 className="text-4xl md:text-5xl font-bebas uppercase text-comic-green mb-6 tracking-wide">
-                Kick off the Summer Right
+                Grab your friends and fans! Come smash in celebration or frustration
               </h2>
               <p className="text-xl font-bold text-gray-800 leading-relaxed uppercase mb-6">
-                Celebrate the season with high energy and flying kicks. Our Summer of Soccer themed smash sessions bring all the thrill of the pitch into the smash room! Whether you’re gearing up for the season, blowing off steam after a tough match, or just here to smash things, this is the perfect event for you.
+                A Soccer Theme table with your country of your choice confetti filled smashables along with Soccer Stress Balls!
               </p>
             </motion.div>
 
@@ -68,8 +68,8 @@ export default function SummerOfSoccerPage() {
               className="relative flex justify-center"
             >
               <img 
-                src="/media/group.jpg" 
-                alt="Group of friends having fun" 
+                src="/media/events/summer-of-soccer-logo.jpg" 
+                alt="Summer of Soccer Logo" 
                 className="w-full h-auto object-cover rounded-2xl border-8 border-black shadow-comic-lg"
               />
               <img src="/media/comic-smash.png" alt="Smash" className="absolute -bottom-10 -right-10 w-40 z-20 rotate-12 drop-shadow-xl" />

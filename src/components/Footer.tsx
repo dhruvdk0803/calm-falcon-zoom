@@ -46,13 +46,13 @@ export default function Footer() {
             </p>
             <h4 className="text-comic-yellow font-bebas text-3xl tracking-widest uppercase mb-6 text-outline-black">Follow Us</h4>
             <div className="flex gap-4">
-              <a href="https://www.instagram.com/supersmashkc" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-comic-red border-4 border-black shadow-comic-sm flex items-center justify-center text-white hover:-translate-y-1 hover:shadow-comic transition-all">
+              <a href="https://www.instagram.com/supersmasheventskc?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-comic-red border-4 border-black shadow-comic-sm flex items-center justify-center text-white hover:-translate-y-1 hover:shadow-comic transition-all">
                 <Instagram className="w-6 h-6" />
               </a>
               <a href="https://www.facebook.com/people/Super-Smash-Events-KC/61582955951009/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-comic-yellow border-4 border-black shadow-comic-sm flex items-center justify-center text-black hover:-translate-y-1 hover:shadow-comic transition-all">
                 <Facebook className="w-6 h-6" />
               </a>
-              <a href="https://www.tiktok.com/@supersmashkc" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-comic-green border-4 border-black shadow-comic-sm flex items-center justify-center text-white hover:-translate-y-1 hover:shadow-comic transition-all">
+              <a href="https://www.tiktok.com/@supersmashkc11?is_from_webapp=1&sender_device=pc" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-comic-green border-4 border-black shadow-comic-sm flex items-center justify-center text-white hover:-translate-y-1 hover:shadow-comic transition-all">
                 <TikTokIcon className="w-5 h-5" />
               </a>
             </div>

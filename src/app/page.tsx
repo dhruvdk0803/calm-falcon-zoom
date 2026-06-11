@@ -483,13 +483,13 @@ export default function Home() {
                 <Calendar className="w-8 h-8" strokeWidth={3} /> Book Now
               </motion.button>
             </Link>
-            <a href="tel:9134999330">
+            <a href="https://share.google/as7viCmOZPBA2uQWu" target="_blank" rel="noopener noreferrer">
               <motion.button 
                 whileHover={{ scale: 1.1, rotate: -2 }}
                 whileTap={{ scale: 0.9, y: 4, boxShadow: "0px 0px 0px 0px rgba(0,0,0,1)" }}
                 className="px-10 py-6 bg-comic-blue text-white font-bebas text-4xl tracking-wider uppercase rounded-xl border-4 border-black shadow-comic flex items-center justify-center gap-3 w-full"
               >
-                <Phone className="w-8 h-8" strokeWidth={3} /> Call Now
+                <Calendar className="w-8 h-8" strokeWidth={3} /> Plan your Visit
               </motion.button>
             </a>
           </div>

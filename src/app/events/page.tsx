@@ -8,13 +8,18 @@ export const dynamic = 'force-dynamic';
 
 export default async function EventsPage() {
   const sql = await getDb();
-  // Fetch published posts from the database
-  const dbPosts = await sql`
-    SELECT id, title, slug, excerpt, created_at 
-    FROM posts 
-    WHERE published = true 
-    ORDER BY created_at DESC
-  `;
+  let dbPosts = [];
+  try {
+    // Fetch published posts from the database
+    dbPosts = await sql`
+      SELECT id, title, slug, excerpt, created_at 
+      FROM posts 
+      WHERE published = true 
+      ORDER BY created_at DESC
+    `;
+  } catch (e) {
+    console.error("Failed to fetch db posts:", e);
+  }
 
   // Map DB posts to the format expected by the UI
   const dynamicEvents = dbPosts.map((post, index) => {
@@ -38,7 +43,7 @@ export default async function EventsPage() {
     {
       title: "Summer of Soccer",
       slug: "summer-of-soccer",
-      excerpt: "Kick off the summer with our soccer-themed smash sessions! Celebrate the season with high energy and flying kicks.",
+      excerpt: "A Soccer Theme table with your country of your choice confetti filled smashables along with Soccer Stress Balls!",
       tag: "Themed Smash",
       icon: Target,
       color: "bg-comic-green",
@@ -47,14 +52,14 @@ export default async function EventsPage() {
     {
       title: "Heartbreak & Hammers",
       slug: "heartbreak-and-hammers",
-      excerpt: "Whether you’re smashing away a breakup, letting go of stress, or just in it for the vibes—this Valentine’s Day, we’re turning heartbreak into power.",
+      excerpt: "Whether you’re smashing away a breakup, letting go of stress, or just in it for the vibes—we’re turning heartbreak into power.",
       tag: "Special Event",
       icon: Flame,
       color: "bg-comic-red",
       rotate: "rotate-1"
     },
     {
-      title: "Destroy Room? That's an ICK",
+      title: "Destroy Room",
       slug: "what-is-a-destroy-room",
       excerpt: "A destroy room in Kansas City is a designated space where people can release pent-up anger and frustration by destroying objects in a controlled environment.",
       tag: "Blog",

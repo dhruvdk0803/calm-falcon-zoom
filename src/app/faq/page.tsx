@@ -126,7 +126,7 @@ export default function FAQPage() {
                 <Calendar className="w-8 h-8" strokeWidth={3} /> Book Your Session
               </motion.button>
             </Link>
-            <a href="https://maps.google.com/?q=7360+W+162nd+St,+Suite+106,+Overland+Park,+KS+66085" target="_blank" rel="noopener noreferrer">
+            <a href="https://share.google/as7viCmOZPBA2uQWu" target="_blank" rel="noopener noreferrer">
               <motion.button 
                 whileHover={{ scale: 1.1, rotate: 2 }}
                 whileTap={{ scale: 0.9, y: 4, boxShadow: "0px 0px 0px 0px rgba(0,0,0,1)" }}

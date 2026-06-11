@@ -106,6 +106,23 @@ export default function PackagesPage() {
       color: "bg-black",
       textColor: "text-white",
       rotate: "-rotate-1"
+    },
+    {
+      title: "ADD ONS",
+      price: "VARIES",
+      unit: "per add on",
+      duration: "Flexible",
+      capacity: "Any",
+      desc: "Customize your session to make it exactly what you want. Add extra time, more friends, or specialty items to destroy.",
+      included: [
+        "Add People",
+        "Add Minutes",
+        "Add Hammers and Heartbreaks",
+        "Add Extra Items to Smash"
+      ],
+      cta: "Book Add Ons",
+      color: "bg-comic-yellow",
+      rotate: "rotate-2"
     }
   ];
 
@@ -160,7 +177,7 @@ export default function PackagesPage() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1, ...comicSpring }}
                 whileHover={{ scale: 1.02, y: -5 }}
-                className={`relative bg-white border-8 border-black shadow-comic-lg rounded-2xl flex flex-col h-full ${pkg.rotate} ${pkg.featured ? 'lg:scale-105 z-10' : 'z-0'} ${i === 3 ? 'lg:col-start-1 lg:col-span-1 lg:ml-auto' : ''} ${i === 4 ? 'lg:col-start-2 lg:col-span-2 lg:mr-auto max-w-md' : ''}`}
+                className={`relative bg-white border-8 border-black shadow-comic-lg rounded-2xl flex flex-col h-full ${pkg.rotate} ${pkg.featured ? 'lg:scale-105 z-10' : 'z-0'}`}
               >
                 {pkg.badge && (
                   <div className="absolute -top-6 -right-6 bg-comic-yellow text-black font-bebas text-2xl px-4 py-2 border-4 border-black shadow-comic rotate-12 z-20 flex items-center gap-2">
@@ -206,11 +223,11 @@ export default function PackagesPage() {
                     </ul>
                   </div>
 
-                  <Link href="/book" className="w-full block">
+                  <a href="https://bookeo.com/widget.js?a=41571M9F6LX1810C95EFBB" target="_blank" rel="noopener noreferrer" className="w-full block">
                     <button className={`w-full py-4 ${pkg.color} ${pkg.textColor || 'text-black'} font-bebas text-2xl tracking-wider uppercase rounded-xl border-4 border-black shadow-comic hover:translate-y-1 hover:shadow-comic-sm transition-all active:translate-y-2 active:shadow-none`}>
                       {pkg.cta}
                     </button>
-                  </Link>
+                  </a>
                 </div>
               </motion.div>
             ))}
@@ -236,7 +253,7 @@ export default function PackagesPage() {
                   Shorter sessions work well for quick stress relief or first-time visits. Longer sessions allow for a deeper level of engagement and a more noticeable release. Group packages shift the experience toward energy, interaction, and shared moments.
                 </p>
                 <p className="text-xl font-bebas text-comic-red tracking-wide uppercase bg-comic-yellow p-4 border-4 border-black shadow-comic-sm rotate-[1deg]">
-                  Most visitors start with a shorter session and return for a more extended experience once they understand the impact.
+                  GRAB YOUR FRIENDS AND COME SMASH SOME STUFF. EXPERIENTIAL RELEASE IS POWERFUL, BUT IT'S EVEN BETTER WITH A CREW.
                 </p>
               </motion.div>
             </motion.div>
@@ -336,7 +353,7 @@ export default function PackagesPage() {
           </div>
 
           <div className="flex flex-col sm:flex-row justify-center gap-6">
-            <Link href="/book">
+            <a href="https://bookeo.com/widget.js?a=41571M9F6LX1810C95EFBB" target="_blank" rel="noopener noreferrer" className="w-full">
               <motion.button
                 whileHover={{ scale: 1.1, rotate: -2 }}
                 whileTap={{ scale: 0.9, y: 4, boxShadow: "0px 0px 0px 0px rgba(0,0,0,1)" }}
@@ -344,7 +361,7 @@ export default function PackagesPage() {
               >
                 <Zap className="w-8 h-8 fill-black" strokeWidth={2} /> Book Now
               </motion.button>
-            </Link>
+            </a>
             <Link href="/book">
               <motion.button
                 whileHover={{ scale: 1.1, rotate: 2 }}

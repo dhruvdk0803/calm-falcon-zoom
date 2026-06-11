@@ -53,10 +53,10 @@ export default function HeartbreakAndHammersPage() {
               className="bg-white border-8 border-black shadow-comic-lg rounded-2xl p-8 md:p-12 text-black rotate-[1deg]"
             >
               <h2 className="text-4xl md:text-5xl font-bebas uppercase text-comic-blue mb-6 tracking-wide">
-                Join us on Valentine's Day from 12-9 pm
+                Join us for Heartbreak & Hammers
               </h2>
               <p className="text-xl font-bold text-gray-800 leading-relaxed uppercase">
-                Whether you’re smashing away a breakup, letting go of stress, or just in it for the vibes—this Valentine’s Day, we’re turning heartbreak into power. 💪🔨
+                Whether you’re smashing away a breakup, letting go of stress, or just in it for the vibes—we’re turning heartbreak into power. 💪🔨
               </p>
             </motion.div>
 
@@ -68,8 +68,8 @@ export default function HeartbreakAndHammersPage() {
               className="relative flex justify-center"
             >
               <img 
-                src="/media/events/heartbreak-logo.jpg" 
-                alt="Heartbreak & Hammers Logo" 
+                src="/media/events/heartbreak/pic-4.jpg" 
+                alt="Heartbreak & Hammers Setup" 
                 className="w-full max-w-md h-auto object-cover rounded-2xl border-8 border-black shadow-comic-lg rotate-2"
               />
             </motion.div>
@@ -85,8 +85,8 @@ export default function HeartbreakAndHammersPage() {
               className="relative order-2 lg:order-1 flex justify-center"
             >
               <img 
-                src="/media/events/swinging-bat.png" 
-                alt="Person swinging a bat in the smash room" 
+                src="/media/events/heartbreak/pic-1.jpg" 
+                alt="Heartbreak & Hammers Smash" 
                 className="w-full max-w-md h-auto object-cover rounded-2xl border-8 border-black shadow-comic-lg -rotate-2"
               />
             </motion.div>
@@ -116,7 +116,7 @@ export default function HeartbreakAndHammersPage() {
                 </li>
                 <li className="flex items-start gap-4 bg-white p-4 border-4 border-black shadow-comic-sm rounded-lg">
                   <CheckCircle2 className="w-8 h-8 text-comic-red shrink-0 mt-1" strokeWidth={2.5} />
-                  <span className="text-xl font-bold uppercase">No date? No problem. Come solo, with friends, or as your own Valentine.</span>
+                  <span className="text-xl font-bold uppercase">Come solo, with friends, or as a group.</span>
                 </li>
               </ul>
               
@@ -159,10 +159,10 @@ export default function HeartbreakAndHammersPage() {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="bg-white p-4 border-8 border-black shadow-comic-lg rounded-2xl rotate-[-2deg]">
-                <img src="/media/party.jpg" alt="Party Setup" className="w-full h-72 object-cover rounded-xl border-4 border-black" />
+                <img src="/media/events/heartbreak/pic-2.jpg" alt="Party Setup" className="w-full h-72 object-cover rounded-xl border-4 border-black" />
               </div>
               <div className="bg-comic-yellow p-4 border-8 border-black shadow-comic-lg rounded-2xl rotate-[2deg]">
-                <img src="/media/couple.jpg" alt="Couple Ready to Smash" className="w-full h-72 object-cover rounded-xl border-4 border-black" />
+                <img src="/media/events/heartbreak/pic-3.jpg" alt="Setup Details" className="w-full h-72 object-cover rounded-xl border-4 border-black" />
               </div>
             </div>
           </motion.div>
