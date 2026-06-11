@@ -8,7 +8,7 @@ export const dynamic = 'force-dynamic';
 
 export default async function EventsPage() {
   const sql = await getDb();
-  let dbPosts = [];
+  let dbPosts: Record<string, any>[] = [];
   try {
     // Fetch published posts from the database
     dbPosts = await sql`
