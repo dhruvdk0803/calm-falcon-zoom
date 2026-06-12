@@ -133,6 +133,18 @@ export default function Home() {
       color: "bg-black",
       textColor: "text-white",
       rotate: "-rotate-1"
+    },
+    {
+      title: "ADD ONS",
+      price: "VARIES",
+      unit: "per add on",
+      duration: "Flexible",
+      capacity: "Any",
+      desc: "Customize your session to make it exactly what you want. Add extra time, more friends, or specialty items to destroy.",
+      included: ["Add People", "Add Minutes", "Add Hammers and Heartbreaks", "Add Extra Items to Smash"],
+      cta: "Book Add Ons",
+      color: "bg-comic-yellow",
+      rotate: "rotate-2"
     }
   ];
 
@@ -294,7 +306,7 @@ export default function Home() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1, ...comicSpring }}
                 whileHover={{ scale: 1.02, y: -5 }}
-                className={`relative bg-white border-8 border-black shadow-comic-lg rounded-2xl flex flex-col h-full ${pkg.rotate} ${pkg.featured ? 'lg:scale-105 z-10' : 'z-0'} ${i === 3 ? 'lg:col-start-1 lg:col-span-1 lg:ml-auto' : ''} ${i === 4 ? 'lg:col-start-2 lg:col-span-2 lg:mr-auto max-w-md' : ''}`}
+                className={`relative bg-white border-8 border-black shadow-comic-lg rounded-2xl flex flex-col h-full ${pkg.rotate} ${pkg.featured ? 'lg:scale-105 z-10' : 'z-0'}`}
               >
                 {pkg.badge && (
                   <div className="absolute -top-6 -right-6 bg-comic-yellow text-black font-bebas text-2xl px-4 py-2 border-4 border-black shadow-comic rotate-12 z-20 flex items-center gap-2">
